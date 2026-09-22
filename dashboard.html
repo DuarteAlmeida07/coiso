@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Quest</title>
+    <link rel="stylesheet" href="pag_prin.css">
+</head>
+<body>
+    <div class="app">
+        <div class="shell">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="brand-mark">S</div>
+                    <h2>Study Quest</h2>
+                </div>
+
+                <nav class="nav">
+                    <a href="#" class="nav-item active"><span class="nav-icon">⌂</span> Dashboard</a>
+                    <a href="#" class="nav-item"><span class="nav-icon">🎯</span> Missões</a>
+                    <a href="#" class="nav-item"><span class="nav-icon">📚</span> Trilhas</a>
+                    <a href="#" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
+                    <a href="#" class="nav-item"><span class="nav-icon">🎁</span> Recompensas</a>
+                    <a href="#" class="nav-item"><span class="nav-icon">⚙</span> Configurações</a>
+                </nav>
+
+                <div class="side-card">
+                    <div class="mini">XP total</div>
+                </div>
+            </aside>
+
+            <main class="content">
+                <header class="topbar">
+                    <div class="title-block">
+                        <h1>Dashboard</h1>
+                        <p>Continue sua jornada de estudo e desbloqueie novas recompensas.</p>
+                    </div>
+
+                    <div class="top-actions">
+                        <input class="search" type="text" value="Buscar estudo..." aria-label="Busca">
+                        <button class="ghost-btn">Hoje</button>
+                        <button class="primary-btn">+ Nova missão</button>
+                    </div>
+                </header>
+
+                <section class="hero">
+                    <div class="hero-card">
+                        <div class="eyebrow">🔥 Streak ativa</div>
+                    
+                        <div class="hero-actions">
+                            <button class="primary-btn">Continuar estudo</button>
+                            <button class="ghost-btn">Ver objetivos</button>
+                        </div>
+
+                        <div class="mini-stats">
+                            <div class="mini-stat">
+                                <strong></strong>
+                                <span>Objetivos de hoje</span>
+                            </div>
+                            <div class="mini-stat">
+                                <span>Tempo focado</span>
+                            </div>
+                            <div class="mini-stat">
+
+                                <span>Progresso geral</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel side-panel">
+                        <div class="level-badge">
+                            <div>
+                                <div style="color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: .08em;">Perfil</div>
+                                <strong style="font-size: 1.1rem;"></strong>
+                            </div>
+                            <div class="avatar">NS</div>
+                        </div>
+
+                        <div class="rank-box">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                        
+                            </div>
+                        </div>
+
+                        <div class="progress-wrap">
+                            <div class="progress-label">
+                                <span>Próximo nível</span>
+
+                            </div>
+                            <div class="bar"><span style="width: 0%;"></span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="stats">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="chip blue">⚡</div>
+                            <span style="color: var(--green); font-size: 0.8rem;">+12%</span>
+                        </div>
+                        <span>XP ganho</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="chip green">✓</div>
+                            <span style="color: var(--green); font-size: 0.8rem;">+4</span>
+                        </div>
+                        <span>Missões concluídas</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="chip gold">★</div>
+                            <span style="color: var(--green); font-size: 0.8rem;">+2</span>
+                        </div>
+                        <span>Medalhas</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="chip pink">🔥</div>
+                            <span style="color: var(--green); font-size: 0.8rem;">+1 dia</span>
+                        <span>Dia de sequência</span>
+                    </div>
+                </section>
+
+                <section class="section-grid">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Missões do dia</h3>
+                          
+                        </div>
+
+                        <div class="missions">
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Ranking</h3>
+            
+                        </div>
+
+                        <div class="leaderboard">
+                            <div class="leader-item">
+                                <div class="pos">1</div>
+                                <div>
+                                    <div class="leader-name"></div>
+                                    <div class="leader-xp"></div>
+                                </div>
+                                <div class="leader-xp">🏆</div>
+                            </div>
+
+                            <div class="leader-item">
+                                <div class="pos">2</div>
+                                <div>
+                                    <div class="leader-name"></div>
+                                    <div class="leader-xp"></div>
+                                </div>
+                                <div class="leader-xp">⚡</div>
+                            </div>
+
+                            <div class="leader-item">
+                                <div class="pos">3</div>
+                                <div>
+                                    <div class="leader-name"></div>
+                                    <div class="leader-xp"></div>
+                                </div>
+                                <div class="leader-xp">🔥</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-grid" style="margin-top: 20px;">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Checklist de hoje</h3>
+                            <span class="tag">Foco</span>
+                        </div>
+
+                        <div class="tasks-list">
+                            <div class="task-card done">
+                                <div class="task-main">
+                                    <div class="check">✓</div>
+                                    <div class="task-meta">
+                                        
+                                        
+                                    </div>
+                                </div>
+                                <div class="task-points"></div>
+                            </div>
+
+                            <div class="task-card">
+                                <div class="task-main">
+                                    <div class="check"></div>
+                                    <div class="task-meta">
+                                        <div class="task-name"></div>
+                                        <div class="task-time"></div>
+                                    </div>
+                                </div>
+                                <div class="task-points"></div>
+                            </div>
+
+                            <div class="task-card">
+                                <div class="task-main">
+                                    <div class="check"></div>
+                                    <div class="task-meta">
+                                        <div class="task-name"></div>
+                                        <div class="task-time"></div>
+                                    </div>
+                                </div>
+                                <div class="task-points">+150</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Próximos desafios</h3>
+                            <span class="tag">Semana</span>
+                        </div>
+
+                        <div class="tasks-list">
+                            <div class="task-card">
+                                <div class="task-main">
+                                    <div class="check"></div>
+                                    <div class="task-meta">
+                                        <div class="task-name"></div>
+                                        <div class="task-time"></div>
+                                    </div>
+                                </div>
+                                <div class="task-points"></div>
+                            </div>
+
+                            <div class="task-card">
+                                <div class="task-main">
+                                    <div class="check"></div>
+                                    <div class="task-meta">
+                                        <div class="task-name"></div>
+                                        <div class="task-time"></div>
+                                    </div>
+                                </div>
+                                <div class="task-points"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const tasks = document.querySelectorAll('.task-card');
+        tasks.forEach(task => {
+            task.addEventListener('click', () => {
+                task.classList.toggle('done');
+                const check = task.querySelector('.check');
+                check.textContent = task.classList.contains('done') ? '✓' : '';
+            });
+        });
+    </script>
+</body>
+</html>
