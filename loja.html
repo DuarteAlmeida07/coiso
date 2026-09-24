@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Quest | Loja</title>
+    <script src="definicoes.js"></script>
     <link rel="stylesheet" href="principal.css" />
 </head>
 <body>
@@ -21,7 +22,8 @@
                     <a href="jornada.html" class="nav-item"><span class="nav-icon">📚</span> Jornada</a>
                     <a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
                     <a href="loja.html" class="nav-item active"><span class="nav-icon">🛍️</span> Loja</a>
-                    <a href="#" class="nav-item"><span class="nav-icon">⚙</span> Configurações</a>
+                    <a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a>
+                    <a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
                 </nav>
 
                 <div class="side-card">
@@ -116,11 +118,11 @@
 
                             <article class="mission-card">
                                 <div class="mission-head">
-                                    <div class="mission-type"><span class="chip gold">🖼️</span><strong>Moldura Solar</strong></div>
+                                    <div class="mission-type"><span class="chip gold">☀️</span><strong>Tema Solar</strong></div>
                                     <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 150</span>
                                 </div>
-                                <span style="color: var(--muted);">Uma moldura dourada para destacar seu perfil.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="150" data-item="Moldura Solar">Comprar</button>
+                                <span style="color: var(--muted);">Uma atmosfera quente e luminosa para suas sessões.</span>
+                                <button class="ghost-btn redeem-button" type="button" data-cost="150" data-item="Tema Solar">Comprar</button>
                             </article>
                         </div>
                     </div>
@@ -156,43 +158,6 @@
         </div>
     </div>
 
-    <script>
-        let tokens = 500;
-        const balance = document.querySelector('#balance');
-        const headerTokens = document.querySelector('#header-tokens');
-        const sidebarTokens = document.querySelector('#sidebar-tokens');
-
-        document.querySelectorAll('.redeem-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const cost = Number(button.dataset.cost);
-                const item = button.dataset.item;
-
-                if (tokens < cost) {
-                    button.textContent = `Faltam ${cost - tokens} Tokens`;
-                    return;
-                }
-
-                tokens -= cost;
-                balance.lastChild.textContent = ` ${tokens}`;
-                headerTokens.textContent = tokens;
-                sidebarTokens.textContent = tokens;
-                button.textContent = 'Comprado';
-                button.disabled = true;
-                button.setAttribute('aria-label', `${item} comprado`);
-            });
-        });
-
-        document.querySelector('#missions-button').addEventListener('click', () => {
-            window.location.href = 'missoes.html';
-        });
-
-        document.querySelector('#featured-button').addEventListener('click', () => {
-            document.querySelector('#store-items').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        document.querySelector('#history-button').addEventListener('click', () => {
-            window.alert('Você ainda não comprou nenhum cosmético.');
-        });
-    </script>
+    <script src="loja.js"></script>
 </body>
 </html>
