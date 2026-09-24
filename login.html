@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Quest | Login</title>
+    <script src="definicoes.js"></script>
     <link rel="stylesheet" href="principal.css" />
 </head>
 <body>
@@ -112,83 +113,11 @@
 
                     <button class="primary-btn" type="submit">Criar conta</button>
                     <div class="status" aria-live="polite"></div>
+                </form>
             </div>
         </main>
     </div>
 
-    <script>
-        const tabs = document.querySelectorAll('.tab-btn');
-        const forms = {
-            'login-form': document.getElementById('login-form'),
-            'register-form': document.getElementById('register-form')
-        };
-
-        function switchForm(targetId) {
-            Object.entries(forms).forEach(([id, form]) => {
-                const show = id === targetId;
-                form.classList.toggle('hidden', !show);
-            });
-
-            tabs.forEach(tab => {
-                tab.classList.toggle('active', tab.dataset.target === targetId);
-            });
-        }
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => switchForm(tab.dataset.target));
-        });
-
-        document.getElementById('switch-to-login').addEventListener('click', () => switchForm('login-form'));
-
-        function showMessage(form, message, isError = false) {
-            const status = form.querySelector('.status');
-            status.textContent = message;
-            status.classList.toggle('error', isError);
-        }
-
-        forms['login-form'].addEventListener('submit', function (event) {
-            event.preventDefault();
-            const email = document.getElementById('login-email').value.trim();
-            const password = document.getElementById('login-password').value;
-
-            if (!email || !password) {
-                showMessage(this, 'Preencha e-mail e senha para continuar.', true);
-                return;
-            }
-
-            showMessage(this, 'Login realizado com sucesso! Redirecionando...');
-            setTimeout(() => {
-                window.location.href = 'pag_prin.html';
-            }, 900);
-        });
-
-        forms['register-form'].addEventListener('submit', function (event) {
-            event.preventDefault();
-            const name = document.getElementById('register-name').value.trim();
-            const lastname = document.getElementById('register-lastname').value.trim();
-            const email = document.getElementById('register-email').value.trim();
-            const password = document.getElementById('register-password').value;
-            const confirm = document.getElementById('register-confirm').value;
-
-            if (!name || !lastname || !email || !password || !confirm) {
-                showMessage(this, 'Preencha todos os campos.', true);
-                return;
-            }
-
-            if (password.length < 6) {
-                showMessage(this, 'A senha deve ter pelo menos 6 caracteres.', true);
-                return;
-            }
-
-            if (password !== confirm) {
-                showMessage(this, 'As senhas não coincidem.', true);
-                return;
-            }
-
-            showMessage(this, 'Conta criada com sucesso! Você pode entrar agora.');
-            setTimeout(() => switchForm('login-form'), 1200);
-            this.reset();
-        });
-    </script>
+    <script src="login.js"></script>
 </body>
 </html>
