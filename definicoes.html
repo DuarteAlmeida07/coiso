@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Quest | Definições</title>
+    <script src="definicoes.js"></script>
+    <link rel="stylesheet" href="principal.css" />
+</head>
+<body>
+    <div class="app">
+        <div class="shell">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="brand-mark">S</div>
+                    <h2>Study Quest</h2>
+                </div>
+
+                <nav class="nav">
+                    <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a>
+                    <a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a>
+                    <a href="jornada.html" class="nav-item"><span class="nav-icon">📚</span> Jornada</a>
+                    <a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
+                    <a href="loja.html" class="nav-item"><span class="nav-icon">🛍️</span> Loja</a>
+                    <a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a>
+                    <a href="definicoes.html" class="nav-item active"><span class="nav-icon">⚙</span> Definições</a>
+                </nav>
+
+                <div class="side-card">
+                    <div class="mini">XP total</div>
+                    <strong>0</strong>
+                    <span>+0 esta semana</span>
+                </div>
+            </aside>
+
+            <main class="content">
+                <header class="topbar">
+                    <div class="title-block">
+                        <h1>Definições</h1>
+                        <p>Personalize o Study Quest para estudar do seu jeito.</p>
+                    </div>
+                </header>
+
+                <section class="settings-layout">
+                    <div class="panel settings-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Perfil</h3>
+                                <p class="panel-description">Estas informações aparecem na sua jornada.</p>
+                            </div>
+                            <span class="settings-icon">◉</span>
+                        </div>
+                        <div class="form-grid">
+                            <label class="field">
+                                <span>Nome</span>
+                                <input type="text" value="Estudante" />
+                            </label>
+                            <label class="field">
+                                <span>E-mail</span>
+                                <input type="email" value="estudante@studyquest.com" />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="panel settings-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Preferências de estudo</h3>
+                                <p class="panel-description">Defina o ritmo ideal para as suas missões.</p>
+                            </div>
+                            <span class="settings-icon">◒</span>
+                        </div>
+                        <div class="form-grid">
+                            <label class="field">
+                                <span>Meta diária</span>
+                                <select>
+                                    <option>15 minutos</option>
+                                    <option selected>30 minutos</option>
+                                    <option>1 hora</option>
+                                    <option>2 horas</option>
+                                </select>
+                            </label>
+                            <label class="field">
+                                <span>Início da semana</span>
+                                <select>
+                                    <option selected>Segunda-feira</option>
+                                    <option>Domingo</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="panel settings-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Notificações</h3>
+                                <p class="panel-description">Escolha quais lembretes deseja receber.</p>
+                            </div>
+                            <span class="settings-icon">◌</span>
+                        </div>
+                        <div class="toggle-list">
+                            <label class="toggle-row">
+                                <span><strong>Lembrete diário</strong><small>Receba um aviso para manter a sequência.</small></span>
+                                <input type="checkbox" checked />
+                            </label>
+                            <label class="toggle-row">
+                                <span><strong>Resumo semanal</strong><small>Veja a evolução da sua semana por e-mail.</small></span>
+                                <input type="checkbox" checked />
+                            </label>
+                            <label class="toggle-row">
+                                <span><strong>Novas conquistas</strong><small>Seja avisado quando desbloquear uma recompensa.</small></span>
+                                <input type="checkbox" />
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="panel settings-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Tema</h3>
+                                <p class="panel-description">Ajuste a experiência visual da plataforma.</p>
+                            </div>
+                            <span class="settings-icon">✦</span>
+                        </div>
+                        <div class="theme-options">
+                            <label class="theme-option selected">
+                                <input type="radio" name="theme" value="night" checked />
+                                <span class="theme-preview theme-night"></span>
+                                <strong>Noite</strong>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="dawn" />
+                                <span class="theme-preview theme-dawn"></span>
+                                <strong>Dia</strong>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

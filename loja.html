@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Quest | Loja</title>
+    <script src="definicoes.js"></script>
+    <link rel="stylesheet" href="principal.css" />
+</head>
+<body>
+    <div class="app">
+        <div class="shell">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="brand-mark">S</div>
+                    <h2>Study Quest</h2>
+                </div>
+
+                <nav class="nav">
+                    <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a>
+                    <a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a>
+                    <a href="jornada.html" class="nav-item"><span class="nav-icon">📚</span> Jornada</a>
+                    <a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
+                    <a href="loja.html" class="nav-item active"><span class="nav-icon">🛍️</span> Loja</a>
+                    <a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a>
+                    <a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
+                </nav>
+
+                <div class="side-card">
+                    <div class="mini">Tokens disponíveis</div>
+                    <strong id="sidebar-tokens">500</strong>
+                    <span>Complete missões para ganhar mais</span>
+                </div>
+            </aside>
+
+            <main class="content">
+                <header class="topbar">
+                    <div class="title-block">
+                        <h1>Loja</h1>
+                        <p>Use seus Tokens para desbloquear cosméticos e personalizar sua jornada.</p>
+                    </div>
+
+                    <div class="top-actions">
+                            <div class="tag token-balance"><span class="token-icon" aria-hidden="true">T</span> <span id="header-tokens">500</span> Tokens</div>
+                            <button class="primary-btn" type="button" id="missions-button">Ganhar Tokens</button>
+                    </div>
+                </header>
+
+                <section class="hero">
+                    <div class="hero-card">
+                        <div class="eyebrow">🛍️ Mercado da jornada</div>
+                        <h2>Troque Tokens por estilo</h2>
+                        <p>Escolha um cosmético, compre com seus Tokens e deixe seu perfil com a sua cara.</p>
+
+                        <div class="hero-actions">
+                            <button class="primary-btn" type="button" id="featured-button">Ver destaques</button>
+                            <button class="ghost-btn" type="button" id="history-button">Histórico</button>
+                        </div>
+
+                        <div class="mini-stats">
+                            <div class="mini-stat">
+                                <strong>0</strong>
+                                <span>Itens resgatados</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>0</strong>
+                                <span>Tokens gastos</span>
+                            </div>
+                            <div class="mini-stat">
+                                <strong>4</strong>
+                                    <span>4 cosméticos disponíveis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel side-panel">
+                        <div class="level-badge">
+                            <div>
+                                <div style="color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: .08em;">Seu saldo</div>
+                                <strong class="token-balance" style="font-size: 1.7rem;" id="balance"><span class="token-icon" aria-hidden="true">T</span> 500</strong>
+                            </div>
+                            <div class="avatar">T</div>
+                        </div>
+
+                        <div class="rank-box">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Próximo cosmético</span>
+                                    <strong class="token-price"><span class="token-icon" aria-hidden="true">T</span> 100</strong>
+                            </div>
+                        </div>
+
+                        <div class="progress-wrap">
+                            <div class="progress-label">
+                                <span>Progresso para desbloquear</span>
+                                <span>0%</span>
+                            </div>
+                            <div class="bar"><span style="width: 0%;"></span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-grid" id="store-items">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Itens em destaque</h3>
+                            <span class="tag">4 itens</span>
+                        </div>
+
+                        <div class="missions">
+                            <article class="mission-card">
+                                <div class="mission-head">
+                                    <div class="mission-type"><span class="chip blue">🎨</span><strong>Tema Aurora</strong></div>
+                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 100</span>
+                                </div>
+                                <span style="color: var(--muted);">Um visual luminoso para renovar seu espaço de estudos.</span>
+                                <button class="ghost-btn redeem-button" type="button" data-cost="100" data-item="Tema Aurora">Comprar</button>
+                            </article>
+
+                            <article class="mission-card">
+                                <div class="mission-head">
+                                    <div class="mission-type"><span class="chip gold">☀️</span><strong>Tema Solar</strong></div>
+                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 150</span>
+                                </div>
+                                <span style="color: var(--muted);">Uma atmosfera quente e luminosa para suas sessões.</span>
+                                <button class="ghost-btn redeem-button" type="button" data-cost="150" data-item="Tema Solar">Comprar</button>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Personalize</h3>
+                            <span class="tag">Novidades</span>
+                        </div>
+
+                        <div class="missions">
+                            <article class="mission-card">
+                                <div class="mission-head">
+                                    <div class="mission-type"><span class="chip green">🛡️</span><strong>Avatar Explorador</strong></div>
+                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 250</span>
+                                </div>
+                                <span style="color: var(--muted);">Um avatar exclusivo para sua identidade de estudante.</span>
+                                <button class="ghost-btn redeem-button" type="button" data-cost="250" data-item="Avatar Explorador">Comprar</button>
+                            </article>
+
+                            <article class="mission-card">
+                                <div class="mission-head">
+                                    <div class="mission-type"><span class="chip pink">✨</span><strong>Efeito Estelar</strong></div>
+                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 300</span>
+                                </div>
+                                <span style="color: var(--muted);">Um brilho sutil para celebrar suas conquistas no perfil.</span>
+                                <button class="ghost-btn redeem-button" type="button" data-cost="300" data-item="Efeito Estelar">Comprar</button>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="loja.js"></script>
+</body>
+</html>

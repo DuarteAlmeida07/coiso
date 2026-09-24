@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Quest | Meu avatar</title>
+    <script src="definicoes.js"></script>
+    <link rel="stylesheet" href="principal.css" />
+</head>
+<body>
+    <div class="app">
+        <div class="shell">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="brand-mark">S</div>
+                    <h2>Study Quest</h2>
+                </div>
+                <nav class="nav">
+                    <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a>
+                    <a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a>
+                    <a href="jornada.html" class="nav-item"><span class="nav-icon">📚</span> Jornada</a>
+                    <a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
+                    <a href="loja.html" class="nav-item"><span class="nav-icon">🛍️</span> Loja</a>
+                    <a href="avatar.html" class="nav-item active"><span class="nav-icon">◉</span> Meu avatar</a>
+                    <a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
+                </nav>
+                <div class="side-card">
+                    <div class="mini">XP total</div>
+                    <strong>0</strong>
+                    <span>+0 esta semana</span>
+                </div>
+            </aside>
+
+            <main class="content">
+                <header class="topbar">
+                    <div class="title-block">
+                        <h1>Meu avatar</h1>
+                        <p>Crie uma identidade que acompanhe sua jornada de estudos.</p>
+                    </div>
+                </header>
+
+                <section class="avatar-edit-layout">
+                    <div class="panel avatar-preview-panel">
+                        <div>
+                            <div class="avatar-large" id="avatar-preview">ES</div>
+                            <h2 id="avatar-preview-name">Estudante</h2>
+                            <p>Seu avatar aparece no seu perfil.</p>
+                        </div>
+                    </div>
+
+                    <div class="panel avatar-form-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Editar identidade</h3>
+                                <p class="panel-description">Escolha como quer aparecer no Study Quest.</p>
+                            </div>
+                            <span class="settings-icon">✦</span>
+                        </div>
+                        <form id="avatar-form">
+                            <div class="form-grid">
+                                <label class="field">
+                                    <span>Nome de exibição</span>
+                                    <input id="avatar-name" type="text" maxlength="30" placeholder="Seu nome" />
+                                </label>
+                                <label class="field">
+                                    <span>Iniciais</span>
+                                    <input id="avatar-initials" type="text" maxlength="3" placeholder="ES" />
+                                </label>
+                            </div>
+
+                            <div class="field avatar-color-options">
+                                <span>Cor do avatar</span>
+                                <label class="avatar-color avatar-color-blue" title="Azul">
+                                    <input type="radio" name="avatar-color" value="blue" />
+                                </label>
+                                <label class="avatar-color avatar-color-green" title="Verde">
+                                    <input type="radio" name="avatar-color" value="green" />
+                                </label>
+                                <label class="avatar-color avatar-color-sunset" title="Pôr do sol">
+                                    <input type="radio" name="avatar-color" value="sunset" />
+                                </label>
+                                <label class="avatar-color avatar-color-violet" title="Violeta">
+                                    <input type="radio" name="avatar-color" value="violet" />
+                                </label>
+                            </div>
+
+                            <button class="primary-btn" type="submit">Atualizar avatar</button>
+                            <div class="avatar-save-status" id="avatar-status" role="status" aria-live="polite"></div>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="avatar.js"></script>
+</body>
+</html>
