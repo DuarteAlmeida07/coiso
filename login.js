@@ -1,5 +1,6 @@
 const accountsKey = 'study-quest-accounts';
 const sessionKey = 'study-quest-session';
+const defaultTokens = 500000;
 const tabs = document.querySelectorAll('.tab-btn');
 const forms = {
     'login-form': document.getElementById('login-form'),
@@ -24,6 +25,14 @@ function showMessage(form, message, isError = false) {
 
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function initializeWallet(email) {
+    const walletKey = `study-quest-tokens:${email}`;
+    const savedTokens = localStorage.getItem(walletKey);
+    if (savedTokens === null || savedTokens === '500') {
+        localStorage.setItem(walletKey, String(defaultTokens));
+    }
 }
 
 function getAccounts() {
@@ -64,6 +73,7 @@ forms['login-form'].addEventListener('submit', (event) => {
         return;
     }
 
+    initializeWallet(email);
     const storage = remember ? localStorage : sessionStorage;
     storage.setItem(sessionKey, JSON.stringify({
         name: account.name,
@@ -121,6 +131,7 @@ forms['register-form'].addEventListener('submit', (event) => {
         password
     };
     localStorage.setItem(accountsKey, JSON.stringify(accounts));
+    initializeWallet(email);
     forms['register-form'].reset();
     document.getElementById('login-email').value = email;
     showMessage(forms['login-form'], 'Conta criada. Entre com os seus dados.');

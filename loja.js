@@ -1,19 +1,24 @@
 const sessionKey = 'study-quest-session';
 const loggedUser = JSON.parse(sessionStorage.getItem(sessionKey) || localStorage.getItem(sessionKey) || 'null');
-const userId = loggedUser ? loggedUser.email : 'guest';
+const userId = loggedUser && loggedUser.email ? loggedUser.email.trim().toLowerCase() : 'guest';
 const tokensKey = `study-quest-tokens:${userId}`;
 const purchasesKey = `study-quest-purchases:${userId}`;
-const defaultTokens = 500;
-const tokens = Number(localStorage.getItem(tokensKey) || defaultTokens);
+const defaultTokens = 500000;
+const storedTokens = localStorage.getItem(tokensKey);
+const tokens = storedTokens === null || storedTokens === '500' ? defaultTokens : Number(storedTokens);
+if (storedTokens === null || storedTokens === '500') {
+    localStorage.setItem(tokensKey, String(defaultTokens));
+}
 const purchases = JSON.parse(localStorage.getItem(purchasesKey) || '[]');
 const balance = document.querySelector('#balance');
 const headerTokens = document.querySelector('#header-tokens');
 const sidebarTokens = document.querySelector('#sidebar-tokens');
 
 function updateTokenDisplays(value) {
-    balance.lastChild.textContent = ` ${value}`;
-    headerTokens.textContent = value;
-    sidebarTokens.textContent = value;
+    const formattedValue = new Intl.NumberFormat('pt-BR').format(value);
+    balance.lastChild.textContent = ` ${formattedValue}`;
+    headerTokens.textContent = formattedValue;
+    sidebarTokens.textContent = formattedValue;
 }
 
 function updatePurchaseButton(button) {
