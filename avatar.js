@@ -65,7 +65,7 @@ function updatePreview() {
     preview.textContent = initialsInput.value.trim().slice(0, 3).toUpperCase() || 'ES';
     previewName.textContent = nameInput.value.trim() || 'Estudante';
     const selectedColor = document.querySelector('input[name="avatar-color"]:checked');
-    preview.style.background = avatarColorGradients[selectedColor.value];
+    preview.style.setProperty('--avatar-fill', avatarColorGradients[selectedColor.value]);
     cosmetics.applyAvatarBorder(preview, selectedBorderId);
 }
 

@@ -122,11 +122,18 @@
     gap: 20px;
 }
 
+.avatar-shell {
+    overflow: clip;
+}
+
 .avatar-preview-panel {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 280px;
+    min-height: 220px;
+    position: sticky;
+    top: 20px;
+    align-self: start;
 }
 
 .avatar-preview-panel > div {
@@ -144,6 +151,7 @@
     font-weight: 800;
     letter-spacing: 0.04em;
     color: #f8fafc;
+    background-image: var(--avatar-fill, none);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -152,8 +160,8 @@
 }
 
 .avatar-large {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 30px;
     font-size: 2.2rem;
 }
@@ -167,7 +175,7 @@
 
 .avatar-border-equipped {
     padding: 8px;
-    background-image: var(--avatar-border-image, none);
+    background-image: var(--avatar-border-image, none), var(--avatar-fill, none);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -220,6 +228,19 @@
     gap: 12px;
 }
 
+.avatar-border-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.avatar-border-heading a {
+    color: var(--blue);
+    font-size: 0.85rem;
+}
+
 .avatar-border-options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -227,6 +248,7 @@
 }
 
 .avatar-border-option {
+    position: relative;
     display: grid;
     gap: 8px;
     padding: 10px 8px;
@@ -235,15 +257,26 @@
     background: rgba(15, 23, 42, 0.64);
     text-align: center;
     color: var(--text);
+    cursor: pointer;
+}
+
+.avatar-border-option:has(input:checked) {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 1px var(--blue);
 }
 
 .avatar-border-option input {
     position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
+    cursor: inherit;
 }
 
 .avatar-border-option.locked {
-    opacity: 0.6;
+    opacity: 0.9;
+    cursor: not-allowed;
 }
 
 .avatar-border-swatch {
@@ -281,5 +314,9 @@
 @media (max-width: 980px) {
     .avatar-edit-layout {
         grid-template-columns: 1fr;
+    }
+
+    .avatar-preview-panel {
+        position: static;
     }
 }
