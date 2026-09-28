@@ -475,22 +475,23 @@ body {
     display: grid;
     place-items: center;
     border-radius: 28px;
+    --loot-rarity-color: rgba(96, 165, 250, 0.45);
     background: linear-gradient(135deg, rgba(96, 165, 250, 0.25), rgba(129, 140, 248, 0.22), rgba(251, 191, 36, 0.18));
-    border: 2px solid rgba(96, 165, 250, 0.45);
+    border: 2px solid var(--loot-rarity-color);
     box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.12), 0 25px 40px rgba(59, 130, 246, 0.2);
     position: relative;
     overflow: hidden;
     transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
 }
 
-.loot-theme-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    font-size: 2.2rem;
-    text-align: center;
-    padding: 16px;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
+.loot-box-image {
+    position: relative;
+    z-index: 1;
+    width: 148px;
+    height: 148px;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 12px rgba(2, 6, 23, 0.38));
+    transition: transform 0.28s ease;
 }
 
 .loot-box::before {
@@ -517,6 +518,88 @@ body {
 .loot-rarities {
     display: grid;
     gap: 10px;
+}
+
+.loot-prize-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    gap: 12px;
+}
+
+.loot-prize-tier {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(148, 163, 184, 0.04);
+}
+
+.loot-prize-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+}
+
+.loot-prize-heading .rarity-badge {
+    padding-inline: 7px;
+    font-size: 0.65rem;
+}
+
+.loot-prize-tier ul {
+    display: grid;
+    gap: 6px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.loot-prize-tier li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.loot-prize-tier li.owned {
+    color: var(--text);
+}
+
+.loot-prize-status {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 0.68rem;
+}
+
+.loot-prize-tier li.owned .loot-prize-status {
+    color: var(--muted);
+}
+
+.loot-prize-tier li.owned .loot-prize-name {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--muted);
+    text-decoration-thickness: 1px;
+}
+
+.loot-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--muted);
+}
+
+.loot-price strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
 }
 
 .loot-row {
@@ -561,6 +644,12 @@ body {
     color: var(--pink);
 }
 
+.rarity-badge.muito_raro {
+    background: rgba(192, 132, 252, 0.14);
+    border-color: rgba(192, 132, 252, 0.3);
+    color: #c084fc;
+}
+
 .rarity-badge.lendario {
     background: rgba(251, 191, 36, 0.12);
     border-color: rgba(251, 191, 36, 0.2);
@@ -582,6 +671,116 @@ body {
     min-height: 52px;
     display: flex;
     align-items: center;
+}
+
+.loot-reveal-backdrop[hidden] {
+    display: none;
+}
+
+.loot-reveal-backdrop {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(7, 12, 24, 0.78);
+    backdrop-filter: blur(8px);
+}
+
+.loot-reveal-open {
+    overflow: hidden;
+}
+
+.loot-reveal-card {
+    position: relative;
+    width: min(100%, 440px);
+    padding: 28px;
+    border: 2px solid var(--reveal-color, var(--line));
+    border-radius: 16px;
+    background: var(--panel);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--reveal-color, transparent) 18%, transparent), 0 24px 80px rgba(0, 0, 0, 0.45);
+    text-align: center;
+    animation: rewardRevealIn 260ms ease-out both;
+}
+
+.loot-reveal-card .eyebrow {
+    display: block;
+    margin: 0 24px 16px;
+}
+
+.loot-reveal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.loot-reveal-close:hover {
+    background: rgba(148, 163, 184, 0.12);
+    color: var(--text);
+}
+
+.loot-reveal-art {
+    display: grid;
+    place-items: center;
+    height: 220px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 12px;
+}
+
+.loot-reveal-art span {
+    font-size: 6rem;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+    animation: rewardIconIn 420ms 80ms ease-out both;
+}
+
+.border-reveal-art {
+    background: linear-gradient(135deg, #0f172a, #164e63);
+    color: #e0f2fe;
+}
+
+.border-reveal-art span {
+    font-size: 3rem;
+}
+
+.loot-reveal-card h2 {
+    margin: 0 0 12px;
+    font-size: 1.6rem;
+}
+
+.loot-reveal-card > .rarity-badge {
+    color: var(--reveal-color);
+    border-color: var(--reveal-color);
+    background: color-mix(in srgb, var(--reveal-color) 14%, transparent);
+}
+
+.loot-reveal-card p {
+    margin: 16px 0 20px;
+    color: var(--muted);
+}
+
+.loot-reveal-card .primary-btn {
+    width: 100%;
+}
+
+@keyframes rewardRevealIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes rewardIconIn {
+    from { opacity: 0; transform: scale(0.65) rotate(-10deg); }
+    to { opacity: 1; transform: scale(1) rotate(0); }
 }
 
 .missions {
@@ -828,17 +1027,32 @@ body {
 }
 
 .theme-options {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
     gap: 14px;
 }
 
 .theme-option {
     display: grid;
     gap: 8px;
-    min-width: 112px;
+    min-width: 0;
     color: var(--muted);
     font-size: 0.82rem;
     cursor: pointer;
+}
+
+.theme-option.locked {
+    cursor: not-allowed;
+    opacity: 0.58;
+}
+
+.theme-lock-status {
+    color: var(--muted);
+    font-size: 0.72rem;
+}
+
+.theme-option:not(.locked) .theme-lock-status {
+    color: var(--green);
 }
 
 .theme-option input {
@@ -892,6 +1106,34 @@ body {
 
 .theme-graphite {
     background: linear-gradient(135deg, #18181b, #3f3f46 55%, #d9f99d);
+}
+
+.theme-sakura {
+    background: linear-gradient(135deg, #fff1f2, #f9a8d4 55%, #9d174d);
+}
+
+.theme-volcanic {
+    background: linear-gradient(135deg, #18181b, #b91c1c 55%, #f97316);
+}
+
+.theme-nebula {
+    background: linear-gradient(135deg, #111827, #7e22ce 55%, #f472b6);
+}
+
+.theme-celestial {
+    background: linear-gradient(135deg, #082f49, #0f766e 55%, #facc15);
+}
+
+.theme-crystal {
+    background: linear-gradient(135deg, #0b1830, #67e8f9 55%, #a78bfa);
+}
+
+.theme-glacial {
+    background: linear-gradient(135deg, #f0fdfa, #67e8f9 55%, #0f766e);
+}
+
+.theme-eclipse {
+    background: linear-gradient(135deg, #111827, #be123c 55%, #fbbf24);
 }
 
 .settings-status {
@@ -1183,6 +1425,246 @@ html.theme-graphite .content {
     background: rgba(18, 18, 20, 0.78);
 }
 
+html.theme-sakura {
+    --bg: #fff1f2;
+    --bg-2: #ffe4e6;
+    --panel: rgba(255, 250, 251, 0.94);
+    --line: rgba(190, 24, 93, 0.2);
+    --text: #4c1d32;
+    --muted: #87546b;
+    --blue: #ec4899;
+    --indigo: #be185d;
+    --cyan: #db2777;
+    --shadow: 0 20px 45px rgba(190, 24, 93, 0.16);
+    --button-start: #be185d;
+    --button-end: #9d174d;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(190, 24, 93, 0.1);
+    --button-soft-hover: rgba(190, 24, 93, 0.2);
+    --button-border: rgba(190, 24, 93, 0.34);
+    --button-shadow: rgba(190, 24, 93, 0.2);
+    --button-focus: rgba(190, 24, 93, 0.48);
+    background: radial-gradient(circle at top, #fffafa 0%, #ffe4e6 48%, #fbcfe8 100%);
+}
+
+html.theme-sakura body {
+    background: radial-gradient(circle at top, #fffafa 0%, #ffe4e6 48%, #fbcfe8 100%);
+}
+
+html.theme-sakura .shell,
+html.theme-sakura .sidebar,
+html.theme-sakura .content {
+    background: rgba(255, 248, 251, 0.82);
+}
+
+html.theme-sakura .hero-card,
+html.theme-sakura .panel,
+html.theme-sakura .task-card,
+html.theme-sakura .mission-card,
+html.theme-sakura .stat-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 247, 0.96));
+}
+
+html.theme-volcanic {
+    --bg: #211716;
+    --bg-2: #3a201b;
+    --panel: rgba(39, 25, 23, 0.94);
+    --line: rgba(251, 146, 60, 0.24);
+    --text: #fff4e8;
+    --muted: #d2b4a4;
+    --blue: #fb923c;
+    --indigo: #c2410c;
+    --cyan: #fdba74;
+    --shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    --button-start: #ea580c;
+    --button-end: #b91c1c;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(249, 115, 22, 0.12);
+    --button-soft-hover: rgba(249, 115, 22, 0.22);
+    --button-border: rgba(251, 146, 60, 0.36);
+    --button-shadow: rgba(234, 88, 12, 0.26);
+    --button-focus: rgba(251, 146, 60, 0.52);
+    background: radial-gradient(circle at top, #71351e 0%, #3a201b 45%, #211716 100%);
+}
+
+html.theme-volcanic body {
+    background: radial-gradient(circle at top, #71351e 0%, #3a201b 45%, #211716 100%);
+}
+
+html.theme-volcanic .shell,
+html.theme-volcanic .sidebar,
+html.theme-volcanic .content {
+    background: rgba(32, 23, 22, 0.8);
+}
+
+html.theme-nebula {
+    --bg: #17112d;
+    --bg-2: #261447;
+    --panel: rgba(28, 19, 50, 0.94);
+    --line: rgba(216, 180, 254, 0.24);
+    --text: #f8f2ff;
+    --muted: #c8b7df;
+    --blue: #c084fc;
+    --indigo: #7e22ce;
+    --cyan: #f0abfc;
+    --shadow: 0 20px 45px rgba(7, 3, 20, 0.48);
+    --button-start: #9333ea;
+    --button-end: #be185d;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(192, 132, 252, 0.12);
+    --button-soft-hover: rgba(192, 132, 252, 0.22);
+    --button-border: rgba(216, 180, 254, 0.36);
+    --button-shadow: rgba(147, 51, 234, 0.28);
+    --button-focus: rgba(216, 180, 254, 0.5);
+    background: radial-gradient(circle at top, #542c78 0%, #261447 45%, #17112d 100%);
+}
+
+html.theme-nebula body {
+    background: radial-gradient(circle at top, #542c78 0%, #261447 45%, #17112d 100%);
+}
+
+html.theme-nebula .shell,
+html.theme-nebula .sidebar,
+html.theme-nebula .content {
+    background: rgba(22, 15, 39, 0.8);
+}
+
+html.theme-celestial {
+    --bg: #102e35;
+    --bg-2: #16434a;
+    --panel: rgba(16, 46, 53, 0.94);
+    --line: rgba(250, 204, 21, 0.24);
+    --text: #f0fdfa;
+    --muted: #b4d4ce;
+    --blue: #2dd4bf;
+    --indigo: #0f766e;
+    --cyan: #facc15;
+    --shadow: 0 20px 45px rgba(4, 25, 29, 0.44);
+    --button-start: #0f766e;
+    --button-end: #a16207;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(45, 212, 191, 0.12);
+    --button-soft-hover: rgba(45, 212, 191, 0.22);
+    --button-border: rgba(250, 204, 21, 0.34);
+    --button-shadow: rgba(15, 118, 110, 0.28);
+    --button-focus: rgba(250, 204, 21, 0.5);
+    background: radial-gradient(circle at top, #2a625d 0%, #16434a 45%, #102e35 100%);
+}
+
+html.theme-celestial body {
+    background: radial-gradient(circle at top, #2a625d 0%, #16434a 45%, #102e35 100%);
+}
+
+html.theme-celestial .shell,
+html.theme-celestial .sidebar,
+html.theme-celestial .content {
+    background: rgba(12, 39, 45, 0.8);
+}
+
+html.theme-crystal {
+    --bg: #0b1830;
+    --bg-2: #102b4c;
+    --panel: rgba(12, 31, 54, 0.94);
+    --line: rgba(103, 232, 249, 0.24);
+    --text: #effcff;
+    --muted: #b4dce8;
+    --blue: #67e8f9;
+    --indigo: #6366f1;
+    --cyan: #a5f3fc;
+    --shadow: 0 20px 45px rgba(2, 8, 23, 0.46);
+    --button-start: #0891b2;
+    --button-end: #4f46e5;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(103, 232, 249, 0.12);
+    --button-soft-hover: rgba(103, 232, 249, 0.22);
+    --button-border: rgba(103, 232, 249, 0.36);
+    --button-shadow: rgba(8, 145, 178, 0.28);
+    --button-focus: rgba(103, 232, 249, 0.52);
+    background: radial-gradient(circle at top, #164e63 0%, #102b4c 45%, #0b1830 100%);
+}
+
+html.theme-crystal body {
+    background: radial-gradient(circle at top, #164e63 0%, #102b4c 45%, #0b1830 100%);
+}
+
+html.theme-crystal .shell,
+html.theme-crystal .sidebar,
+html.theme-crystal .content {
+    background: rgba(8, 24, 44, 0.8);
+}
+
+html.theme-glacial {
+    --bg: #ecfeff;
+    --bg-2: #cffafe;
+    --panel: rgba(255, 255, 255, 0.92);
+    --line: rgba(8, 145, 178, 0.2);
+    --text: #12313a;
+    --muted: #52737a;
+    --blue: #0891b2;
+    --indigo: #0f766e;
+    --cyan: #06b6d4;
+    --shadow: 0 20px 45px rgba(8, 145, 178, 0.16);
+    --button-start: #0e7490;
+    --button-end: #0f766e;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(8, 145, 178, 0.1);
+    --button-soft-hover: rgba(8, 145, 178, 0.2);
+    --button-border: rgba(8, 145, 178, 0.34);
+    --button-shadow: rgba(8, 145, 178, 0.22);
+    --button-focus: rgba(8, 145, 178, 0.48);
+    background: radial-gradient(circle at top, #ffffff 0%, #cffafe 48%, #99f6e4 100%);
+}
+
+html.theme-glacial body {
+    background: radial-gradient(circle at top, #ffffff 0%, #cffafe 48%, #99f6e4 100%);
+}
+
+html.theme-glacial .shell,
+html.theme-glacial .sidebar,
+html.theme-glacial .content {
+    background: rgba(247, 254, 255, 0.84);
+}
+
+html.theme-glacial .hero-card,
+html.theme-glacial .panel,
+html.theme-glacial .task-card,
+html.theme-glacial .mission-card,
+html.theme-glacial .stat-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(236, 254, 255, 0.96));
+}
+
+html.theme-eclipse {
+    --bg: #17151d;
+    --bg-2: #29202a;
+    --panel: rgba(35, 27, 37, 0.94);
+    --line: rgba(251, 113, 133, 0.24);
+    --text: #fff4ed;
+    --muted: #d2bac0;
+    --blue: #fb7185;
+    --indigo: #be123c;
+    --cyan: #fda4af;
+    --shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    --button-start: #be123c;
+    --button-end: #a16207;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(251, 113, 133, 0.12);
+    --button-soft-hover: rgba(251, 113, 133, 0.22);
+    --button-border: rgba(251, 113, 133, 0.36);
+    --button-shadow: rgba(190, 18, 60, 0.28);
+    --button-focus: rgba(251, 113, 133, 0.52);
+    background: radial-gradient(circle at top, #701a35 0%, #29202a 45%, #17151d 100%);
+}
+
+html.theme-eclipse body {
+    background: radial-gradient(circle at top, #701a35 0%, #29202a 45%, #17151d 100%);
+}
+
+html.theme-eclipse .shell,
+html.theme-eclipse .sidebar,
+html.theme-eclipse .content {
+    background: rgba(24, 19, 28, 0.82);
+}
+
 .avatar-edit-layout {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
@@ -1212,6 +1694,82 @@ html.theme-graphite .content {
     font-size: 3rem;
     font-weight: 800;
     box-shadow: 0 18px 35px rgba(34, 211, 238, 0.25);
+}
+
+.avatar-border-equipped {
+    border: 4px var(--avatar-border-pattern, solid) var(--avatar-border-color);
+    outline: 2px solid var(--avatar-border-accent);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--avatar-border-accent), 0 0 18px var(--avatar-border-color);
+}
+
+.avatar-border-inventory {
+    margin-top: 24px;
+}
+
+.avatar-border-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.avatar-border-option {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 10px 6px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text);
+    text-align: center;
+    cursor: pointer;
+}
+
+.avatar-border-option:has(input:checked) {
+    border-color: var(--cyan);
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.avatar-border-option.locked {
+    opacity: 0.58;
+    cursor: not-allowed;
+}
+
+.avatar-border-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.avatar-border-option strong {
+    max-width: 100%;
+    font-size: 0.76rem;
+    overflow-wrap: anywhere;
+}
+
+.avatar-border-option small {
+    color: var(--muted);
+    font-size: 0.64rem;
+}
+
+.avatar-border-swatch {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--cyan), var(--indigo));
+    color: #071521;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.avatar-border-equipped.avatar-border-swatch {
+    width: 46px;
+    height: 46px;
 }
 
 .avatar-preview-panel h2 {

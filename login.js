@@ -1,3 +1,4 @@
+(() => {
 const accountsKey = 'study-quest-accounts';
 const sessionKey = 'study-quest-session';
 const defaultTokens = 500000;
@@ -137,3 +138,4 @@ forms['register-form'].addEventListener('submit', (event) => {
     showMessage(forms['login-form'], 'Conta criada. Entre com os seus dados.');
     switchForm('login-form');
 });
+})();
