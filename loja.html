@@ -100,94 +100,46 @@
                 </section>
 
                 <section class="section-grid" id="store-items">
-                    <div class="panel">
+                    <div class="panel loot-panel">
                         <div class="panel-header">
-                            <h3>Itens em destaque</h3>
-                            <span class="tag">2 temas</span>
+                            <h3>Caixa misteriosa</h3>
+                            <span class="tag">4 raridades</span>
                         </div>
 
-                        <div class="missions">
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip blue">🎨</span><strong>Tema Aurora</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 100</span>
+                        <div class="loot-box-wrap">
+                            <div class="loot-box" id="loot-box" aria-label="Caixa misteriosa">
+                                <div class="loot-theme-grid">
+                                    <span>🌊</span>
+                                    <span>🌿</span>
+                                    <span>🌺</span>
+                                    <span>◈</span>
                                 </div>
-                                <span style="color: var(--muted);">Um visual luminoso para renovar seu espaço de estudos.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="100" data-item="Tema Aurora">Comprar</button>
-                            </article>
-
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip gold">☀️</span><strong>Tema Solar</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 150</span>
+                            </div>
+                            <div class="loot-rarities">
+                                <div class="loot-row">
+                                    <span class="rarity-badge comum">Comum</span>
+                                    <span class="rarity-percent">60%</span>
                                 </div>
-                                <span style="color: var(--muted);">Uma atmosfera quente e luminosa para suas sessões.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="150" data-item="Tema Solar">Comprar</button>
-                            </article>
+                                <div class="loot-row">
+                                    <span class="rarity-badge incomum">Incomum</span>
+                                    <span class="rarity-percent">25%</span>
+                                </div>
+                                <div class="loot-row">
+                                    <span class="rarity-badge raro">Raro</span>
+                                    <span class="rarity-percent">10%</span>
+                                </div>
+                                <div class="loot-row">
+                                    <span class="rarity-badge lendario">Lendário</span>
+                                    <span class="rarity-percent">5%</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="panel">
-                        <div class="panel-header">
-                            <h3>Personalize</h3>
-                            <span class="tag">6 itens</span>
+                        <div class="loot-result" id="loot-result" aria-live="polite">
+                            Abra a caixa para revelar sua raridade.
                         </div>
 
-                        <div class="missions">
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip green">🛡️</span><strong>Avatar Explorador</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 250</span>
-                                </div>
-                                <span style="color: var(--muted);">Um avatar exclusivo para sua identidade de estudante.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="250" data-item="Avatar Explorador">Comprar</button>
-                            </article>
-
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip pink">✨</span><strong>Efeito Estelar</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 300</span>
-                                </div>
-                                <span style="color: var(--muted);">Um brilho sutil para celebrar suas conquistas no perfil.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="300" data-item="Efeito Estelar">Comprar</button>
-                            </article>
-
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip blue">🌊</span><strong>Tema Oceano</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 15.000</span>
-                                </div>
-                                <span style="color: var(--muted);">Tons profundos de azul e turquesa para focar com calma.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="15000" data-item="Tema Oceano">Comprar</button>
-                            </article>
-
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip green">🌿</span><strong>Tema Floresta</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 20.000</span>
-                                </div>
-                                <span style="color: var(--muted);">Verdes suaves e uma atmosfera natural para suas sessões.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="20000" data-item="Tema Floresta">Comprar</button>
-                            </article>
-
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip pink">🌺</span><strong>Tema Coral</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 25.000</span>
-                                </div>
-                                <span style="color: var(--muted);">Um visual claro com detalhes vivos em coral e rosa.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="25000" data-item="Tema Coral">Comprar</button>
-                            </article>
-
-                            <article class="mission-card">
-                                <div class="mission-head">
-                                    <div class="mission-type"><span class="chip gold">◈</span><strong>Tema Grafite</strong></div>
-                                    <span class="token-price"><span class="token-icon" aria-hidden="true">T</span> 30.000</span>
-                                </div>
-                                <span style="color: var(--muted);">Carvão e amarelo-lima num contraste feito para longas jornadas.</span>
-                                <button class="ghost-btn redeem-button" type="button" data-cost="30000" data-item="Tema Grafite">Comprar</button>
-                            </article>
-                        </div>
+                        <button class="ghost-btn redeem-button" type="button" id="loot-open-button" data-cost="350" data-rank="caixa">Abrir caixa</button>
                     </div>
                 </section>
             </main>
