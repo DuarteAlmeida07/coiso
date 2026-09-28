@@ -1,0 +1,142 @@
+.missions {
+    display: grid;
+    gap: 14px;
+}
+
+.mission-card {
+    padding: 16px 18px;
+    display: grid;
+    gap: 12px;
+}
+
+.mission-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.mission-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.mission-type strong {
+    color: var(--text);
+}
+
+.mission-points {
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.tasks-list {
+    display: grid;
+    gap: 12px;
+}
+
+.task-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 16px;
+}
+
+.task-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.check {
+    width: 22px;
+    height: 22px;
+    border-radius: 8px;
+    border: 2px solid rgba(148, 163, 184, 0.6);
+    background: transparent;
+    display: grid;
+    place-items: center;
+    font-size: 0.8rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.task-card.done .check {
+    background: linear-gradient(135deg, var(--green), var(--cyan));
+    border-color: transparent;
+}
+
+.task-card.done .task-name {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+.task-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.task-name {
+    font-weight: 700;
+}
+
+.task-time {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.task-points {
+    background: rgba(251, 191, 36, 0.12);
+    color: var(--gold);
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 7px 10px;
+    min-width: 64px;
+    text-align: center;
+}
+
+.leaderboard {
+    display: grid;
+    gap: 12px;
+}
+
+.leader-item {
+    display: grid;
+    grid-template-columns: 34px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(148, 163, 184, 0.04);
+}
+
+.pos {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--blue);
+}
+
+.leader-item:nth-child(1) .pos { background: rgba(251, 191, 36, 0.12); color: var(--gold); }
+.leader-item:nth-child(2) .pos { background: rgba(148, 163, 184, 0.12); color: #dbeafe; }
+.leader-item:nth-child(3) .pos { background: rgba(251, 146, 60, 0.12); color: #fdba74; }
+
+.leader-name {
+    font-weight: 700;
+}
+
+.leader-xp {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
