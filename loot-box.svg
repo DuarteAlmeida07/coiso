@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="lid" x1="126" y1="115" x2="378" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset=".55" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+    <linearGradient id="body" x1="124" y1="260" x2="388" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#164E63"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="118" y1="180" x2="395" y2="390" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEF3C7"/>
+      <stop offset=".42" stop-color="#FBBF24"/>
+      <stop offset="1" stop-color="#B45309"/>
+    </linearGradient>
+    <linearGradient id="gem" x1="224" y1="233" x2="289" y2="323" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A5F3FC"/>
+      <stop offset="1" stop-color="#0891B2"/>
+    </linearGradient>
+    <filter id="shadow" x="60" y="82" width="392" height="390" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+  <ellipse cx="256" cy="423" fill="#020617" fill-opacity=".42" filter="url(#shadow)" rx="154" ry="25"/>
+  <path d="M108 250v-35c0-68 66-119 148-119s148 51 148 119v35H108Z" fill="url(#lid)" stroke="url(#gold)" stroke-width="14"/>
+  <path d="M126 220c22-47 68-76 130-76s108 29 130 76" stroke="#BAE6FD" stroke-opacity=".7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M109 242h294v148c0 17-14 31-31 31H140c-17 0-31-14-31-31V242Z" fill="url(#body)" stroke="url(#gold)" stroke-width="14"/>
+  <path d="M151 250v151M361 250v151" stroke="url(#gold)" stroke-linecap="round" stroke-width="17"/>
+  <path d="M113 282h286" stroke="#FDE68A" stroke-opacity=".8" stroke-width="8"/>
+  <path d="M225 239h62v72l-31 25-31-25v-72Z" fill="url(#gold)" stroke="#FEF3C7" stroke-width="8"/>
+  <path d="m256 250 21 22-21 22-21-22 21-22Z" fill="url(#gem)" stroke="#ECFEFF" stroke-width="6"/>
+  <path d="M127 347h17M368 347h17" stroke="#FDE68A" stroke-linecap="round" stroke-width="8"/>
+  <path d="m84 157 8 20 20 8-20 8-8 20-8-20-20-8 20-8 8-20ZM423 111l6 15 15 6-15 6-6 15-6-15-15-6 15-6 6-15Z" fill="#FEF08A"/>
+  <path d="m412 204 5 11 11 5-11 5-5 11-5-11-11-5 11-5 5-11Z" fill="#E0F2FE"/>
+</svg>

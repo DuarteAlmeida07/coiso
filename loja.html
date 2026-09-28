@@ -67,7 +67,7 @@
                                 <span>Tokens gastos</span>
                             </div>
                             <div class="mini-stat">
-                                <strong>8</strong>
+                                <strong>10</strong>
                                 <span>cosméticos disponíveis</span>
                             </div>
                         </div>
@@ -103,22 +103,17 @@
                     <div class="panel loot-panel">
                         <div class="panel-header">
                             <h3>Caixa misteriosa</h3>
-                            <span class="tag">4 raridades</span>
+                            <span class="tag">5 raridades</span>
                         </div>
 
                         <div class="loot-box-wrap">
                             <div class="loot-box" id="loot-box" aria-label="Caixa misteriosa">
-                                <div class="loot-theme-grid">
-                                    <span>🌊</span>
-                                    <span>🌿</span>
-                                    <span>🌺</span>
-                                    <span>◈</span>
-                                </div>
+                                <img class="loot-box-image" src="loot-box.svg" alt="" />
                             </div>
                             <div class="loot-rarities">
                                 <div class="loot-row">
                                     <span class="rarity-badge comum">Comum</span>
-                                    <span class="rarity-percent">60%</span>
+                                    <span class="rarity-percent">55%</span>
                                 </div>
                                 <div class="loot-row">
                                     <span class="rarity-badge incomum">Incomum</span>
@@ -126,24 +121,79 @@
                                 </div>
                                 <div class="loot-row">
                                     <span class="rarity-badge raro">Raro</span>
-                                    <span class="rarity-percent">10%</span>
+                                    <span class="rarity-percent">12%</span>
+                                </div>
+                                <div class="loot-row">
+                                    <span class="rarity-badge muito_raro">Muito raro</span>
+                                    <span class="rarity-percent">5%</span>
                                 </div>
                                 <div class="loot-row">
                                     <span class="rarity-badge lendario">Lendário</span>
-                                    <span class="rarity-percent">5%</span>
+                                    <span class="rarity-percent">3%</span>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="loot-prize-list" id="loot-prize-list" aria-label="Temas possíveis da caixa"></div>
+
                         <div class="loot-result" id="loot-result" aria-live="polite">
-                            Abra a caixa para revelar sua raridade.
+                            Abra a caixa para descobrir o tema que recebeste.
+                        </div>
+
+                        <div class="loot-price">
+                            <span>Preço da caixa</span>
+                            <strong><span class="token-icon" aria-hidden="true">T</span> <span id="loot-price-value">350</span> Tokens</strong>
                         </div>
 
                         <button class="ghost-btn redeem-button" type="button" id="loot-open-button" data-cost="350" data-rank="caixa">Abrir caixa</button>
                     </div>
                 </section>
+
+                <section class="section-grid" id="avatar-border-store">
+                    <div class="panel loot-panel">
+                        <div class="panel-header">
+                            <h3>Caixa de molduras</h3>
+                            <span class="tag">20 molduras · 5 raridades</span>
+                        </div>
+
+                        <div class="loot-box-wrap">
+                            <div class="loot-box" id="border-loot-box" aria-label="Caixa de molduras">
+                                <img class="loot-box-image" src="loot-box.svg" alt="" />
+                            </div>
+                            <div class="loot-rarities">
+                                <div class="loot-row"><span class="rarity-badge comum">Comum</span><span class="rarity-percent">55%</span></div>
+                                <div class="loot-row"><span class="rarity-badge incomum">Incomum</span><span class="rarity-percent">25%</span></div>
+                                <div class="loot-row"><span class="rarity-badge raro">Raro</span><span class="rarity-percent">12%</span></div>
+                                <div class="loot-row"><span class="rarity-badge muito_raro">Muito raro</span><span class="rarity-percent">5%</span></div>
+                                <div class="loot-row"><span class="rarity-badge lendario">Lendário</span><span class="rarity-percent">3%</span></div>
+                            </div>
+                        </div>
+
+                        <div class="loot-prize-list" id="border-prize-list" aria-label="Molduras possíveis da caixa"></div>
+                        <div class="loot-result" id="border-loot-result" aria-live="polite">Abre a caixa para receber uma moldura.</div>
+                        <div class="loot-price">
+                            <span>Preço da caixa</span>
+                            <strong><span class="token-icon" aria-hidden="true">T</span> <span id="border-loot-price-value">350</span> Tokens</strong>
+                        </div>
+                        <button class="ghost-btn redeem-button" type="button" id="border-loot-open-button" data-cost="350">Abrir caixa de molduras</button>
+                    </div>
+                </section>
             </main>
         </div>
+    </div>
+
+    <div class="loot-reveal-backdrop" id="loot-reveal-backdrop" hidden>
+        <section class="loot-reveal-card" id="loot-reveal-card" role="dialog" aria-modal="true" aria-labelledby="loot-reveal-title" aria-describedby="loot-reveal-message">
+            <button class="loot-reveal-close" id="loot-reveal-close" type="button" aria-label="Fechar recompensa">×</button>
+            <span class="eyebrow">Recompensa da caixa</span>
+            <div class="loot-reveal-art" id="loot-reveal-art" role="img" aria-label="Arte do tema recebido">
+                <span id="loot-reveal-icon" aria-hidden="true"></span>
+            </div>
+            <h2 id="loot-reveal-title"></h2>
+            <span class="rarity-badge" id="loot-reveal-rarity"></span>
+            <p id="loot-reveal-message"></p>
+            <button class="primary-btn" id="loot-reveal-confirm" type="button">Continuar</button>
+        </section>
     </div>
 
     <script src="loja.js"></script>
