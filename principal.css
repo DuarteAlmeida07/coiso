@@ -16,6 +16,14 @@
     --pink: #f472b6;
     --red: #fb7185;
     --shadow: 0 20px 45px rgba(15, 23, 42, 0.4);
+    --button-start: #60a5fa;
+    --button-end: #818cf8;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(96, 165, 250, 0.1);
+    --button-soft-hover: rgba(96, 165, 250, 0.2);
+    --button-border: rgba(96, 165, 250, 0.35);
+    --button-shadow: rgba(96, 165, 250, 0.26);
+    --button-focus: rgba(96, 165, 250, 0.48);
 }
 
 * { box-sizing: border-box; }
@@ -94,8 +102,8 @@ body {
 
 .nav-item:hover,
 .nav-item.active {
-    background: rgba(96, 165, 250, 0.12);
-    border-color: rgba(96, 165, 250, 0.35);
+    background: var(--button-soft-bg);
+    border-color: var(--button-border);
 }
 
 .nav-icon {
@@ -111,8 +119,8 @@ body {
 
 .side-card {
     margin-top: 30px;
-    background: linear-gradient(180deg, rgba(96, 165, 250, 0.12), rgba(129, 140, 248, 0.08));
-    border: 1px solid rgba(96, 165, 250, 0.15);
+    background: linear-gradient(180deg, var(--button-soft-bg), var(--button-soft-hover));
+    border: 1px solid var(--button-border);
     padding: 18px 14px;
     border-radius: 18px;
 }
@@ -183,15 +191,17 @@ body {
 }
 
 .ghost-btn {
-    background: rgba(148, 163, 184, 0.08);
+    background: var(--button-soft-bg);
     color: var(--text);
-    border: 1px solid var(--line);
+    border: 1px solid var(--button-border);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .primary-btn {
-    background: linear-gradient(135deg, var(--blue), var(--indigo));
-    color: white;
-    box-shadow: 0 12px 20px rgba(96, 165, 250, 0.26);
+    background: linear-gradient(135deg, var(--button-start), var(--button-end));
+    color: var(--button-text);
+    box-shadow: 0 12px 20px var(--button-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .hero {
@@ -740,6 +750,22 @@ body {
     background: linear-gradient(135deg, #fff7ed, #fbbf24 55%, #f97316);
 }
 
+.theme-ocean {
+    background: linear-gradient(135deg, #082f49, #0891b2 55%, #67e8f9);
+}
+
+.theme-forest {
+    background: linear-gradient(135deg, #f0fdf4, #86efac 55%, #166534);
+}
+
+.theme-coral {
+    background: linear-gradient(135deg, #fff1eb, #fb7185 55%, #be123c);
+}
+
+.theme-graphite {
+    background: linear-gradient(135deg, #18181b, #3f3f46 55%, #d9f99d);
+}
+
 .settings-status {
     min-height: 24px;
     margin-top: 16px;
@@ -769,6 +795,14 @@ html.theme-dawn {
     --text: #183247;
     --muted: #5f788a;
     --shadow: 0 20px 45px rgba(55, 91, 117, 0.18);
+    --button-start: #2878a5;
+    --button-end: #215c83;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(40, 120, 165, 0.1);
+    --button-soft-hover: rgba(40, 120, 165, 0.2);
+    --button-border: rgba(40, 120, 165, 0.35);
+    --button-shadow: rgba(40, 120, 165, 0.22);
+    --button-focus: rgba(40, 120, 165, 0.48);
     background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 48%, #cddfea 100%);
 }
 
@@ -807,6 +841,14 @@ html.theme-aurora {
     --text: #eef2ff;
     --muted: #b8c5e3;
     --shadow: 0 20px 45px rgba(12, 17, 47, 0.42);
+    --button-start: #0f766e;
+    --button-end: #4f46e5;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(45, 212, 191, 0.12);
+    --button-soft-hover: rgba(45, 212, 191, 0.22);
+    --button-border: rgba(45, 212, 191, 0.38);
+    --button-shadow: rgba(45, 212, 191, 0.24);
+    --button-focus: rgba(45, 212, 191, 0.5);
     background: radial-gradient(circle at top, #365c7d 0%, #172554 45%, #0f172a 100%);
 }
 
@@ -828,6 +870,14 @@ html.theme-solar {
     --text: #432818;
     --muted: #8a5b3d;
     --shadow: 0 20px 45px rgba(180, 83, 9, 0.18);
+    --button-start: #b45309;
+    --button-end: #c2410c;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(180, 83, 9, 0.1);
+    --button-soft-hover: rgba(180, 83, 9, 0.2);
+    --button-border: rgba(180, 83, 9, 0.34);
+    --button-shadow: rgba(180, 83, 9, 0.22);
+    --button-focus: rgba(180, 83, 9, 0.48);
     background: radial-gradient(circle at top, #fff 0%, #ffedd5 48%, #fed7aa 100%);
 }
 
@@ -847,6 +897,162 @@ html.theme-solar .task-card,
 html.theme-solar .mission-card,
 html.theme-solar .stat-card {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 237, 0.96));
+}
+
+html.theme-ocean {
+    --bg: #082f49;
+    --bg-2: #0e425b;
+    --panel: rgba(8, 47, 73, 0.92);
+    --line: rgba(103, 232, 249, 0.2);
+    --text: #e6fbff;
+    --muted: #a6dbe3;
+    --blue: #38bdf8;
+    --indigo: #0e7490;
+    --cyan: #67e8f9;
+    --shadow: 0 20px 45px rgba(3, 25, 42, 0.48);
+    --button-start: #0e7490;
+    --button-end: #0369a1;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(56, 189, 248, 0.12);
+    --button-soft-hover: rgba(56, 189, 248, 0.22);
+    --button-border: rgba(103, 232, 249, 0.34);
+    --button-shadow: rgba(14, 116, 144, 0.3);
+    --button-focus: rgba(103, 232, 249, 0.54);
+    background: radial-gradient(circle at top, #155e75 0%, #0e425b 45%, #082f49 100%);
+}
+
+html.theme-ocean body {
+    background: radial-gradient(circle at top, #155e75 0%, #0e425b 45%, #082f49 100%);
+}
+
+html.theme-ocean .shell,
+html.theme-ocean .sidebar,
+html.theme-ocean .content {
+    background: rgba(5, 35, 55, 0.76);
+}
+
+html.theme-forest {
+    --bg: #e9f0df;
+    --bg-2: #d8e6cb;
+    --panel: rgba(250, 253, 245, 0.92);
+    --line: rgba(47, 83, 45, 0.18);
+    --text: #203629;
+    --muted: #60735f;
+    --blue: #3f8c63;
+    --indigo: #276749;
+    --cyan: #168a74;
+    --shadow: 0 20px 45px rgba(47, 83, 45, 0.16);
+    --button-start: #276749;
+    --button-end: #1f5639;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(39, 103, 73, 0.1);
+    --button-soft-hover: rgba(39, 103, 73, 0.2);
+    --button-border: rgba(39, 103, 73, 0.34);
+    --button-shadow: rgba(39, 103, 73, 0.2);
+    --button-focus: rgba(39, 103, 73, 0.48);
+    background: radial-gradient(circle at top, #fbfff5 0%, #e9f0df 48%, #c9dbb7 100%);
+}
+
+html.theme-forest body {
+    background: radial-gradient(circle at top, #fbfff5 0%, #e9f0df 48%, #c9dbb7 100%);
+}
+
+html.theme-forest .shell,
+html.theme-forest .sidebar,
+html.theme-forest .content {
+    background: rgba(247, 252, 239, 0.82);
+}
+
+html.theme-forest .hero-card,
+html.theme-forest .panel,
+html.theme-forest .task-card,
+html.theme-forest .mission-card,
+html.theme-forest .stat-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(235, 245, 226, 0.96));
+}
+
+html.theme-forest .field input,
+html.theme-forest .field select,
+html.theme-forest .search {
+    background: rgba(255, 255, 255, 0.86);
+}
+
+html.theme-coral {
+    --bg: #fff1eb;
+    --bg-2: #ffe0d6;
+    --panel: rgba(255, 250, 247, 0.92);
+    --line: rgba(136, 53, 59, 0.18);
+    --text: #472d2a;
+    --muted: #875e5a;
+    --blue: #e76f51;
+    --indigo: #c2415d;
+    --cyan: #df6b59;
+    --shadow: 0 20px 45px rgba(136, 53, 59, 0.16);
+    --button-start: #be4e38;
+    --button-end: #a3334b;
+    --button-text: #ffffff;
+    --button-soft-bg: rgba(190, 78, 56, 0.1);
+    --button-soft-hover: rgba(190, 78, 56, 0.2);
+    --button-border: rgba(190, 78, 56, 0.34);
+    --button-shadow: rgba(190, 78, 56, 0.22);
+    --button-focus: rgba(190, 78, 56, 0.48);
+    background: radial-gradient(circle at top, #fffaf6 0%, #fff1eb 48%, #ffcfc2 100%);
+}
+
+html.theme-coral body {
+    background: radial-gradient(circle at top, #fffaf6 0%, #fff1eb 48%, #ffcfc2 100%);
+}
+
+html.theme-coral .shell,
+html.theme-coral .sidebar,
+html.theme-coral .content {
+    background: rgba(255, 249, 245, 0.82);
+}
+
+html.theme-coral .hero-card,
+html.theme-coral .panel,
+html.theme-coral .task-card,
+html.theme-coral .mission-card,
+html.theme-coral .stat-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 239, 232, 0.96));
+}
+
+html.theme-coral .field input,
+html.theme-coral .field select,
+html.theme-coral .search {
+    background: rgba(255, 255, 255, 0.86);
+}
+
+html.theme-graphite {
+    --bg: #18181b;
+    --bg-2: #27272a;
+    --panel: rgba(24, 24, 27, 0.92);
+    --line: rgba(217, 249, 157, 0.2);
+    --text: #f4f4f5;
+    --muted: #b4b4bb;
+    --blue: #a3e635;
+    --indigo: #65a30d;
+    --cyan: #d9f99d;
+    --shadow: 0 20px 45px rgba(0, 0, 0, 0.42);
+    --button-start: #d9f99d;
+    --button-end: #a3e635;
+    --button-text: #1a2e05;
+    --button-soft-bg: rgba(217, 249, 157, 0.1);
+    --button-soft-hover: rgba(217, 249, 157, 0.2);
+    --button-border: rgba(217, 249, 157, 0.34);
+    --button-shadow: rgba(163, 230, 53, 0.24);
+    --button-focus: rgba(217, 249, 157, 0.52);
+    background: radial-gradient(circle at top, #3f3f46 0%, #27272a 45%, #18181b 100%);
+}
+
+html.theme-graphite body {
+    background: radial-gradient(circle at top, #3f3f46 0%, #27272a 45%, #18181b 100%);
+}
+
+html.theme-graphite .shell,
+html.theme-graphite .sidebar,
+html.theme-graphite .content {
+    background: rgba(18, 18, 20, 0.78);
 }
 
 .avatar-edit-layout {
@@ -1179,9 +1385,9 @@ body {
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, var(--blue), var(--indigo));
-    color: #fff;
-    box-shadow: 0 10px 18px rgba(96, 165, 250, 0.2);
+    background: linear-gradient(135deg, var(--button-start), var(--button-end));
+    color: var(--button-text);
+    box-shadow: 0 10px 18px var(--button-shadow);
 }
 
 .form-group {
@@ -1216,8 +1422,8 @@ input {
 }
 
 input:focus {
-    border-color: rgba(96, 165, 250, 0.7);
-    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.12);
+    border-color: var(--button-focus);
+    box-shadow: 0 0 0 4px var(--button-soft-hover);
 }
 
 .options {
@@ -1261,15 +1467,36 @@ input:focus {
 }
 
 .secondary-btn {
-    background: rgba(148, 163, 184, 0.08);
+    background: var(--button-soft-bg);
     color: var(--text);
-    border: 1px solid var(--line);
+    border: 1px solid var(--button-border);
 }
 
 .primary-btn:hover,
+.ghost-btn:hover,
 .secondary-btn:hover,
 .tab-btn:hover {
     transform: translateY(-1px);
+}
+
+.primary-btn:hover,
+.tab-btn.active:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 12px 22px var(--button-shadow);
+}
+
+.ghost-btn:hover,
+.secondary-btn:hover {
+    background: var(--button-soft-hover);
+    border-color: var(--button-border);
+}
+
+.ghost-btn:focus-visible,
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible,
+.tab-btn:focus-visible {
+    outline: 3px solid var(--button-focus);
+    outline-offset: 2px;
 }
 
 .divider {

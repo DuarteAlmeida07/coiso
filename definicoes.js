@@ -1,8 +1,13 @@
 const savedTheme = localStorage.getItem('study-quest-theme') || 'night';
 const themeDetails = {
     aurora: { label: 'Aurora', preview: 'theme-aurora', purchase: 'Tema Aurora' },
-    solar: { label: 'Solar', preview: 'theme-solar', purchase: 'Tema Solar' }
+    solar: { label: 'Solar', preview: 'theme-solar', purchase: 'Tema Solar' },
+    ocean: { label: 'Oceano', preview: 'theme-ocean', purchase: 'Tema Oceano' },
+    forest: { label: 'Floresta', preview: 'theme-forest', purchase: 'Tema Floresta' },
+    coral: { label: 'Coral', preview: 'theme-coral', purchase: 'Tema Coral' },
+    graphite: { label: 'Grafite', preview: 'theme-graphite', purchase: 'Tema Grafite' }
 };
+const themeNames = ['night', 'dawn', ...Object.keys(themeDetails)];
 const avatarColors = {
     blue: 'linear-gradient(135deg, #22d3ee, #6366f1)',
     green: 'linear-gradient(135deg, #34d399, #0f766e)',
@@ -53,13 +58,12 @@ function applyAvatar() {
 }
 
 function applyTheme(theme) {
-    document.documentElement.classList.remove('theme-dawn', 'theme-aurora', 'theme-solar');
+    const themeClasses = themeNames.map((name) => `theme-${name}`);
+    document.documentElement.classList.remove(...themeClasses);
     document.documentElement.classList.toggle(`theme-${theme}`, theme !== 'night');
-    if (document.body) {
-        document.body.classList.remove('theme-dawn', 'theme-aurora', 'theme-solar');
-        document.body.classList.toggle('theme-dawn', theme === 'dawn');
-        document.body.classList.toggle('theme-aurora', theme === 'aurora');
-        document.body.classList.toggle('theme-solar', theme === 'solar');
+    document.body?.classList.remove(...themeClasses);
+    if (theme !== 'night') {
+        document.body?.classList.add(`theme-${theme}`);
     }
     document.querySelectorAll('input[name="theme"]').forEach((input) => {
         input.checked = input.value === theme;
