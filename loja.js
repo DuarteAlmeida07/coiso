@@ -13,6 +13,16 @@ const purchases = JSON.parse(localStorage.getItem(purchasesKey) || '[]');
 const balance = document.querySelector('#balance');
 const headerTokens = document.querySelector('#header-tokens');
 const sidebarTokens = document.querySelector('#sidebar-tokens');
+const lootButton = document.querySelector('#loot-open-button');
+const lootBox = document.querySelector('#loot-box');
+const lootResult = document.querySelector('#loot-result');
+
+const rarityMap = {
+    comum: { label: 'Comum', chance: 60, color: '#34d399', themes: ['🌊', '🌿', '🌺', '◈'] },
+    incomum: { label: 'Incomum', chance: 25, color: '#60a5fa', themes: ['🌊', '🌿', '✦', '✨'] },
+    raro: { label: 'Raro', chance: 10, color: '#f472b6', themes: ['🌌', '🌠', '⚡', '☀️'] },
+    lendario: { label: 'Lendário', chance: 5, color: '#fbbf24', themes: ['✧', '⬢', '★', '☄️'] }
+};
 
 function updateTokenDisplays(value) {
     const formattedValue = new Intl.NumberFormat('pt-BR').format(value);
@@ -21,36 +31,62 @@ function updateTokenDisplays(value) {
     sidebarTokens.textContent = formattedValue;
 }
 
-function updatePurchaseButton(button) {
-    const item = button.dataset.item;
-    if (purchases.includes(item)) {
-        button.textContent = 'Comprado';
-        button.disabled = true;
-        button.setAttribute('aria-label', `${item} comprado`);
-    }
+function getRandomRarity() {
+    const roll = Math.random() * 100;
+    if (roll < rarityMap.lendario.chance) return 'lendario';
+    if (roll < rarityMap.raro.chance + rarityMap.lendario.chance) return 'raro';
+    if (roll < rarityMap.incomum.chance + rarityMap.raro.chance + rarityMap.lendario.chance) return 'incomum';
+    return 'comum';
+}
+
+function triggerLootAnimation() {
+    lootBox.classList.remove('opening');
+    void lootBox.offsetWidth;
+    lootBox.classList.add('opening');
+    window.setTimeout(() => lootBox.classList.remove('opening'), 1100);
+}
+
+function renderLootBoxThemes(rank) {
+    const icons = rarityMap[rank].themes;
+    const cells = lootBox.querySelectorAll('.loot-theme-grid span');
+    cells.forEach((cell, index) => {
+        cell.textContent = icons[index % icons.length];
+    });
 }
 
 let currentTokens = tokens;
 updateTokenDisplays(currentTokens);
-document.querySelectorAll('.redeem-button').forEach(updatePurchaseButton);
 
-document.querySelectorAll('.redeem-button').forEach((button) => {
-    button.addEventListener('click', () => {
-        const cost = Number(button.dataset.cost);
-        const item = button.dataset.item;
+lootButton.addEventListener('click', () => {
+    const cost = Number(lootButton.dataset.cost);
 
-        if (currentTokens < cost) {
-            button.textContent = `Faltam ${cost - currentTokens} Tokens`;
-            return;
-        }
+    if (currentTokens < cost) {
+        lootButton.textContent = `Faltam ${cost - currentTokens} Tokens`;
+        return;
+    }
 
-        currentTokens -= cost;
-        purchases.push(item);
-        localStorage.setItem(tokensKey, currentTokens);
+    currentTokens -= cost;
+    const wonRank = getRandomRarity();
+    const wonData = rarityMap[wonRank];
+    const resultText = `Você ganhou ${wonData.label.toLowerCase()}!`;
+
+    renderLootBoxThemes(wonRank);
+    triggerLootAnimation();
+    lootButton.disabled = true;
+    lootButton.textContent = 'Abrindo...';
+
+    window.setTimeout(() => {
+        purchases.push(resultText);
+        localStorage.setItem(tokensKey, String(currentTokens));
         localStorage.setItem(purchasesKey, JSON.stringify(purchases));
         updateTokenDisplays(currentTokens);
-        updatePurchaseButton(button);
-    });
+        lootResult.textContent = resultText;
+        lootResult.style.color = wonData.color;
+        lootResult.style.borderColor = `${wonData.color}55`;
+        lootResult.style.background = `${wonData.color}14`;
+        lootButton.textContent = 'Abrir caixa';
+        lootButton.disabled = false;
+    }, 900);
 });
 
 document.querySelector('#missions-button').addEventListener('click', () => {
@@ -62,5 +98,5 @@ document.querySelector('#featured-button').addEventListener('click', () => {
 });
 
 document.querySelector('#history-button').addEventListener('click', () => {
-    window.alert(purchases.length ? `Você já comprou ${purchases.length} item(ns).` : 'Você ainda não comprou nenhum cosmético.');
+    window.alert(purchases.length ? `Você já sorteou ${purchases.length} recompensa(s).` : 'Você ainda não sorteou nenhuma recompensa.');
 });
