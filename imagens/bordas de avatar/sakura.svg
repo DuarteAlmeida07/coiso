@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs><linearGradient id="silver" x1="24" y1="20" x2="230" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#fff0f6"/><stop offset=".38" stop-color="#cf829f"/><stop offset=".7" stop-color="#81506c"/><stop offset="1" stop-color="#f1c8d7"/></linearGradient>
+    <g id="flower"><ellipse cx="0" cy="-6" rx="3.4" ry="6" fill="#fff0f5"/><ellipse cx="5.7" cy="-1.9" rx="3.4" ry="6" transform="rotate(72 5.7 -1.9)" fill="#f3b5cb"/><ellipse cx="3.5" cy="4.9" rx="3.4" ry="6" transform="rotate(144 3.5 4.9)" fill="#fff0f5"/><ellipse cx="-3.5" cy="4.9" rx="3.4" ry="6" transform="rotate(216 -3.5 4.9)" fill="#f3b5cb"/><ellipse cx="-5.7" cy="-1.9" rx="3.4" ry="6" transform="rotate(288 -5.7 -1.9)" fill="#fff0f5"/><circle r="2.2" fill="#e8bb68"/></g>
+  </defs>
+  <rect x="10" y="10" width="236" height="236" rx="70" stroke="#3a2935" stroke-width="18"/>
+  <rect x="10" y="10" width="236" height="236" rx="70" stroke="url(#silver)" stroke-width="9"/>
+  <rect x="19" y="19" width="218" height="218" rx="61" stroke="#ffe5ef" stroke-opacity=".8" stroke-width="1.5"/>
+  <path d="M27 91Q46 73 43 49Q42 35 57 25M229 91Q210 73 213 49Q214 35 199 25M34 161Q47 181 38 202M222 161Q209 181 218 202" stroke="#765067" stroke-width="3" stroke-linecap="round"/>
+  <path d="M40 55Q57 48 67 35M216 55Q199 48 189 35M37 179Q55 174 60 160M219 179Q201 174 196 160" stroke="#d990ad" stroke-width="2"/>
+  <g><use href="#flower" x="38" y="39"/><use href="#flower" x="62" y="27" transform="scale(.78) translate(18 8)"/><use href="#flower" x="218" y="39"/><use href="#flower" x="194" y="27"/><use href="#flower" x="31" y="129" transform="scale(.72) translate(12 50)"/><use href="#flower" x="225" y="129" transform="scale(.72) translate(89 50)"/></g>
+  <g fill="#f6d88a"><circle cx="48" cy="71" r="2.5"/><circle cx="208" cy="71" r="2.5"/><circle cx="34" cy="198" r="2"/><circle cx="222" cy="198" r="2"/></g>
+</svg>

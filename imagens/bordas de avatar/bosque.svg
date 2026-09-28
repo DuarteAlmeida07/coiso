@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <linearGradient id="wood" x1="24" y1="18" x2="230" y2="244" gradientUnits="userSpaceOnUse"><stop stop-color="#c7a96a"/><stop offset=".35" stop-color="#55794a"/><stop offset=".7" stop-color="#314f39"/><stop offset="1" stop-color="#d0b675"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c9d889"/><stop offset="1" stop-color="#426b45"/></linearGradient>
+  </defs>
+  <rect x="10" y="10" width="236" height="236" rx="70" stroke="#1c2c24" stroke-width="18"/>
+  <rect x="10" y="10" width="236" height="236" rx="70" stroke="url(#wood)" stroke-width="9"/>
+  <rect x="19" y="19" width="218" height="218" rx="61" stroke="#e2ce8c" stroke-opacity=".8" stroke-width="1.5"/>
+  <g stroke="#765e39" stroke-width="4" stroke-linecap="round">
+    <path d="M34 100Q20 65 52 37Q83 12 116 27M222 100Q236 65 204 37Q173 12 140 27"/>
+    <path d="M35 151Q15 176 35 204L52 220M221 151Q241 176 221 204L204 220"/>
+    <path d="M52 37L43 25M65 28L59 16M204 37L213 25M191 28L197 16"/>
+  </g>
+  <g fill="url(#leaf)" stroke="#304c35" stroke-width="1.5">
+    <ellipse cx="35" cy="39" rx="12" ry="6" transform="rotate(-42 35 39)"/><ellipse cx="54" cy="25" rx="12" ry="6" transform="rotate(-18 54 25)"/>
+    <ellipse cx="76" cy="21" rx="12" ry="6" transform="rotate(8 76 21)"/><ellipse cx="98" cy="24" rx="12" ry="6" transform="rotate(24 98 24)"/>
+    <ellipse cx="221" cy="39" rx="12" ry="6" transform="rotate(42 221 39)"/><ellipse cx="202" cy="25" rx="12" ry="6" transform="rotate(18 202 25)"/>
+    <ellipse cx="180" cy="21" rx="12" ry="6" transform="rotate(-8 180 21)"/><ellipse cx="158" cy="24" rx="12" ry="6" transform="rotate(-24 158 24)"/>
+    <ellipse cx="24" cy="75" rx="10" ry="5" transform="rotate(-58 24 75)"/><ellipse cx="232" cy="75" rx="10" ry="5" transform="rotate(58 232 75)"/>
+    <ellipse cx="24" cy="184" rx="10" ry="5" transform="rotate(58 24 184)"/><ellipse cx="232" cy="184" rx="10" ry="5" transform="rotate(-58 232 184)"/>
+  </g>
+  <g fill="#d3bd73" stroke="#57472f" stroke-width="1.5"><path d="M26 122l8-11 8 11-8 11z"/><path d="M214 122l8-11 8 11-8 11z"/><path d="M58 225l6-8 6 8-6 8z"/><path d="M186 225l6-8 6 8-6 8z"/></g>
+</svg>

@@ -309,6 +309,7 @@ body {
 .avatar {
     width: 62px;
     height: 62px;
+    --avatar-frame-radius: 18px;
     border-radius: 18px;
     background: linear-gradient(135deg, var(--gold), #f97316);
     display: grid;
@@ -745,8 +746,13 @@ body {
 }
 
 .border-reveal-art {
+    --avatar-frame-radius: 12px;
     background: linear-gradient(135deg, #0f172a, #164e63);
     color: #e0f2fe;
+}
+
+.border-reveal-art.avatar-border-equipped {
+    overflow: visible;
 }
 
 .border-reveal-art span {
@@ -1686,6 +1692,7 @@ html.theme-eclipse .content {
 .avatar-large {
     width: 150px;
     height: 150px;
+    --avatar-frame-radius: 42px;
     border-radius: 42px;
     display: grid;
     place-items: center;
@@ -1697,10 +1704,144 @@ html.theme-eclipse .content {
 }
 
 .avatar-border-equipped {
-    border: 4px var(--avatar-border-pattern, solid) var(--avatar-border-color);
-    outline: 2px solid var(--avatar-border-accent);
-    outline-offset: 3px;
-    box-shadow: 0 0 0 6px var(--avatar-border-accent), 0 0 18px var(--avatar-border-color);
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    border: 3px solid var(--avatar-border-color);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--avatar-border-accent), 0 0 18px color-mix(in srgb, var(--avatar-border-color) 55%, transparent);
+}
+
+.avatar-border-equipped::before,
+.avatar-border-equipped::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: calc(var(--avatar-frame-radius, 18px) + 8px);
+    pointer-events: none;
+}
+
+.avatar-border-equipped::before {
+    z-index: 1;
+    border: 3px solid transparent;
+    background: linear-gradient(transparent, transparent) padding-box,
+        conic-gradient(from 20deg, var(--avatar-border-accent), var(--avatar-border-color), var(--avatar-border-accent), var(--avatar-border-color), var(--avatar-border-accent)) border-box;
+    filter: drop-shadow(0 0 3px var(--avatar-border-color));
+}
+
+.avatar-border-equipped::after {
+    z-index: 2;
+    opacity: 0.95;
+}
+
+.avatar-border-equipped[data-avatar-finish="steel"]::before,
+.avatar-border-equipped[data-avatar-finish="frost"]::before {
+    background: linear-gradient(transparent, transparent) padding-box,
+        conic-gradient(from 25deg, #536772, #f2fbff 13%, #8299a3 25%, #fff 34%, #607781 52%, #d7e8ee 69%, #536772 82%, #fff 92%, #536772) border-box;
+    box-shadow: 0 0 0 1px rgba(232, 248, 255, 0.55), inset 0 0 4px rgba(255, 255, 255, 0.55);
+}
+
+.avatar-border-equipped[data-avatar-finish="moss"]::after,
+.avatar-border-equipped[data-avatar-finish="roots"]::after,
+.avatar-border-equipped[data-avatar-finish="thorn"]::after,
+.avatar-border-equipped[data-avatar-finish="jade"]::after,
+.avatar-border-equipped[data-avatar-finish="serpent"]::after,
+.avatar-border-equipped[data-avatar-finish="oak"]::after {
+    background:
+        radial-gradient(ellipse 8px 4px at 9% 15%, var(--avatar-border-accent) 0 65%, transparent 72%),
+        radial-gradient(ellipse 8px 4px at 91% 85%, var(--avatar-border-accent) 0 65%, transparent 72%),
+        linear-gradient(48deg, transparent 43%, var(--avatar-border-color) 44% 51%, transparent 52%) left top / 18px 18px no-repeat,
+        linear-gradient(48deg, transparent 43%, var(--avatar-border-color) 44% 51%, transparent 52%) right bottom / 18px 18px no-repeat;
+}
+
+.avatar-border-equipped[data-avatar-finish="roots"]::after,
+.avatar-border-equipped[data-avatar-finish="oak"]::after,
+.avatar-border-equipped[data-avatar-finish="ancient"]::after {
+    background:
+        radial-gradient(ellipse 13px 8px at 50% 70%, var(--avatar-border-accent) 0 65%, transparent 72%) 0 0 / 25px 17px repeat-x,
+        radial-gradient(ellipse 11px 7px at 50% 35%, var(--avatar-border-color) 0 64%, transparent 72%) 7px 3px / 23px 16px repeat-x,
+        linear-gradient(135deg, transparent 42%, var(--avatar-border-color) 44% 50%, transparent 52%) left top / 35px 35px no-repeat,
+        linear-gradient(225deg, transparent 42%, var(--avatar-border-color) 44% 50%, transparent 52%) right top / 35px 35px no-repeat,
+        linear-gradient(45deg, transparent 42%, var(--avatar-border-accent) 44% 49%, transparent 51%) left bottom / 32px 32px no-repeat,
+        linear-gradient(315deg, transparent 42%, var(--avatar-border-accent) 44% 49%, transparent 51%) right bottom / 32px 32px no-repeat;
+}
+
+.avatar-border-equipped[data-avatar-finish="sakura"]::after {
+    background:
+        radial-gradient(ellipse 5px 3px at 50% 50%, #fff2f7 0 66%, transparent 74%) 6% 9% / 14px 14px no-repeat,
+        radial-gradient(ellipse 5px 3px at 50% 50%, #f3b2cb 0 66%, transparent 74%) 10% 5% / 14px 14px no-repeat,
+        radial-gradient(ellipse 5px 3px at 50% 50%, #fff2f7 0 66%, transparent 74%) 82% 11% / 14px 14px no-repeat,
+        radial-gradient(ellipse 5px 3px at 50% 50%, #f3b2cb 0 66%, transparent 74%) 87% 7% / 14px 14px no-repeat,
+        radial-gradient(ellipse 6px 4px at 50% 50%, #f6d58a 0 55%, transparent 65%) 4% 31% / 12px 12px no-repeat,
+        radial-gradient(ellipse 6px 4px at 50% 50%, #f6d58a 0 55%, transparent 65%) 90% 38% / 12px 12px no-repeat,
+        linear-gradient(135deg, transparent 42%, var(--avatar-border-color) 44% 50%, transparent 52%) left top / 28px 28px no-repeat,
+        linear-gradient(225deg, transparent 42%, var(--avatar-border-color) 44% 50%, transparent 52%) right top / 28px 28px no-repeat;
+}
+
+.avatar-border-equipped[data-avatar-finish="steel"]::after,
+.avatar-border-equipped[data-avatar-finish="bronze"]::after {
+    background:
+        linear-gradient(90deg, transparent 32%, rgba(255, 255, 255, 0.8) 50%, transparent 68%) left top / 26px 3px no-repeat,
+        linear-gradient(90deg, transparent 32%, rgba(255, 255, 255, 0.65) 50%, transparent 68%) right bottom / 26px 3px no-repeat;
+}
+
+.avatar-border-equipped[data-avatar-finish="neon"]::before,
+.avatar-border-equipped[data-avatar-finish="cyber"]::before,
+.avatar-border-equipped[data-avatar-finish="plasma"]::before {
+    background: linear-gradient(transparent, transparent) padding-box,
+        repeating-conic-gradient(from 8deg, var(--avatar-border-color) 0deg 18deg, var(--avatar-border-accent) 18deg 27deg, transparent 27deg 34deg) border-box;
+    animation: cyberBorderPulse 2.8s ease-in-out infinite alternate;
+}
+
+.avatar-border-equipped[data-avatar-finish="neon"]::after,
+.avatar-border-equipped[data-avatar-finish="cyber"]::after,
+.avatar-border-equipped[data-avatar-finish="plasma"]::after {
+    background:
+        linear-gradient(90deg, transparent 10%, var(--avatar-border-accent) 10% 34%, transparent 34% 66%, var(--avatar-border-color) 66% 90%, transparent 90%) left top / 100% 3px no-repeat,
+        linear-gradient(90deg, transparent 18%, var(--avatar-border-color) 18% 42%, transparent 42% 72%, var(--avatar-border-accent) 72% 92%, transparent 92%) right bottom / 100% 3px no-repeat;
+}
+
+.avatar-border-equipped[data-avatar-finish="runes"]::after,
+.avatar-border-equipped[data-avatar-finish="bronze"]::after,
+.avatar-border-equipped[data-avatar-finish="eclipse"]::after,
+.avatar-border-equipped[data-avatar-finish="dragon"]::after {
+    background:
+        linear-gradient(90deg, transparent 38%, var(--avatar-border-accent) 38% 62%, transparent 62%) left top / 12px 5px no-repeat,
+        linear-gradient(90deg, transparent 38%, var(--avatar-border-accent) 38% 62%, transparent 62%) right top / 12px 5px no-repeat,
+        linear-gradient(90deg, transparent 38%, var(--avatar-border-accent) 38% 62%, transparent 62%) left bottom / 12px 5px no-repeat,
+        linear-gradient(90deg, transparent 38%, var(--avatar-border-accent) 38% 62%, transparent 62%) right bottom / 12px 5px no-repeat;
+}
+
+.avatar-border-equipped[data-avatar-finish="neon"] {
+    box-shadow: 0 0 0 2px var(--avatar-border-accent), 0 0 12px var(--avatar-border-color), 0 0 26px color-mix(in srgb, var(--avatar-border-accent) 65%, transparent);
+}
+
+@keyframes cyberBorderPulse {
+    from { filter: drop-shadow(0 0 2px var(--avatar-border-color)); }
+    to { filter: drop-shadow(0 0 8px var(--avatar-border-accent)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .avatar-border-equipped[data-avatar-finish="neon"]::before,
+    .avatar-border-equipped[data-avatar-finish="cyber"]::before,
+    .avatar-border-equipped[data-avatar-finish="plasma"]::before {
+        animation: none;
+    }
+}
+
+.avatar-border-equipped[data-avatar-finish]::before {
+    inset: -12px;
+    border: 0;
+    border-radius: 0;
+    background-image: var(--avatar-border-image);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 1px 4px var(--avatar-border-color));
+}
+
+.avatar-border-equipped[data-avatar-finish]::after {
+    display: none;
 }
 
 .avatar-border-inventory {
@@ -1759,6 +1900,7 @@ html.theme-eclipse .content {
     place-items: center;
     width: 46px;
     height: 46px;
+    --avatar-frame-radius: 14px;
     border: 1px solid var(--line);
     border-radius: 14px;
     background: linear-gradient(135deg, var(--cyan), var(--indigo));
