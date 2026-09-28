@@ -20,26 +20,26 @@ const themeDetails = {
     celestial: { label: 'Celestial', preview: 'theme-celestial', purchase: 'Tema Celestial' }
 };
 const avatarBorderCatalog = [
-    { id: 'mint-loop', label: 'Anel Menta', rarity: 'comum', color: '#34d399', accent: '#064e3b', pattern: 'solid' },
-    { id: 'skyline', label: 'Linha Celeste', rarity: 'comum', color: '#38bdf8', accent: '#1e3a8a', pattern: 'double' },
-    { id: 'clover', label: 'Trevo', rarity: 'comum', color: '#86efac', accent: '#166534', pattern: 'ridge' },
-    { id: 'rose-gold', label: 'Rosa Dourada', rarity: 'comum', color: '#fb7185', accent: '#fcd34d', pattern: 'groove' },
-    { id: 'sunbeam', label: 'Raio Solar', rarity: 'comum', color: '#fbbf24', accent: '#f97316', pattern: 'double' },
-    { id: 'lilac-mist', label: 'Névoa Lilás', rarity: 'comum', color: '#c4b5fd', accent: '#7c3aed', pattern: 'dotted' },
-    { id: 'tidal', label: 'Maré', rarity: 'incomum', color: '#06b6d4', accent: '#1e3a8a', pattern: 'double' },
-    { id: 'coral-reef', label: 'Recife Coral', rarity: 'incomum', color: '#fb7185', accent: '#be123c', pattern: 'groove' },
-    { id: 'citrus', label: 'Citrino', rarity: 'incomum', color: '#bef264', accent: '#3f6212', pattern: 'ridge' },
-    { id: 'frostline', label: 'Geada', rarity: 'incomum', color: '#93c5fd', accent: '#f8fafc', pattern: 'double' },
-    { id: 'ember', label: 'Brasa', rarity: 'incomum', color: '#f97316', accent: '#7f1d1d', pattern: 'dashed' },
-    { id: 'aurora-ring', label: 'Anel Aurora', rarity: 'raro', color: '#2dd4bf', accent: '#8b5cf6', pattern: 'ridge' },
-    { id: 'sakura-frame', label: 'Moldura Sakura', rarity: 'raro', color: '#f9a8d4', accent: '#be185d', pattern: 'dotted' },
-    { id: 'nebula-gate', label: 'Portal Nebulosa', rarity: 'raro', color: '#a78bfa', accent: '#ec4899', pattern: 'double' },
-    { id: 'jade-crown', label: 'Coroa Jade', rarity: 'raro', color: '#34d399', accent: '#facc15', pattern: 'groove' },
-    { id: 'prismatic', label: 'Prismática', rarity: 'muito_raro', color: '#67e8f9', accent: '#f0abfc', pattern: 'outset' },
-    { id: 'eclipse', label: 'Eclipse', rarity: 'muito_raro', color: '#fda4af', accent: '#facc15', pattern: 'double' },
-    { id: 'starfall', label: 'Chuva Estelar', rarity: 'muito_raro', color: '#c4b5fd', accent: '#38bdf8', pattern: 'ridge' },
-    { id: 'celestial-crown', label: 'Coroa Celestial', rarity: 'lendario', color: '#fde68a', accent: '#7dd3fc', pattern: 'double' },
-    { id: 'phoenix-flame', label: 'Chama Fénix', rarity: 'lendario', color: '#fb7185', accent: '#facc15', pattern: 'groove' }
+    { id: 'mint-loop', label: 'Musgo Antigo', rarity: 'comum', color: '#7d9b56', accent: '#d0a65a', pattern: 'ridge', finish: 'moss', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'skyline', label: 'Prata Lunar', rarity: 'comum', color: '#c0d0d7', accent: '#607d8b', pattern: 'double', finish: 'steel', image: 'imagens/bordas%20de%20avatar/aco.svg' },
+    { id: 'clover', label: 'Bosque Vivo', rarity: 'comum', color: '#63874d', accent: '#bd9b55', pattern: 'ridge', finish: 'roots', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'rose-gold', label: 'Filigrana de Bronze', rarity: 'comum', color: '#b97859', accent: '#f1cf83', pattern: 'groove', finish: 'bronze', image: 'imagens/bordas%20de%20avatar/aco.svg' },
+    { id: 'sunbeam', label: 'Runas de Âmbar', rarity: 'comum', color: '#d9a441', accent: '#fff0a6', pattern: 'double', finish: 'runes', image: 'imagens/bordas%20de%20avatar/runas.svg' },
+    { id: 'lilac-mist', label: 'Pedra da Lua', rarity: 'comum', color: '#a6a6d6', accent: '#e5d8ff', pattern: 'dotted', finish: 'moonstone', image: 'imagens/bordas%20de%20avatar/celestial.svg' },
+    { id: 'tidal', label: 'Neon da Chuva', rarity: 'incomum', color: '#00e5d4', accent: '#ff38c7', pattern: 'double', finish: 'neon', image: 'imagens/bordas%20de%20avatar/cyberpunk.svg' },
+    { id: 'coral-reef', label: 'Jardim de Espinhos', rarity: 'incomum', color: '#a84c52', accent: '#78a66a', pattern: 'groove', finish: 'thorn', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'citrus', label: 'Jade Selvagem', rarity: 'incomum', color: '#93ad50', accent: '#d8c06a', pattern: 'ridge', finish: 'jade', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'frostline', label: 'Aço Glacial', rarity: 'incomum', color: '#a9c7d8', accent: '#f1fbff', pattern: 'double', finish: 'frost', image: 'imagens/bordas%20de%20avatar/aco.svg' },
+    { id: 'ember', label: 'Ferro de Brasa', rarity: 'incomum', color: '#9c3b2c', accent: '#ff9c3c', pattern: 'dashed', finish: 'ember', image: 'imagens/bordas%20de%20avatar/brasa.svg' },
+    { id: 'aurora-ring', label: 'Serpente Esmeralda', rarity: 'raro', color: '#268e78', accent: '#dbca70', pattern: 'ridge', finish: 'serpent', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'sakura-frame', label: 'Sakura em Flor', rarity: 'raro', color: '#d784a7', accent: '#7a365c', pattern: 'dotted', finish: 'sakura', image: 'imagens/bordas%20de%20avatar/sakura.svg' },
+    { id: 'nebula-gate', label: 'Circuito Violeta', rarity: 'raro', color: '#7665c4', accent: '#ff3ca6', pattern: 'double', finish: 'cyber', image: 'imagens/bordas%20de%20avatar/cyberpunk.svg' },
+    { id: 'jade-crown', label: 'Copa de Carvalho', rarity: 'raro', color: '#557d4c', accent: '#d7b95f', pattern: 'groove', finish: 'oak', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'prismatic', label: 'Portal de Plasma', rarity: 'muito_raro', color: '#36bfc6', accent: '#e28bdb', pattern: 'outset', finish: 'plasma', image: 'imagens/bordas%20de%20avatar/cyberpunk.svg' },
+    { id: 'eclipse', label: 'Juramento do Eclipse', rarity: 'muito_raro', color: '#873d48', accent: '#e4bd64', pattern: 'double', finish: 'eclipse', image: 'imagens/bordas%20de%20avatar/runas.svg' },
+    { id: 'starfall', label: 'Constelação Safira', rarity: 'muito_raro', color: '#767ab8', accent: '#79d8df', pattern: 'ridge', finish: 'starlight', image: 'imagens/bordas%20de%20avatar/celestial.svg' },
+    { id: 'celestial-crown', label: 'Árvore Ancestral', rarity: 'lendario', color: '#b18a3e', accent: '#e5d68a', pattern: 'double', finish: 'ancient', image: 'imagens/bordas%20de%20avatar/bosque.svg' },
+    { id: 'phoenix-flame', label: 'Dragão de Brasa', rarity: 'lendario', color: '#b64e36', accent: '#f6ca58', pattern: 'groove', finish: 'dragon', image: 'imagens/bordas%20de%20avatar/brasa.svg' }
 ];
 const rarityLabels = {
     comum: 'Comum', incomum: 'Incomum', raro: 'Raro', muito_raro: 'Muito raro', lendario: 'Lendário'
@@ -56,7 +56,8 @@ const selectedAvatarBorderKey = `study-quest-avatar-border:${userId}`;
 
 function applyAvatarBorder(element, borderId) {
     element.classList.remove('avatar-border-equipped');
-    ['--avatar-border-color', '--avatar-border-accent', '--avatar-border-pattern'].forEach((property) => {
+    delete element.dataset.avatarFinish;
+    ['--avatar-border-color', '--avatar-border-accent', '--avatar-border-pattern', '--avatar-border-image'].forEach((property) => {
         element.style.removeProperty(property);
     });
 
@@ -68,6 +69,8 @@ function applyAvatarBorder(element, borderId) {
     element.style.setProperty('--avatar-border-color', border.color);
     element.style.setProperty('--avatar-border-accent', border.accent);
     element.style.setProperty('--avatar-border-pattern', border.pattern);
+    element.style.setProperty('--avatar-border-image', `url("${border.image}")`);
+    element.dataset.avatarFinish = border.finish;
     element.classList.add('avatar-border-equipped');
 }
 
