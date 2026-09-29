@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Quest</title>
     <script src="definicoes.js"></script>
+    <script src="missoes.js"></script>
     <link rel="stylesheet" href="principal.css">
 </head>
 <body>
@@ -28,6 +29,7 @@
 
                 <div class="side-card">
                     <div class="mini">XP total</div>
+                    <strong>0</strong>
                 </div>
             </aside>
 
@@ -56,14 +58,15 @@
 
                         <div class="mini-stats">
                             <div class="mini-stat">
-                                <strong></strong>
+                                <strong>0/3</strong>
                                 <span>Objetivos de hoje</span>
                             </div>
                             <div class="mini-stat">
+                                <strong>0 min</strong>
                                 <span>Tempo focado</span>
                             </div>
                             <div class="mini-stat">
-
+                                <strong>0%</strong>
                                 <span>Progresso geral</span>
                             </div>
                         </div>
@@ -100,6 +103,7 @@
                             <div class="chip blue">⚡</div>
                             <span style="color: var(--green); font-size: 0.8rem;">+12%</span>
                         </div>
+                        <strong>0</strong>
                         <span>XP ganho</span>
                     </div>
 
@@ -108,6 +112,7 @@
                             <div class="chip green">✓</div>
                             <span style="color: var(--green); font-size: 0.8rem;">+4</span>
                         </div>
+                        <strong>0</strong>
                         <span>Missões concluídas</span>
                     </div>
 
@@ -116,6 +121,7 @@
                             <div class="chip gold">★</div>
                             <span style="color: var(--green); font-size: 0.8rem;">+2</span>
                         </div>
+                        <strong>0</strong>
                         <span>Medalhas</span>
                     </div>
 
@@ -123,6 +129,8 @@
                         <div class="stat-top">
                             <div class="chip pink">🔥</div>
                             <span style="color: var(--green); font-size: 0.8rem;">+1 dia</span>
+                        </div>
+                        <strong>0</strong>
                         <span>Dia de sequência</span>
                     </div>
                 </section>
@@ -180,15 +188,5 @@
         </div>
     </div>
 
-    <script>
-        const tasks = document.querySelectorAll('.task-card');
-        tasks.forEach(task => {
-            task.addEventListener('click', () => {
-                task.classList.toggle('done');
-                const check = task.querySelector('.check');
-                check.textContent = task.classList.contains('done') ? '✓' : '';
-            });
-        });
-    </script>
 </body>
 </html>
