@@ -1,0 +1,25 @@
+.exercises-content { max-width: 980px; }
+.lesson-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 28px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(120deg, rgba(14, 116, 144, .28), rgba(15, 23, 42, .65)); }
+.lesson-header h2 { margin: 7px 0 5px; font-size: 1.65rem; }
+.lesson-header p { margin: 0; color: var(--muted); }
+.lesson-progress { display: grid; min-width: 88px; text-align: center; color: var(--muted); }
+.lesson-progress strong { color: var(--cyan); font-size: 1.8rem; }
+.lesson-progress span { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; }
+.exercise-list { display: grid; gap: 16px; margin-top: 22px; }
+.exercise-card { padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: rgba(30, 41, 59, .72); }
+.exercise-card.solved { border-color: rgba(52, 211, 153, .55); }
+.exercise-card h3 { margin: 0 0 16px; font-size: 1rem; color: var(--muted); font-weight: 600; }
+.exercise-card h3 span { color: var(--cyan); margin-right: 8px; }
+.question { margin: 0 0 16px; font-size: 1.15rem; line-height: 1.45; }
+.options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.option-btn { min-height: 48px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; color: var(--text); background: rgba(15, 23, 42, .55); cursor: pointer; text-align: left; }
+.option-btn:hover { border-color: var(--cyan); }
+.option-btn:disabled { cursor: default; }
+.option-btn.correct { border-color: var(--green); background: rgba(52, 211, 153, .14); }
+.option-btn.incorrect { border-color: var(--red); background: rgba(251, 113, 133, .12); }
+.explanation { display: none; margin: 17px 0 0; padding: 14px 16px; border-left: 3px solid var(--green); color: #c9f7df; background: rgba(52, 211, 153, .08); line-height: 1.5; }
+.explanation.visible { display: block; }
+.lesson-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 22px; }
+.lesson-footer p { color: var(--green); font-weight: 600; }
+.hidden { display: none; }
+@media (max-width: 600px) { .lesson-header { align-items: flex-start; } .options { grid-template-columns: 1fr; } .lesson-footer { align-items: stretch; flex-direction: column; } }
