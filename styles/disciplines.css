@@ -1,0 +1,13 @@
+.discipline-intro { padding: 28px 30px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(120deg, rgba(30, 64, 175, .38), rgba(15, 23, 42, .45)); margin-bottom: 24px; }
+.discipline-intro h2 { margin: 8px 0; font-size: clamp(1.6rem, 3vw, 2.5rem); }
+.discipline-intro p { color: var(--muted); margin: 0; }
+.discipline-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.discipline-card { position: relative; overflow: hidden; display: grid; grid-template-columns: 150px 1fr auto; align-items: center; gap: 18px; min-height: 164px; padding: 14px; border: 1px solid var(--line); border-radius: 20px; color: var(--text); text-decoration: none; background: rgba(30, 41, 59, .75); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.discipline-card:hover { transform: translateY(-4px); border-color: var(--cyan); background: rgba(30, 41, 59, .95); }
+.discipline-card img { width: 150px; height: 130px; object-fit: cover; border-radius: 14px; }
+.discipline-kicker { color: var(--cyan); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+.discipline-card h3 { margin: 7px 0 5px; font-size: 1.35rem; }
+.discipline-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.4; }
+.card-arrow { color: var(--cyan); font-size: 1.7rem; padding-right: 6px; }
+@media (max-width: 850px) { .discipline-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .discipline-card { grid-template-columns: 100px 1fr auto; gap: 12px; } .discipline-card img { width: 100px; height: 104px; } .discipline-card h3 { font-size: 1.1rem; } }

@@ -1,0 +1,105 @@
+const testData = {
+    portugues: { name: 'Português', questions: [['Qual frase usa “por que” corretamente?', ['Por que você chegou?', 'Não sei porquê ele foi.', 'Ele faltou por quê estudar.'], 0], ['Em “O livro antigo caiu”, qual palavra caracteriza o livro?', ['Livro', 'Antigo', 'Caiu'], 1], ['Qual alternativa apresenta uma opinião?', ['A água ferve a 100 graus.', 'Acredito que este livro é ótimo.', 'O Brasil fica na América do Sul.'], 1], ['Qual é o sujeito em “Os estudantes resolveram o desafio”?', ['Resolveram', 'O desafio', 'Os estudantes'], 2], ['Qual conectivo indica oposição?', ['Porque', 'Porém', 'Portanto'], 1], ['A conclusão de um texto deve...', ['Retomar a ideia principal', 'Adicionar um assunto sem relação', 'Repetir todas as palavras'], 0], ['Qual palavra é acentuada corretamente?', ['Lâmpada', 'Lampâda', 'Lampaniada'], 0], ['Qual alternativa tem linguagem formal?', ['A gente vai lá rapidinho.', 'Nós iremos à reunião.', 'Bora para a reunião.'], 1], ['Em “Embora chovesse, saímos”, “embora” indica...', ['Causa', 'Concessão', 'Finalidade'], 1], ['Qual recurso compara usando “como”?', ['Metáfora', 'Comparação', 'Ironia'], 1], ['A ideia central de um parágrafo é...', ['O detalhe menos importante', 'A informação principal', 'A última palavra'], 1], ['Inferir uma informação é...', ['Copiá-la literalmente', 'Concluí-la a partir de pistas', 'Ignorá-la'], 1]] },
+    matematica: { name: 'Matemática', questions: [['Uma compra de 120 euros teve 20% de desconto. Qual o preço final?', ['96 euros', '100 euros', '104 euros'], 0], ['Qual expressão tem resultado 18?', ['3 × 5', '24 - 6', '36 ÷ 3'], 1], ['Se 3 cadernos custam 21 euros, quanto custa cada um?', ['6 euros', '7 euros', '9 euros'], 1], ['Qual número completa 2, 4, 8, 16, ...?', ['20', '24', '32'], 2], ['Um retângulo mede 5 por 3. Qual sua área?', ['8', '15', '16'], 1], ['Qual fração é equivalente a 2/4?', ['1/2', '1/3', '3/4'], 0], ['Se 2x = 18, qual é x?', ['8', '9', '10'], 1], ['Qual é a média de 6, 8 e 10?', ['7', '8', '9'], 1], ['Um ângulo reto mede...', ['45 graus', '90 graus', '180 graus'], 1], ['Qual número é divisível por 3?', ['14', '22', '27'], 2], ['Se hoje é terça-feira, que dia será daqui a 10 dias?', ['Sexta-feira', 'Sábado', 'Domingo'], 1], ['Qual razão equivale a 1 para 2?', ['2:1', '1:2', '1:3'], 1]] },
+    ingles: { name: 'Inglês', questions: [['Choose the correct question:', ['Where you live?', 'Where do you live?', 'Where does you live?'], 1], ['Complete: “There ___ two books.”', ['is', 'are', 'am'], 1], ['What does “because” express?', ['Reason', 'Place', 'Time'], 0], ['Choose the past of “go”:', ['Goed', 'Went', 'Gone yesterday'], 1], ['Complete: “She has ___ apple.”', ['a', 'an', 'the one'], 1], ['What is a synonym for “quick”?', ['Fast', 'Slow', 'Late'], 0], ['Choose the polite request:', ['Give me water!', 'Could you pass the water, please?', 'Water now.'], 1], ['“Yesterday” refers to...', ['The past', 'The present', 'The future'], 0], ['Complete: “I have lived here ___ 2020.”', ['for', 'since', 'at'], 1], ['Which sentence is comparative?', ['This is big.', 'This is bigger than that.', 'This is the biggest.'], 1], ['What does “although” show?', ['Contrast', 'Addition', 'Place'], 0], ['Choose the correct response to “How are you?”', ['I am fine, thanks.', 'I am twelve years.', 'I fine are.'], 0]] },
+    historia: { name: 'História', questions: [['Por que o rio Nilo era importante para o Egito?', ['Garantia terras férteis', 'Separava a Europa', 'Era uma estrada romana'], 0], ['Qual característica define uma república?', ['Governo representativo', 'Governo sempre hereditário', 'Ausência de leis'], 0], ['Para que serviam as rotas comerciais antigas?', ['Trocar produtos e ideias', 'Construir vulcões', 'Medir o tempo apenas'], 0], ['Uma mudança de longa duração é chamada de...', ['Processo histórico', 'Acidente isolado', 'Lenda'], 0], ['O que a prensa facilitou?', ['Circulação de textos', 'Navegação espacial', 'Produção de energia'], 0], ['Uma fonte primária foi produzida...', ['No período estudado', 'Sempre séculos depois', 'Apenas por historiadores'], 0], ['Por que mapas são fontes históricas?', ['Revelam visões sobre territórios', 'Não possuem informações', 'Substituem todos os relatos'], 0], ['O que é cronologia?', ['Organização dos acontecimentos no tempo', 'Estudo de moedas', 'Divisão de territórios'], 0], ['A industrialização alterou principalmente...', ['Trabalho e produção', 'A rotação da Terra', 'O alfabeto grego'], 0], ['O que significa cultura?', ['Modos de vida e significados', 'Somente obras de arte', 'Apenas leis'], 0], ['Analisar uma fonte exige observar...', ['Autor, contexto e intenção', 'Somente o tamanho', 'A cor do papel'], 0], ['Por que diferentes grupos narram a história de formas diversas?', ['Possuem experiências e perspectivas distintas', 'Porque fatos não existem', 'Porque datas são sempre iguais'], 0]] }
+};
+
+const stageOneTestQuestions = {
+    portugues: [['Qual é o plural de “animal”?', ['Animais', 'Animals', 'Animalões'], 0], ['Em “A casa azul”, qual palavra nomeia o lugar?', ['A', 'casa', 'azul'], 1], ['Qual palavra tem sentido parecido com “rápido”?', ['Lento', 'Veloz', 'Fraco'], 1], ['Em “Nós estudamos”, qual é o verbo?', ['Nós', 'estudamos', 'A frase'], 1], ['Qual frase termina com ponto de interrogação?', ['Você vem?', 'Você vem.', 'Você vem,'], 0], ['Interpretar uma história exige observar...', ['Apenas o título', 'Pistas e informações', 'Somente o tamanho'], 1], ['Qual palavra indica uma ação?', ['Ler', 'Livro', 'Leitor'], 0], ['Qual é o antônimo de “claro”?', ['Brilhante', 'Escuro', 'Amarelo'], 1], ['Qual sinal separa itens de uma lista?', ['Vírgula', 'Interrogação', 'Parênteses'], 0], ['Qual palavra está escrita corretamente?', ['Atenção', 'Atenssão', 'Atensão'], 0], ['O título de “O passeio de Ana” indica principalmente...', ['O assunto', 'O número de páginas', 'A editora'], 0], ['Se o texto diz “João levou guarda-chuva”, o que podemos afirmar?', ['Provavelmente chovia ou poderia chover', 'João foi nadar', 'Era certamente noite'], 0]],
+    matematica: [['9 + 6 =', ['14', '15', '16'], 1], ['18 + 4 =', ['20', '22', '24'], 1], ['8 × 4 =', ['24', '32', '36'], 1], ['7 × 5 =', ['30', '35', '40'], 1], ['24 ÷ 6 =', ['3', '4', '6'], 1], ['42 ÷ 7 =', ['5', '6', '7'], 1], ['Se x + 4 = 11, x =', ['6', '7', '8'], 1], ['Se y - 8 = 5, y =', ['3', '13', '15'], 1], ['Qual fração equivale a 1/2?', ['2/4', '1/3', '3/5'], 0], ['Qual fração é maior?', ['1/5', '4/5', '2/5'], 1], ['200 - 85 =', ['105', '115', '125'], 1], ['Perímetro de um quadrado de lado 5:', ['10', '15', '20'], 2]],
+    ingles: [['Plural of “book”:', ['Books', 'Bookes', 'Book'], 0], ['Meaning of “teacher”:', ['Professor', 'Janela', 'Caderno'], 0], ['Synonym of “happy”:', ['Sad', 'Glad', 'Cold'], 1], ['Complete: “They ___ students.”', ['is', 'am', 'are'], 2], ['Choose the question:', ['Do you study?', 'Do you study.', 'Do you study,'], 0], ['To understand a text, look for...', ['Clues and information', 'Only the last word', 'The page color'], 0], ['Which word shows an action?', ['Run', 'Runner', 'Road'], 0], ['Opposite of “old”:', ['New', 'Tall', 'Small'], 0], ['Which punctuation ends a question?', ['.', '?', ','], 1], ['Correct spelling:', ['Beautiful', 'Beautifull', 'Beutiful'], 0], ['A title usually tells the...', ['Subject', 'Page number', 'Paper color'], 0], ['If “It is raining”, what should you take?', ['An umbrella', 'A swimsuit only', 'Sunglasses only'], 0]],
+    historia: [['A democracia ateniense era praticada em:', ['Atenas', 'Egito', 'Roma'], 0], ['As pirâmides de Gizé eram monumentos do:', ['Egito Antigo', 'Império Romano', 'Japão medieval'], 0], ['As cheias do Nilo ajudavam principalmente na:', ['Agricultura', 'Navegação espacial', 'Imprensa'], 0], ['Roma foi o centro de qual império?', ['Romano', 'Asteca', 'Chinês'], 0], ['A prensa de Gutenberg facilitou:', ['A reprodução de livros', 'A construção de pirâmides', 'A medição de rios'], 0], ['Thomas Edison ficou associado ao aperfeiçoamento da:', ['Lâmpada elétrica', 'Bússola', 'Prensa'], 0], ['O Brasil está localizado na:', ['América do Sul', 'Europa', 'África'], 0], ['Uma fronteira indica:', ['Um limite entre territórios', 'Uma estação do ano', 'Uma profissão'], 0], ['Uma carta antiga pode ser uma fonte:', ['Histórica', 'Apenas matemática', 'Sem informação'], 0], ['Uma fotografia antiga ajuda a estudar:', ['Vestígios de uma época', 'Somente o futuro', 'Apenas o clima atual'], 0], ['A Revolução Industrial começou na:', ['Inglaterra', 'Grécia', 'Austrália'], 0], ['As máquinas transformaram principalmente:', ['A produção nas fábricas', 'A escrita romana', 'O curso do Nilo'], 0]]
+};
+
+const params = new URLSearchParams(window.location.search);
+const disciplineId = params.get('disciplina') || 'portugues';
+const level = Math.max(1, Math.min(3, Number(params.get('level')) || 1));
+const lesson = { ...(testData[disciplineId] || testData.portugues), questions: level === 1 ? stageOneTestQuestions[disciplineId] : (testData[disciplineId] || testData.portugues).questions };
+const nodeKey = level === 1 ? `study-quest-campaign:${disciplineId}` : `study-quest-campaign:${disciplineId}:level:${level}`;
+const completedNodes = JSON.parse(localStorage.getItem(nodeKey) || '[]');
+const answers = Array(lesson.questions.length).fill(null);
+const testList = document.querySelector('#test-list');
+
+document.querySelector('#test-eyebrow').textContent = `${lesson.name} · Teste da etapa ${level}`;
+document.querySelector('#test-title').textContent = `Teste de ${level === 1 ? 'Fundamentos' : level === 2 ? 'Aprofundamento' : 'Domínio'}`;
+document.querySelector('#test-subtitle').textContent = `Avaliação completa de ${lesson.name}.`;
+document.querySelector('#back-link').href = `campanha.html?disciplina=${disciplineId}&level=${level}`;
+
+if (completedNodes.length < 6) {
+    document.querySelector('#test-feedback').textContent = 'Complete todos os nós desta etapa para desbloquear o teste.';
+    document.querySelector('#finish-test').disabled = true;
+} else {
+    renderTest();
+}
+
+function renderTest() {
+    lesson.questions.forEach(([question, options], questionIndex) => {
+        const card = document.createElement('article');
+        card.className = 'test-card';
+        card.innerHTML = `<h3>Exercício ${questionIndex + 1} de 12</h3><p>${question}</p><div class="test-options"></div>`;
+        const optionList = card.querySelector('.test-options');
+        options.forEach((option, optionIndex) => {
+            const button = document.createElement('button');
+            button.className = 'test-option';
+            button.type = 'button';
+            button.textContent = option;
+            button.addEventListener('click', () => selectAnswer(questionIndex, optionIndex, button));
+            optionList.appendChild(button);
+        });
+        testList.appendChild(card);
+    });
+}
+
+function selectAnswer(questionIndex, optionIndex, button) {
+    answers[questionIndex] = optionIndex;
+    button.parentElement.querySelectorAll('.test-option').forEach((option) => option.classList.remove('selected'));
+    button.classList.add('selected');
+    document.querySelector('#test-score').textContent = `${answers.filter((answer) => answer !== null).length}/12`;
+}
+
+document.querySelector('#finish-test').addEventListener('click', () => {
+    if (answers.some((answer) => answer === null)) {
+        document.querySelector('#test-feedback').textContent = 'Responda às 12 perguntas antes de corrigir o teste.';
+        return;
+    }
+    const score = answers.reduce((total, answer, index) => total + (answer === lesson.questions[index][2] ? 1 : 0), 0);
+    const minimumScore = Math.floor(lesson.questions.length * 0.75) + 1;
+    const passed = score / lesson.questions.length > 0.75;
+    document.querySelectorAll('.test-card').forEach((card, index) => {
+        const options = [...card.querySelectorAll('.test-option')];
+        options.forEach((option, optionIndex) => {
+            option.disabled = true;
+            if (optionIndex === lesson.questions[index][2]) option.classList.add('correct');
+            if (optionIndex === answers[index] && optionIndex !== lesson.questions[index][2]) option.classList.add('incorrect');
+        });
+    });
+    document.querySelector('#test-score').textContent = `${score}/12`;
+    document.querySelector('#finish-test').classList.add('hidden');
+    const feedback = document.querySelector('#test-feedback');
+    const next = document.querySelector('#next-level');
+    if (!passed) {
+        localStorage.removeItem(nodeKey);
+        localStorage.removeItem(`study-quest-test:${disciplineId}:level:${level}`);
+        feedback.textContent = `Você acertou ${score}/${lesson.questions.length}. É preciso acertar pelo menos ${minimumScore} para avançar. As nodes desta etapa foram resetadas.`;
+        next.classList.remove('hidden');
+        if (level > 1) {
+            next.textContent = `Voltar à etapa ${level - 1} →`;
+            next.href = `campanha.html?disciplina=${disciplineId}&level=${level - 1}`;
+        } else {
+            next.textContent = 'Recomeçar etapa 1 →';
+            next.href = `campanha.html?disciplina=${disciplineId}&level=1`;
+        }
+        return;
+    }
+    localStorage.setItem(`study-quest-test:${disciplineId}:level:${level}`, 'passed');
+    feedback.textContent = `Etapa concluída com ${score}/12! A próxima página foi desbloqueada.`;
+    next.classList.remove('hidden');
+    if (level < 3) {
+        next.textContent = `Abrir etapa ${level + 1} →`;
+        next.href = `campanha.html?disciplina=${disciplineId}&level=${level + 1}`;
+    } else {
+        next.textContent = 'Voltar à jornada →';
+        next.href = 'jornada.html';
+    }
+});

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Quest | Campanha</title>
+    <script src="definicoes.js"></script>
+    <link rel="stylesheet" href="principal.css" />
+    <link rel="stylesheet" href="styles/campaign.css" />
+</head>
+<body>
+    <div class="app">
+        <div class="shell">
+            <aside class="sidebar">
+                <div class="brand"><div class="brand-mark">S</div><h2>Study Quest</h2></div>
+                <nav class="nav">
+                    <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a>
+                    <a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a>
+                    <a href="jornada.html" class="nav-item active"><span class="nav-icon">📚</span> Jornada</a>
+                    <a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
+                    <a href="loja.html" class="nav-item"><span class="nav-icon">🛍️</span> Loja</a>
+                    <a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a>
+                    <a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
+                </nav>
+                <div class="side-card"><div class="mini">XP total</div><strong>0</strong><span>+0 esta semana</span></div>
+            </aside>
+
+            <main class="content campaign-content">
+                <header class="topbar">
+                    <div class="title-block">
+                        <div class="eyebrow" id="campaign-eyebrow">Campanha</div>
+                        <h1 id="campaign-title">Carregando...</h1>
+                        <p id="campaign-subtitle">Complete os exercícios para avançar no caminho.</p>
+                    </div>
+                    <a class="ghost-btn" href="disciplinas.html">Trocar disciplina</a>
+                </header>
+
+                <section class="campaign-summary">
+                    <div><span>Progresso da campanha</span><strong id="progress-text">0 de 6</strong></div>
+                    <div class="campaign-bar"><span id="progress-bar"></span></div>
+                </section>
+
+                <section class="campaign-layout">
+                    <div class="campaign-panel">
+                        <div class="panel-heading"><div><span class="discipline-kicker">Mapa de evolução</span><h2>Seu caminho</h2></div><span class="map-status" id="map-status">Comece pelo primeiro nó</span></div>
+                        <div class="campaign-map" id="campaign-map">
+                            <svg class="map-lines" id="map-lines" aria-hidden="true"></svg>
+                            <div class="map-node" data-node="0"><button type="button"><span>1</span></button><strong>Início</strong></div>
+                            <div class="map-node" data-node="1"><button type="button"><span>2</span></button><strong>Base</strong></div>
+                            <div class="map-node" data-node="2"><button type="button"><span>3</span></button><strong>Prática</strong></div>
+                            <div class="map-node" data-node="3"><button type="button"><span>4</span></button><strong>Desafio</strong></div>
+                            <div class="map-node" data-node="4"><button type="button"><span>5</span></button><strong>Revisão</strong></div>
+                            <div class="map-node" data-node="5"><button type="button"><span>6</span></button><strong>Domínio</strong></div>
+                        </div>
+                    </div>
+
+                    <aside class="exercise-panel" id="exercise-panel">
+                        <span class="discipline-kicker" id="exercise-label">PRÓXIMO EXERCÍCIO</span>
+                        <h2 id="exercise-title">Escolha um nó para começar</h2>
+                        <p id="exercise-question">Cada nó abre uma página com vários exercícios e explicações detalhadas.</p>
+                        <a class="primary-btn" href="exercicios.html?disciplina=portugues&level=1&node=0">Abrir primeiro exercício</a>
+                        <a class="primary-btn hidden" id="final-test-link" href="#">Fazer teste da etapa</a>
+                    </aside>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="campanha.js"></script>
+</body>
+</html>

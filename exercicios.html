@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Quest | Exercícios</title>
+    <script src="definicoes.js"></script>
+    <link rel="stylesheet" href="principal.css" />
+    <link rel="stylesheet" href="styles/exercises.css" />
+</head>
+<body>
+    <div class="app"><div class="shell">
+        <aside class="sidebar">
+            <div class="brand"><div class="brand-mark">S</div><h2>Study Quest</h2></div>
+            <nav class="nav">
+                <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a>
+                <a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a>
+                <a href="jornada.html" class="nav-item active"><span class="nav-icon">📚</span> Jornada</a>
+                <a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a>
+                <a href="loja.html" class="nav-item"><span class="nav-icon">🛍️</span> Loja</a>
+                <a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a>
+                <a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
+            </nav>
+            <div class="side-card"><div class="mini">XP total</div><strong>0</strong><span>+0 esta semana</span></div>
+        </aside>
+        <main class="content exercises-content">
+            <header class="topbar">
+                <div class="title-block"><div class="eyebrow" id="exercise-eyebrow">Exercício</div><h1 id="exercise-heading">Carregando...</h1><p id="exercise-subtitle"></p></div>
+                <a class="ghost-btn" id="back-link" href="campanha.html">Voltar ao caminho</a>
+            </header>
+            <section class="lesson-header"><div><span class="discipline-kicker" id="node-label">NÓ 1</span><h2 id="node-title">Fundamentos</h2><p>Resolva os dois exercícios e leia a explicação para avançar.</p></div><div class="lesson-progress"><strong id="lesson-progress">0/2</strong><span>resolvidos</span></div></section>
+            <section class="exercise-list" id="exercise-list"></section>
+            <div class="lesson-footer"><p id="lesson-feedback" aria-live="polite"></p><a class="primary-btn hidden" id="next-node" href="#">Continuar caminho →</a></div>
+        </main>
+    </div></div>
+    <script src="conteudos-avancados.js"></script>
+    <script src="exercicios.js"></script>
+</body>
+</html>
