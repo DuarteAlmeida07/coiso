@@ -126,6 +126,7 @@ function updateTokenDisplays(value) {
     balance.lastChild.textContent = ` ${formattedValue}`;
     headerTokens.textContent = formattedValue;
     sidebarTokens.textContent = formattedValue;
+    window.StudyQuestHud?.refresh();
 }
 
 function getRandomReward(rewardPool) {
@@ -197,6 +198,7 @@ lootButton.addEventListener('click', () => {
         localStorage.setItem(purchasesKey, JSON.stringify(purchases));
         renderPossiblePrizes();
         updateTokenDisplays(currentTokens);
+        if (isDuplicate) window.StudyQuestHud?.recordTokenGain(wonData.duplicateTokens);
         lootResult.textContent = resultText;
         lootResult.style.color = wonData.color;
         lootResult.style.borderColor = `${wonData.color}55`;
@@ -241,6 +243,7 @@ borderLootButton.addEventListener('click', () => {
         localStorage.setItem(tokensKey, String(currentTokens));
         renderPossibleBorders();
         updateTokenDisplays(currentTokens);
+        if (isDuplicate) window.StudyQuestHud?.recordTokenGain(wonData.duplicateTokens);
         borderLootResult.textContent = isDuplicate
             ? `Já tinhas a moldura ${border.label} (${wonData.label})! Recebeste ${wonData.duplicateTokens} Tokens.`
             : `Recebeste a moldura ${border.label} (${wonData.label})!`;

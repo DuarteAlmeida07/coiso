@@ -2,6 +2,12 @@
 const sessionKey = 'study-quest-session';
 const loggedUser = JSON.parse(sessionStorage.getItem(sessionKey) || localStorage.getItem(sessionKey) || 'null');
 const userId = loggedUser && loggedUser.email ? loggedUser.email.trim().toLowerCase() : 'guest';
+const progressProfileKey = `study-quest-profile:${userId}`;
+const progressTokensKey = `study-quest-tokens:${userId}`;
+const tokenGainKey = `study-quest-token-gain:${userId}`;
+const xpPerLevel = 500;
+const tokenNoticeDuration = 4000;
+let tokenNoticeTimer;
 const selectedThemeKey = `study-quest-theme:${userId}`;
 const savedTheme = localStorage.getItem(selectedThemeKey) || localStorage.getItem('study-quest-theme') || 'night';
 const themeDetails = {
@@ -135,6 +141,87 @@ function applyAvatar() {
     });
 }
 
+function renderProgressHud(animateTokenGain = false) {
+    if (!document.body || document.querySelector('.auth-shell')) return;
+    let hud = document.querySelector('.progress-hud');
+    if (!hud) {
+        hud = document.createElement('aside');
+        hud.className = 'progress-hud';
+        hud.setAttribute('aria-label', 'Tokens e progresso');
+        hud.innerHTML = `
+            <div class="progress-hud-wallet">
+                <span class="progress-hud-label">Tokens</span>
+                <strong id="progress-hud-tokens">0</strong>
+                <small id="progress-hud-token-gain" role="status" aria-live="polite" hidden></small>
+            </div>
+            <div class="progress-hud-xp">
+                <span class="progress-hud-label">XP para próximo nível</span>
+                <div class="progress-hud-xp-track" id="progress-hud-xp-bar" role="progressbar" aria-label="Progresso de XP" aria-valuemin="0" aria-valuemax="${xpPerLevel}" aria-valuenow="0">
+                    <span></span>
+                </div>
+            </div>
+            <div class="progress-hud-level">
+                <span class="progress-hud-label">Nível</span>
+                <strong id="progress-hud-level">1</strong>
+            </div>
+        `;
+        document.body.prepend(hud);
+        document.body.classList.add('has-progress-hud');
+    }
+
+    let profile = {};
+    try {
+        profile = JSON.parse(localStorage.getItem(progressProfileKey) || '{}');
+    } catch {
+        profile = {};
+    }
+    const xp = Math.max(0, Number(profile.xp) || 0);
+    const currentXp = xp % xpPerLevel;
+    const level = Math.floor(xp / xpPerLevel) + 1;
+    const storedTokens = localStorage.getItem(progressTokensKey);
+    const tokens = storedTokens === null || storedTokens === '500' ? 500000 : Number(storedTokens) || 0;
+    let tokenNotice = {};
+    try {
+        tokenNotice = JSON.parse(localStorage.getItem(tokenGainKey) || '{}');
+    } catch {
+        tokenNotice = {};
+    }
+    const tokenGain = Number(tokenNotice.amount) || 0;
+    const noticeAge = Date.now() - Number(tokenNotice.recordedAt);
+    const showTokenNotice = tokenGain > 0 && noticeAge >= 0 && noticeAge < tokenNoticeDuration;
+    const numberFormat = new Intl.NumberFormat('pt-BR');
+    const tokenDisplay = hud.querySelector('#progress-hud-tokens');
+    const tokenGainDisplay = hud.querySelector('#progress-hud-token-gain');
+    const levelDisplay = hud.querySelector('#progress-hud-level');
+    const xpBar = hud.querySelector('#progress-hud-xp-bar');
+
+    tokenDisplay.textContent = numberFormat.format(tokens);
+    tokenGainDisplay.hidden = !showTokenNotice;
+    tokenGainDisplay.textContent = showTokenNotice ? `${numberFormat.format(tokenGain)}+` : '';
+    tokenGainDisplay.classList.remove('token-gain-pop');
+    if (animateTokenGain && showTokenNotice) {
+        void tokenGainDisplay.offsetWidth;
+        tokenGainDisplay.classList.add('token-gain-pop');
+    }
+    window.clearTimeout(tokenNoticeTimer);
+    if (showTokenNotice) {
+        tokenNoticeTimer = window.setTimeout(renderProgressHud, tokenNoticeDuration - noticeAge);
+    }
+    levelDisplay.textContent = String(level);
+    xpBar.setAttribute('aria-valuenow', String(currentXp));
+    xpBar.setAttribute('aria-valuetext', `${numberFormat.format(currentXp)} de ${numberFormat.format(xpPerLevel)} XP`);
+    xpBar.firstElementChild.style.width = `${Math.round((currentXp / xpPerLevel) * 100)}%`;
+}
+
+function recordTokenGain(amount) {
+    const tokenGain = Number(amount);
+    if (!Number.isFinite(tokenGain) || tokenGain <= 0) return;
+    localStorage.setItem(tokenGainKey, JSON.stringify({ amount: tokenGain, recordedAt: Date.now() }));
+    renderProgressHud(true);
+}
+
+window.StudyQuestHud = { refresh: renderProgressHud, recordTokenGain };
+
 function applyTheme(theme) {
     const themeClasses = themeNames.map((name) => `theme-${name}`);
     document.documentElement.classList.remove(...themeClasses);
@@ -153,6 +240,7 @@ applyAvatar();
 
 document.addEventListener('DOMContentLoaded', () => {
     renderPurchasedThemes();
+    renderProgressHud();
     applyTheme(savedTheme);
     applyAvatar();
 
@@ -161,6 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
             applyTheme(input.value);
             localStorage.setItem(selectedThemeKey, input.value);
         });
+    });
+
+    window.addEventListener('storage', (event) => {
+        if ([progressProfileKey, progressTokensKey, tokenGainKey].includes(event.key)) renderProgressHud();
     });
 });
 })();

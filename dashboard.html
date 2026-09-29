@@ -8,7 +8,7 @@
     <script src="missoes.js"></script>
     <link rel="stylesheet" href="principal.css">
 </head>
-<body>
+<body class="dashboard-page">
     <div class="app">
         <div class="shell">
             <aside class="sidebar">
@@ -133,6 +133,15 @@
                         <strong>0</strong>
                         <span>Dia de sequência</span>
                     </div>
+                </section>
+
+                <section class="panel radar-panel" aria-labelledby="radar-heading">
+                    <div class="panel-header">
+                        <h3 id="radar-heading">Desempenho por disciplina e rank</h3>
+                        <span class="radar-scale">0–100%</span>
+                    </div>
+                    <div class="radar-chart" id="discipline-radar"></div>
+                    <p class="radar-note">Rank baseado no XP acumulado; 5.000 XP correspondem a 100%.</p>
                 </section>
 
                 <section class="section-grid">

@@ -71,9 +71,12 @@ function answerQuestion(card, questionIndex, answerIndex, correctIndex) {
     if (amountSolved !== questions.length) return;
     const nextCompleted = [...new Set([...completedNodes, nodeIndex])].sort((a, b) => a - b);
     localStorage.setItem(storageKey, JSON.stringify(nextCompleted));
+    window.StudyQuestMissions?.recordNodeCompleted(disciplineId, level, nodeIndex);
     document.querySelector('#lesson-feedback').textContent = 'Nó concluído! As explicações ficaram disponíveis acima.';
     const next = document.querySelector('#next-node');
     next.classList.remove('hidden');
     next.textContent = nodeIndex === 5 ? 'Voltar ao caminho →' : 'Próximo nó →';
-    next.href = `campanha.html?disciplina=${disciplineId}&level=${level}`;
+    next.href = nodeIndex === 5
+        ? `campanha.html?disciplina=${encodeURIComponent(disciplineId)}&level=${level}`
+        : `exercicios.html?disciplina=${encodeURIComponent(disciplineId)}&level=${level}&node=${nodeIndex + 1}`;
 }

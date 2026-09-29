@@ -93,6 +93,7 @@ document.querySelector('#finish-test').addEventListener('click', () => {
         return;
     }
     localStorage.setItem(`study-quest-test:${disciplineId}:level:${level}`, 'passed');
+    window.StudyQuestMissions?.recordFinalTestPassed(disciplineId, level);
     feedback.textContent = `Etapa concluída com ${score}/12! A próxima página foi desbloqueada.`;
     next.classList.remove('hidden');
     if (level < 3) {
