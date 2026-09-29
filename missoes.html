@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Quest | Missões</title>
     <script src="definicoes.js"></script>
+    <script src="missoes.js"></script>
     <link rel="stylesheet" href="principal.css" />
 </head>
 <body>
@@ -177,15 +178,5 @@
         </div>
     </div>
 
-    <script>
-        const tasks = document.querySelectorAll('.task-card');
-        tasks.forEach(task => {
-            task.addEventListener('click', () => {
-                task.classList.toggle('done');
-                const check = task.querySelector('.check');
-                check.textContent = task.classList.contains('done') ? '✓' : '';
-            });
-        });
-    </script>
 </body>
 </html>
