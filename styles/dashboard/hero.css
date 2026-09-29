@@ -155,6 +155,142 @@
     margin-bottom: 24px;
 }
 
+.radar-panel {
+    min-width: 0;
+    margin-bottom: 24px;
+}
+
+.radar-scale,
+.radar-note {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.radar-chart {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(160px, 0.45fr);
+    align-items: center;
+    gap: 18px;
+}
+
+.radar-svg {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 540px;
+    margin-inline: auto;
+    overflow: visible;
+}
+
+.radar-grid-line {
+    fill: none;
+    stroke: rgba(148, 163, 184, 0.2);
+    stroke-width: 1;
+}
+
+.radar-axis-line {
+    stroke: rgba(148, 163, 184, 0.3);
+    stroke-width: 1;
+}
+
+.radar-data-area {
+    fill: rgba(52, 211, 153, 0.2);
+    stroke: var(--green);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+}
+
+.radar-data-point {
+    fill: var(--cyan);
+    stroke: var(--card);
+    stroke-width: 2;
+}
+
+.radar-axis-label {
+    fill: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.radar-legend {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.radar-legend-item {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.radar-legend-item strong {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.radar-legend-swatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+.radar-note {
+    margin: 8px 0 0;
+}
+
+@media (max-width: 900px) {
+    .radar-chart {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .radar-legend {
+        grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    }
+}
+
+@media (max-width: 980px) {
+    body.dashboard-page .shell {
+        min-width: 0;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    body.dashboard-page .content {
+        min-width: 0;
+    }
+
+    body.dashboard-page .top-actions,
+    body.dashboard-page .mini-stats {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 620px) {
+    body.dashboard-page .content {
+        padding: 18px 16px 24px;
+    }
+
+    body.dashboard-page .top-actions {
+        width: 100%;
+    }
+
+    body.dashboard-page .search {
+        min-width: 0;
+        flex: 1 1 100%;
+    }
+
+    .radar-axis-label {
+        display: none;
+    }
+}
+
 .stat-card {
     padding: 18px 18px 14px;
 }
