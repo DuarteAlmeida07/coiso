@@ -64,6 +64,16 @@ document.querySelector('#finish-test').addEventListener('click', () => {
         return;
     }
     const score = answers.reduce((total, answer, index) => total + (answer === lesson.questions[index][2] ? 1 : 0), 0);
+    const resultsKey = `study-quest-test-results:${disciplineId}:level:${level}`;
+    let testResults;
+    try {
+        testResults = JSON.parse(localStorage.getItem(resultsKey) || '[]');
+    } catch {
+        testResults = [];
+    }
+    if (!Array.isArray(testResults)) testResults = [];
+    testResults.push({ score, total: lesson.questions.length });
+    localStorage.setItem(resultsKey, JSON.stringify(testResults));
     const minimumScore = Math.floor(lesson.questions.length * 0.75) + 1;
     const passed = score / lesson.questions.length > 0.75;
     document.querySelectorAll('.test-card').forEach((card, index) => {
