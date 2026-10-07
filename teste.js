@@ -15,30 +15,165 @@ const stageOneTestQuestions = {
 const params = new URLSearchParams(window.location.search);
 const disciplineId = params.get('disciplina') || 'portugues';
 const level = Math.max(1, Math.min(3, Number(params.get('level')) || 1));
-const lesson = { ...(testData[disciplineId] || testData.portugues), questions: level === 1 ? stageOneTestQuestions[disciplineId] : (testData[disciplineId] || testData.portugues).questions };
+const lesson = testData[disciplineId] || testData.portugues;
+const questionsPerTest = 8;
+const maximumAttempts = 2;
+const requiredScore = Math.ceil(questionsPerTest * 0.8);
+const today = getTodayKey();
+const testId = `${today}:${disciplineId}:${level}`;
+const sessionKey = 'study-quest-session';
+const loggedUser = JSON.parse(sessionStorage.getItem(sessionKey) || localStorage.getItem(sessionKey) || 'null');
+const userId = loggedUser && loggedUser.email ? loggedUser.email.trim().toLowerCase() : 'guest';
+const attemptsKey = `study-quest-test-attempts:v1:${userId}`;
+const testTicketsKey = `study-quest-test-tickets:${userId}`;
 const nodeKey = level === 1 ? `study-quest-campaign:${disciplineId}` : `study-quest-campaign:${disciplineId}:level:${level}`;
-const completedNodes = JSON.parse(localStorage.getItem(nodeKey) || '[]');
-const answers = Array(lesson.questions.length).fill(null);
+const previousTestKey = `study-quest-test:${disciplineId}:level:${level - 1}`;
 const testList = document.querySelector('#test-list');
+const finishButton = document.querySelector('#finish-test');
+const retryButton = document.querySelector('#retry-test');
+const repeatTicketButton = document.querySelector('#repeat-with-ticket');
+const nextLink = document.querySelector('#next-level');
+const feedback = document.querySelector('#test-feedback');
+const attemptMessage = document.querySelector('#test-attempts');
+const completedNodes = readCompletedNodes();
+const questionPool = level === 1
+    ? stageOneTestQuestions[disciplineId]
+    : window.advancedLessonQuestions?.[disciplineId];
+const questions = makeDailyQuestions(questionPool || []);
+const answers = Array(questions.length).fill(null);
+const allAttempts = readAttempts();
+const dailyState = allAttempts[testId] || { attempts: [], replayReady: false };
+dailyState.attempts = Array.isArray(dailyState.attempts) ? dailyState.attempts : [];
+dailyState.replayReady = dailyState.replayReady === true;
+const previousPassed = level === 1 || localStorage.getItem(previousTestKey) === 'passed';
+const stageUnlocked = completedNodes.length === 6 && previousPassed;
 
-document.querySelector('#test-eyebrow').textContent = `${lesson.name} · Teste da etapa ${level}`;
+document.querySelector('#test-label').textContent = `DESAFIO DE ${today}`;
+document.querySelector('#test-eyebrow').textContent = `${lesson.name} · Etapa ${level}`;
 document.querySelector('#test-title').textContent = `Teste de ${level === 1 ? 'Fundamentos' : level === 2 ? 'Aprofundamento' : 'Domínio'}`;
-document.querySelector('#test-subtitle').textContent = `Avaliação completa de ${lesson.name}.`;
-document.querySelector('#back-link').href = `campanha.html?disciplina=${disciplineId}&level=${level}`;
+document.querySelector('#test-heading').textContent = `Avaliação de ${lesson.name}`;
+document.querySelector('#test-subtitle').textContent = 'Perguntas diárias sobre os conteúdos concluídos nesta etapa.';
+document.querySelector('#back-link').href = `Testes.html?disciplina=${disciplineId}`;
+document.querySelector('#test-score').textContent = `0/${questionsPerTest}`;
 
-if (completedNodes.length < 6) {
-    document.querySelector('#test-feedback').textContent = 'Complete todos os nós desta etapa para desbloquear o teste.';
-    document.querySelector('#finish-test').disabled = true;
+if (!stageUnlocked) {
+    feedback.textContent = completedNodes.length < 6
+        ? `Conclua os 6 exercícios da etapa para desbloquear o teste (${completedNodes.length}/6).`
+        : 'Passe o teste da etapa anterior para desbloquear esta avaliação.';
+    finishButton.disabled = true;
+} else if (!dailyState.replayReady && (!hasRegularAttempt() || dailyState.attempts.at(-1)?.passed)) {
+    const latestAttempt = dailyState.attempts.at(-1);
+    showLockedResult(latestAttempt, latestAttempt?.passed
+        ? 'Aprovado hoje. Podes usar um bilhete para repetir esta avaliação.'
+        : 'As duas tentativas gratuitas foram usadas. Podes usar um bilhete para repetir.');
+} else if (questions.length !== questionsPerTest) {
+    feedback.textContent = 'Não foi possível carregar as perguntas desta disciplina.';
+    finishButton.disabled = true;
 } else {
+    attemptMessage.textContent = dailyState.replayReady
+        ? 'Repetição extra desbloqueada com um bilhete.'
+        : `Tentativa gratuita ${countRegularAttempts() + 1} de ${maximumAttempts}`;
     renderTest();
 }
 
+function getTodayKey() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+}
+
+function readCompletedNodes() {
+    try {
+        const nodes = JSON.parse(localStorage.getItem(nodeKey) || '[]');
+        return Array.isArray(nodes) ? [...new Set(nodes.filter((node) => Number.isInteger(node) && node >= 0 && node < 6))] : [];
+    } catch {
+        return [];
+    }
+}
+
+function readAttempts() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(attemptsKey) || '{}');
+        return saved && typeof saved === 'object' ? saved : {};
+    } catch {
+        return {};
+    }
+}
+
+function getTestTicketCount() {
+    return Math.max(0, Number(localStorage.getItem(testTicketsKey)) || 0);
+}
+
+function countRegularAttempts() {
+    return dailyState.attempts.filter((attempt) => attempt.ticketReplay !== true).length;
+}
+
+function hasRegularAttempt() {
+    return countRegularAttempts() < maximumAttempts && !dailyState.attempts.some((attempt) => attempt.passed);
+}
+
+function offerTicketReplay() {
+    const ticketCount = getTestTicketCount();
+    if (!ticketCount) return;
+    repeatTicketButton.textContent = `Usar 1 teste (${ticketCount} disponível(is)) para repetir`;
+    repeatTicketButton.classList.remove('hidden');
+}
+
+function seededRandom(seedText) {
+    let seed = 2166136261;
+    for (const character of seedText) {
+        seed ^= character.charCodeAt(0);
+        seed = Math.imul(seed, 16777619);
+    }
+    return () => {
+        seed += 0x6D2B79F5;
+        let value = seed;
+        value = Math.imul(value ^ (value >>> 15), value | 1);
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+        return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+    };
+}
+
+function shuffle(items, random) {
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(random() * (index + 1));
+        [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+    return shuffled;
+}
+
+function makeDailyQuestions(pool) {
+    const random = seededRandom(testId);
+    return shuffle(pool, random).slice(0, questionsPerTest).map(([question, options, correctIndex]) => {
+        const shuffledOptions = shuffle(options.map((text, index) => ({ text, correct: index === correctIndex })), random);
+        return [question, shuffledOptions.map((option) => option.text), shuffledOptions.findIndex((option) => option.correct)];
+    });
+}
+
+function showLockedResult(result, message) {
+    feedback.textContent = result ? `${message} Nota de hoje: ${result.score}/${result.total}.` : message;
+    attemptMessage.textContent = `Tentativas gratuitas: ${countRegularAttempts()}/${maximumAttempts} · Total: ${dailyState.attempts.length}`;
+    if (result) document.querySelector('#test-score').textContent = `${result.score}/${result.total}`;
+    finishButton.classList.add('hidden');
+    if (result?.passed) showNextStep();
+    else {
+        nextLink.href = `campanha.html?disciplina=${disciplineId}&level=${level}`;
+        nextLink.textContent = 'Rever esta etapa →';
+        nextLink.classList.remove('hidden');
+    }
+    offerTicketReplay();
+}
+
 function renderTest() {
-    lesson.questions.forEach(([question, options], questionIndex) => {
+    questions.forEach(([question, options], questionIndex) => {
         const card = document.createElement('article');
         card.className = 'test-card';
-        card.innerHTML = `<h3>Exercício ${questionIndex + 1} de 12</h3><p>${question}</p><div class="test-options"></div>`;
-        const optionList = card.querySelector('.test-options');
+        const heading = document.createElement('h3');
+        heading.textContent = `Questão ${questionIndex + 1} de ${questionsPerTest}`;
+        const prompt = document.createElement('p');
+        prompt.textContent = question;
+        const optionList = document.createElement('div');
+        optionList.className = 'test-options';
         options.forEach((option, optionIndex) => {
             const button = document.createElement('button');
             button.className = 'test-option';
@@ -47,6 +182,7 @@ function renderTest() {
             button.addEventListener('click', () => selectAnswer(questionIndex, optionIndex, button));
             optionList.appendChild(button);
         });
+        card.append(heading, prompt, optionList);
         testList.appendChild(card);
     });
 }
@@ -55,15 +191,34 @@ function selectAnswer(questionIndex, optionIndex, button) {
     answers[questionIndex] = optionIndex;
     button.parentElement.querySelectorAll('.test-option').forEach((option) => option.classList.remove('selected'));
     button.classList.add('selected');
-    document.querySelector('#test-score').textContent = `${answers.filter((answer) => answer !== null).length}/12`;
+    document.querySelector('#test-score').textContent = `${answers.filter((answer) => answer !== null).length}/${questionsPerTest}`;
 }
 
-document.querySelector('#finish-test').addEventListener('click', () => {
+function showNextStep() {
+    if (level < 3) {
+        nextLink.textContent = `Abrir etapa ${level + 1} →`;
+        nextLink.href = `campanha.html?disciplina=${disciplineId}&level=${level + 1}`;
+    } else {
+        nextLink.textContent = 'Voltar à Jornada →';
+        nextLink.href = 'jornada.html';
+    }
+    nextLink.classList.remove('hidden');
+}
+
+finishButton.addEventListener('click', () => {
     if (answers.some((answer) => answer === null)) {
-        document.querySelector('#test-feedback').textContent = 'Responda às 12 perguntas antes de corrigir o teste.';
+        feedback.textContent = `Responda às ${questionsPerTest} perguntas antes de corrigir o teste.`;
         return;
     }
-    const score = answers.reduce((total, answer, index) => total + (answer === lesson.questions[index][2] ? 1 : 0), 0);
+    const score = answers.reduce((total, answer, index) => total + (answer === questions[index][2] ? 1 : 0), 0);
+    const passed = score >= requiredScore;
+    const ticketReplay = dailyState.replayReady;
+    const attempt = { score, total: questionsPerTest, passed, ticketReplay, submittedAt: Date.now() };
+    dailyState.replayReady = false;
+    dailyState.attempts.push(attempt);
+    allAttempts[testId] = dailyState;
+    localStorage.setItem(attemptsKey, JSON.stringify(allAttempts));
+
     const resultsKey = `study-quest-test-results:${disciplineId}:level:${level}`;
     let testResults;
     try {
@@ -72,45 +227,49 @@ document.querySelector('#finish-test').addEventListener('click', () => {
         testResults = [];
     }
     if (!Array.isArray(testResults)) testResults = [];
-    testResults.push({ score, total: lesson.questions.length });
+    testResults.push({ score, total: questionsPerTest });
     localStorage.setItem(resultsKey, JSON.stringify(testResults));
-    const minimumScore = Math.floor(lesson.questions.length * 0.75) + 1;
-    const passed = score / lesson.questions.length > 0.75;
+    window.StudyQuestMissions?.recordTestScore(disciplineId, score, questionsPerTest, `${today}:${level}`);
     document.querySelectorAll('.test-card').forEach((card, index) => {
-        const options = [...card.querySelectorAll('.test-option')];
-        options.forEach((option, optionIndex) => {
+        card.querySelectorAll('.test-option').forEach((option, optionIndex) => {
             option.disabled = true;
-            if (optionIndex === lesson.questions[index][2]) option.classList.add('correct');
-            if (optionIndex === answers[index] && optionIndex !== lesson.questions[index][2]) option.classList.add('incorrect');
+            if (optionIndex === questions[index][2]) option.classList.add('correct');
+            if (optionIndex === answers[index] && optionIndex !== questions[index][2]) option.classList.add('incorrect');
         });
     });
-    document.querySelector('#test-score').textContent = `${score}/12`;
-    document.querySelector('#finish-test').classList.add('hidden');
-    const feedback = document.querySelector('#test-feedback');
-    const next = document.querySelector('#next-level');
-    if (!passed) {
-        localStorage.removeItem(nodeKey);
-        localStorage.removeItem(`study-quest-test:${disciplineId}:level:${level}`);
-        feedback.textContent = `Você acertou ${score}/${lesson.questions.length}. É preciso acertar pelo menos ${minimumScore} para avançar. As nodes desta etapa foram resetadas.`;
-        next.classList.remove('hidden');
-        if (level > 1) {
-            next.textContent = `Voltar à etapa ${level - 1} →`;
-            next.href = `campanha.html?disciplina=${disciplineId}&level=${level - 1}`;
-        } else {
-            next.textContent = 'Recomeçar etapa 1 →';
-            next.href = `campanha.html?disciplina=${disciplineId}&level=1`;
-        }
+    document.querySelector('#test-score').textContent = `${score}/${questionsPerTest}`;
+    attemptMessage.textContent = `Tentativas gratuitas: ${countRegularAttempts()}/${maximumAttempts} · Total: ${dailyState.attempts.length}`;
+    finishButton.classList.add('hidden');
+
+    if (passed) {
+        localStorage.setItem(`study-quest-test:${disciplineId}:level:${level}`, 'passed');
+        window.StudyQuestMissions?.recordFinalTestPassed(disciplineId, level);
+        feedback.textContent = `Aprovado com ${score}/${questionsPerTest}! A próxima etapa foi desbloqueada.`;
+        showNextStep();
+        offerTicketReplay();
         return;
     }
-    localStorage.setItem(`study-quest-test:${disciplineId}:level:${level}`, 'passed');
-    window.StudyQuestMissions?.recordFinalTestPassed(disciplineId, level);
-    feedback.textContent = `Etapa concluída com ${score}/12! A próxima página foi desbloqueada.`;
-    next.classList.remove('hidden');
-    if (level < 3) {
-        next.textContent = `Abrir etapa ${level + 1} →`;
-        next.href = `campanha.html?disciplina=${disciplineId}&level=${level + 1}`;
+
+    feedback.textContent = `Nota ${score}/${questionsPerTest}. É preciso acertar ${requiredScore} para passar.`;
+    if (hasRegularAttempt()) {
+        feedback.textContent += ' Tem mais uma tentativa hoje.';
+        retryButton.classList.remove('hidden');
+        retryButton.addEventListener('click', () => window.location.reload(), { once: true });
     } else {
-        next.textContent = 'Voltar à jornada →';
-        next.href = 'jornada.html';
+        feedback.textContent += ' Reveja o conteúdo e volte amanhã.';
+        nextLink.href = `campanha.html?disciplina=${disciplineId}&level=${level}`;
+        nextLink.textContent = 'Rever esta etapa →';
+        nextLink.classList.remove('hidden');
     }
+    offerTicketReplay();
+});
+
+repeatTicketButton.addEventListener('click', () => {
+    const ticketCount = getTestTicketCount();
+    if (!ticketCount) return;
+    localStorage.setItem(testTicketsKey, String(ticketCount - 1));
+    dailyState.replayReady = true;
+    allAttempts[testId] = dailyState;
+    localStorage.setItem(attemptsKey, JSON.stringify(allAttempts));
+    window.location.reload();
 });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Study Quest | Teste final</title>
+    <title>Study Quest | Testes diários</title>
     <script src="definicoes.js"></script>
     <link rel="stylesheet" href="principal.css" />
     <link rel="stylesheet" href="styles/exercises.css" />
@@ -12,16 +12,18 @@
 <body>
     <div class="app"><div class="shell">
         <aside class="sidebar"><div class="brand"><div class="brand-mark">S</div><h2>Study Quest</h2></div><nav class="nav">
-            <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a><a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a><a href="jornada.html" class="nav-item active"><span class="nav-icon">📚</span> Jornada</a><a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a><a href="loja.html" class="nav-item"><span class="nav-icon">🛍️</span> Loja</a><a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a><a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
+            <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span> Dashboard</a><a href="missoes.html" class="nav-item"><span class="nav-icon">🎯</span> Missões</a><a href="jornada.html" class="nav-item"><span class="nav-icon">📚</span> Jornada</a><a href="Testes.html" class="nav-item active"><span class="nav-icon">✓</span> Testes</a><a href="ranking.html" class="nav-item"><span class="nav-icon">🏆</span> Ranking</a><a href="loja.html" class="nav-item"><span class="nav-icon">🛍️</span> Loja</a><a href="avatar.html" class="nav-item"><span class="nav-icon">◉</span> Meu avatar</a><a href="definicoes.html" class="nav-item"><span class="nav-icon">⚙</span> Definições</a>
         </nav><div class="side-card"><div class="mini">XP total</div><strong>0</strong><span>+0 esta semana</span></div></aside>
         <main class="content test-content">
-            <header class="topbar"><div class="title-block"><div class="eyebrow" id="test-eyebrow">Teste final</div><h1 id="test-title">Avaliação da etapa</h1><p id="test-subtitle">Revise todos os exercícios antes de avançar.</p></div><a class="ghost-btn" id="back-link" href="campanha.html">Voltar ao caminho</a></header>
-            <section class="test-intro"><div><span class="discipline-kicker">DESAFIO DE SÍNTESE</span><h2>Teste final da etapa</h2><p>São 12 perguntas sobre os exercícios desta página. Você precisa de 80% para desbloquear a próxima etapa.</p></div><strong id="test-score">0/12</strong></section>
+            <header class="topbar"><div class="title-block"><div class="eyebrow" id="test-eyebrow">Avaliação diária</div><h1 id="test-title">Teste da etapa</h1><p id="test-subtitle">Perguntas sobre o conteúdo que já concluiu.</p></div><a class="ghost-btn" id="back-link" href="Testes.html">Voltar aos testes</a></header>
+            <section class="test-intro"><div><span class="discipline-kicker" id="test-label">DESAFIO DE HOJE</span><h2 id="test-heading">Teste da etapa</h2><p>Responda a 8 perguntas. É preciso acertar pelo menos 7. Se a nota for baixa, pode tentar mais uma vez hoje; o item Teste permite repetir a avaliação.</p></div><strong id="test-score">0/8</strong></section>
+            <p class="test-attempts" id="test-attempts" aria-live="polite"></p>
             <section class="test-list" id="test-list"></section>
-            <div class="test-footer"><p id="test-feedback" aria-live="polite"></p><button class="primary-btn" id="finish-test" type="button">Corrigir teste</button><a class="primary-btn hidden" id="next-level" href="#">Avançar de etapa →</a></div>
+            <div class="test-footer"><p id="test-feedback" aria-live="polite"></p><button class="primary-btn" id="finish-test" type="button">Corrigir teste</button><button class="primary-btn hidden" id="retry-test" type="button">Fazer recuperação</button><button class="primary-btn hidden" id="repeat-with-ticket" type="button">Usar bilhete para repetir</button><a class="primary-btn hidden" id="next-level" href="#">Avançar de etapa →</a></div>
         </main>
     </div></div>
     <script src="missoes.js"></script>
+    <script src="conteudos-avancados.js"></script>
     <script src="teste.js"></script>
 </body>
 </html>

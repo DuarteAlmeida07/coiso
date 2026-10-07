@@ -4,6 +4,7 @@ const loggedUser = JSON.parse(sessionStorage.getItem(sessionKey) || localStorage
 const userId = loggedUser && loggedUser.email ? loggedUser.email.trim().toLowerCase() : 'guest';
 const dailyKey = `study-quest-daily-missions:v3:${userId}`;
 const profileKey = `study-quest-profile:${userId}`;
+const testScoresKey = `study-quest-test-scores:v1:${userId}`;
 const tokensKey = `study-quest-tokens:${userId}`;
 const dailyMissionCount = 3;
 const missionCatalogVersion = 5;
@@ -149,7 +150,20 @@ function getCampaignProgress(disciplineId) {
             completedCount += new Set(savedNodes.filter((nodeIndex) => Number.isInteger(nodeIndex) && nodeIndex >= 0 && nodeIndex < 6)).size;
         }
     }
-    return Math.round((completedCount / 18) * 100);
+    const campaignProgress = Math.round((completedCount / 18) * 100);
+    const testProgress = Number(readJson(testScoresKey, {})[disciplineId]?.percent) || 0;
+    return Math.min(100, campaignProgress + Math.round(testProgress * 0.2));
+}
+
+function recordTestScore(disciplineId, score, total, testId) {
+    if (!disciplines.includes(disciplineId) || !Number.isFinite(score) || !Number.isFinite(total) || total <= 0) return;
+    const percent = Math.round((score / total) * 100);
+    const scores = readJson(testScoresKey, {});
+    const previousPercent = Number(scores[disciplineId]?.percent) || 0;
+    if (percent <= previousPercent) return;
+    scores[disciplineId] = { score, total, percent, testId, recordedAt: Date.now() };
+    localStorage.setItem(testScoresKey, JSON.stringify(scores));
+    renderRadarChart();
 }
 
 function renderRadarChart() {
@@ -461,6 +475,6 @@ function recordFinalTestPassed(disciplineId, level) {
     render();
 }
 
-window.StudyQuestMissions = { catalog: missionCatalog, refresh: render, recordNodeCompleted, recordFinalTestPassed };
+window.StudyQuestMissions = { catalog: missionCatalog, refresh: render, recordNodeCompleted, recordFinalTestPassed, recordTestScore };
 document.addEventListener('DOMContentLoaded', render);
 })();
