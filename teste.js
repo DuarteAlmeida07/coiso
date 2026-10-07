@@ -218,8 +218,18 @@ finishButton.addEventListener('click', () => {
     dailyState.attempts.push(attempt);
     allAttempts[testId] = dailyState;
     localStorage.setItem(attemptsKey, JSON.stringify(allAttempts));
-    window.StudyQuestMissions?.recordTestScore(disciplineId, score, questionsPerTest, `${today}:${level}`);
 
+    const resultsKey = `study-quest-test-results:${disciplineId}:level:${level}`;
+    let testResults;
+    try {
+        testResults = JSON.parse(localStorage.getItem(resultsKey) || '[]');
+    } catch {
+        testResults = [];
+    }
+    if (!Array.isArray(testResults)) testResults = [];
+    testResults.push({ score, total: questionsPerTest });
+    localStorage.setItem(resultsKey, JSON.stringify(testResults));
+    window.StudyQuestMissions?.recordTestScore(disciplineId, score, questionsPerTest, `${today}:${level}`);
     document.querySelectorAll('.test-card').forEach((card, index) => {
         card.querySelectorAll('.test-option').forEach((option, optionIndex) => {
             option.disabled = true;
