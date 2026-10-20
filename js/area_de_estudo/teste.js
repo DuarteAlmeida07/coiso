@@ -53,7 +53,7 @@ document.querySelector('#test-eyebrow').textContent = `${lesson.name} · Etapa $
 document.querySelector('#test-title').textContent = `Teste de ${level === 1 ? 'Fundamentos' : level === 2 ? 'Aprofundamento' : 'Domínio'}`;
 document.querySelector('#test-heading').textContent = `Avaliação de ${lesson.name}`;
 document.querySelector('#test-subtitle').textContent = 'Perguntas diárias sobre os conteúdos concluídos nesta etapa.';
-document.querySelector('#back-link').href = `Testes.html?disciplina=${disciplineId}`;
+document.querySelector('#back-link').href = `../menu_html/testes.html?disciplina=${disciplineId}`;
 document.querySelector('#test-score').textContent = `0/${questionsPerTest}`;
 
 if (!stageUnlocked) {
@@ -200,7 +200,7 @@ function showNextStep() {
         nextLink.href = `campanha.html?disciplina=${disciplineId}&level=${level + 1}`;
     } else {
         nextLink.textContent = 'Voltar à Jornada →';
-        nextLink.href = 'jornada.html';
+        nextLink.href = '../menu_html/jornada.html';
     }
     nextLink.classList.remove('hidden');
 }

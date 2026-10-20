@@ -1,8 +1,8 @@
 const disciplineCatalog = [
-    { id: 'portugues', name: 'Português', description: 'Leitura, escrita e interpretação.', image: 'imagens/disciplinas/portugues.svg' },
-    { id: 'matematica', name: 'Matemática', description: 'Números, problemas e raciocínio.', image: 'imagens/disciplinas/matematica.svg' },
-    { id: 'ingles', name: 'Inglês', description: 'Vocabulário e comunicação.', image: 'imagens/disciplinas/ingles.svg' },
-    { id: 'historia', name: 'História', description: 'Povos, fontes e acontecimentos.', image: 'imagens/disciplinas/historia.svg' }
+    { id: 'portugues', name: 'Português', description: 'Leitura, escrita e interpretação.', image: '../../imagens/disciplinas/portugues.svg' },
+    { id: 'matematica', name: 'Matemática', description: 'Números, problemas e raciocínio.', image: '../../imagens/disciplinas/matematica.svg' },
+    { id: 'ingles', name: 'Inglês', description: 'Vocabulário e comunicação.', image: '../../imagens/disciplinas/ingles.svg' },
+    { id: 'historia', name: 'História', description: 'Povos, fontes e acontecimentos.', image: '../../imagens/disciplinas/historia.svg' }
 ];
 const stageNames = ['Fundamentos', 'Aprofundamento', 'Domínio'];
 const loggedUser = JSON.parse(sessionStorage.getItem('study-quest-session') || localStorage.getItem('study-quest-session') || 'null');
@@ -58,7 +58,7 @@ function getStageNodes(disciplineId, level) {
 function makeDisciplineCard(discipline) {
     const card = document.createElement('a');
     card.className = 'discipline-card';
-    card.href = `Testes.html?disciplina=${discipline.id}`;
+    card.href = `testes.html?disciplina=${discipline.id}`;
     const image = document.createElement('img');
     image.src = discipline.image;
     image.alt = `Ilustração de ${discipline.name}`;
@@ -121,7 +121,7 @@ function makeStageCard(discipline, level, attempts) {
     const action = document.createElement(canStart ? 'a' : 'button');
     action.className = 'primary-btn test-stage-action';
     if (action instanceof HTMLAnchorElement) {
-        action.href = `teste.html?disciplina=${discipline.id}&level=${level}`;
+        action.href = `../area_de_estudo/teste.html?disciplina=${discipline.id}&level=${level}`;
         action.textContent = dailyState.replayReady ? 'Continuar repetição' : latestAttempt?.passed || regularAttempts >= 2 ? 'Abrir para repetir' : regularAttempts === 1 ? 'Fazer recuperação' : 'Iniciar teste';
     } else {
         action.type = 'button';
@@ -142,7 +142,7 @@ function render() {
     document.querySelector('#tests-title').textContent = `Testes · ${selectedDiscipline.name}`;
     document.querySelector('#tests-subtitle').textContent = 'Escolha uma etapa que já concluiu para fazer a avaliação diária.';
     document.querySelector('#tests-prompt').textContent = `Desafios de ${selectedDiscipline.name}`;
-    document.querySelector('#tests-back').href = 'Testes.html';
+    document.querySelector('#tests-back').href = 'testes.html';
     document.querySelector('#tests-back').textContent = '← Disciplinas';
     disciplineGrid.classList.add('hidden');
     stageList.classList.remove('hidden');

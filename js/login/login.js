@@ -82,7 +82,7 @@ forms['login-form'].addEventListener('submit', (event) => {
     }));
     showMessage(forms['login-form'], 'Login realizado com sucesso!');
     window.setTimeout(() => {
-        window.location.href = 'dashboard.html';
+        window.location.href = '../menu_html/dashboard.html';
     }, 500);
 });
 
