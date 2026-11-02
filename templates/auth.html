@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Study Quest | {% if mode == 'register' %}Criar conta{% else %}Entrar{% endif %}{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('styles', filename='auth.css') }}">{% endblock %}
+{% block auth_content %}
+<section class="auth-shell">
+    <aside class="brand-panel">
+        <div class="brand"><div class="brand-mark">S</div><h1>Study Quest</h1></div>
+        <div class="hero-copy"><div class="eyebrow">⚡ Aprenda melhor</div><h2>Transforme estudo em rotina.</h2><p>Organize metas, acompanhe progresso e mantenha a motivação com missões, desafios e conquistas diárias.</p></div>
+    </aside>
+    <section class="form-panel">
+        <div class="form-card">
+            <nav class="form-tabs">
+                <a class="tab-btn {% if mode != 'register' %}active{% endif %}" href="{{ url_for('login') }}">Entrar</a>
+                <a class="tab-btn {% if mode == 'register' %}active{% endif %}" href="{{ url_for('login', mode='register') }}">Cadastrar</a>
+            </nav>
+            {% if mode == 'register' %}
+            <form method="post" action="{{ url_for('login') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="action" value="register">
+                <div class="input-row">
+                    <label class="form-group">Nome<input name="name" type="text" required autocomplete="given-name"></label>
+                    <label class="form-group">Sobrenome<input name="lastname" type="text" required autocomplete="family-name"></label>
+                </div>
+                <label class="form-group">E-mail<input name="email" type="email" value="{{ email|default('') }}" required autocomplete="email"></label>
+                <div class="input-row">
+                    <label class="form-group">Senha<input name="password" type="password" minlength="6" required autocomplete="new-password"></label>
+                    <label class="form-group">Confirmar senha<input name="confirm" type="password" minlength="6" required autocomplete="new-password"></label>
+                </div>
+                <label class="checkbox"><input type="checkbox" name="terms" required><span>Aceito os termos</span></label>
+                <button class="primary-btn" type="submit">Criar conta</button>
+            </form>
+            {% else %}
+            <form method="post" action="{{ url_for('login') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="action" value="login">
+                <label class="form-group">E-mail<input name="email" type="email" value="{{ email|default('') }}" required autocomplete="email"></label>
+                <label class="form-group">Senha<input name="password" type="password" required autocomplete="current-password"></label>
+                <label class="checkbox"><input type="checkbox" name="remember"><span>Lembrar de mim</span></label>
+                <button class="primary-btn" type="submit">Entrar na conta</button>
+                <p class="panel-description">Ainda não tens conta? <a href="{{ url_for('login', mode='register') }}">Criar uma conta</a></p>
+            </form>
+            {% endif %}
+        </div>
+    </section>
+</section>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Study Quest | Erro {{ error.code }}{% endblock %}
+{% block heading %}Não foi possível concluir{% endblock %}
+{% block content %}
+<section class="panel">
+    <h2>Erro {{ error.code }}</h2>
+    <p>{{ error.description }}</p>
+    <a class="primary-btn" href="/html/menu_html/dashboard.html">Voltar ao dashboard</a>
+</section>
+{% endblock %}
