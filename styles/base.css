@@ -24,6 +24,262 @@
     --button-border: rgba(96, 165, 250, 0.35);
     --button-shadow: rgba(96, 165, 250, 0.26);
     --button-focus: rgba(96, 165, 250, 0.48);
+    --shell-bg: rgba(15, 23, 42, 0.68);
+    --sidebar-bg: rgba(15, 23, 42, 0.9);
+    --content-bg: rgba(15, 23, 42, 0.6);
+    --surface-card: rgba(23, 32, 51, 0.92);
+    --surface-control: rgba(15, 23, 42, 0.82);
+    --surface-subtle: rgba(148, 163, 184, 0.06);
+}
+
+.theme-dawn {
+    color-scheme: light;
+    --bg: #e8eff8;
+    --bg-2: #f8fafc;
+    --panel: rgba(255, 255, 255, 0.94);
+    --panel-soft: #f1f5f9;
+    --card: #ffffff;
+    --card-2: #e2e8f0;
+    --line: rgba(71, 85, 105, 0.2);
+    --text: #172033;
+    --muted: #526176;
+    --blue: #2563eb;
+    --indigo: #7c3aed;
+    --cyan: #0284c7;
+    --green: #059669;
+    --shell-bg: rgba(248, 250, 252, 0.94);
+    --sidebar-bg: rgba(241, 245, 249, 0.98);
+    --content-bg: rgba(255, 255, 255, 0.84);
+    --surface-card: rgba(255, 255, 255, 0.94);
+    --surface-control: rgba(241, 245, 249, 0.96);
+    --surface-subtle: rgba(71, 85, 105, 0.06);
+    --button-start: #2563eb;
+    --button-end: #7c3aed;
+    --button-soft-bg: rgba(37, 99, 235, 0.1);
+    --button-soft-hover: rgba(37, 99, 235, 0.17);
+    --button-border: rgba(37, 99, 235, 0.32);
+    --button-focus: rgba(37, 99, 235, 0.35);
+}
+
+.theme-aurora {
+    --bg: #071b2b;
+    --bg-2: #0c2e3b;
+    --shell-bg: rgba(7, 27, 43, 0.82);
+    --sidebar-bg: rgba(6, 24, 38, 0.94);
+    --content-bg: rgba(7, 27, 43, 0.72);
+    --surface-card: rgba(11, 42, 58, 0.94);
+    --surface-control: rgba(5, 25, 39, 0.92);
+    --surface-subtle: rgba(94, 234, 212, 0.07);
+    --cyan: #5eead4;
+    --blue: #38bdf8;
+    --indigo: #34d399;
+    --button-start: #0ea5e9;
+    --button-end: #10b981;
+}
+
+.theme-solar {
+    --bg: #24140b;
+    --bg-2: #3a1d0b;
+    --shell-bg: rgba(36, 20, 11, 0.84);
+    --sidebar-bg: rgba(29, 16, 9, 0.95);
+    --content-bg: rgba(36, 20, 11, 0.72);
+    --surface-card: rgba(58, 31, 17, 0.94);
+    --surface-control: rgba(35, 18, 10, 0.92);
+    --surface-subtle: rgba(251, 191, 36, 0.07);
+    --blue: #fb923c;
+    --cyan: #fbbf24;
+    --indigo: #fb7185;
+    --button-start: #f97316;
+    --button-end: #eab308;
+}
+
+.theme-ocean {
+    --bg: #08243b;
+    --bg-2: #0c3b59;
+    --shell-bg: rgba(8, 36, 59, 0.84);
+    --sidebar-bg: rgba(6, 29, 49, 0.95);
+    --content-bg: rgba(8, 36, 59, 0.72);
+    --surface-card: rgba(13, 54, 80, 0.94);
+    --surface-control: rgba(7, 31, 51, 0.92);
+    --surface-subtle: rgba(45, 212, 191, 0.07);
+    --blue: #38bdf8;
+    --cyan: #2dd4bf;
+    --indigo: #0ea5e9;
+    --button-start: #0284c7;
+    --button-end: #0d9488;
+}
+
+.theme-forest {
+    --bg: #092316;
+    --bg-2: #123722;
+    --shell-bg: rgba(9, 35, 22, 0.86);
+    --sidebar-bg: rgba(7, 28, 17, 0.95);
+    --content-bg: rgba(9, 35, 22, 0.74);
+    --surface-card: rgba(17, 57, 34, 0.94);
+    --surface-control: rgba(8, 30, 18, 0.92);
+    --surface-subtle: rgba(74, 222, 128, 0.07);
+    --blue: #4ade80;
+    --cyan: #86efac;
+    --indigo: #22c55e;
+    --button-start: #16a34a;
+    --button-end: #0d9488;
+}
+
+.theme-coral {
+    --bg: #30121d;
+    --bg-2: #4b1b2c;
+    --shell-bg: rgba(48, 18, 29, 0.84);
+    --sidebar-bg: rgba(38, 13, 23, 0.95);
+    --content-bg: rgba(48, 18, 29, 0.72);
+    --surface-card: rgba(69, 27, 43, 0.94);
+    --surface-control: rgba(39, 14, 25, 0.92);
+    --surface-subtle: rgba(251, 113, 133, 0.07);
+    --blue: #fb7185;
+    --cyan: #f9a8d4;
+    --indigo: #f472b6;
+    --button-start: #f43f5e;
+    --button-end: #db2777;
+}
+
+.theme-graphite {
+    --bg: #17191d;
+    --bg-2: #24272d;
+    --shell-bg: rgba(23, 25, 29, 0.88);
+    --sidebar-bg: rgba(18, 20, 23, 0.96);
+    --content-bg: rgba(23, 25, 29, 0.76);
+    --surface-card: rgba(39, 42, 47, 0.96);
+    --surface-control: rgba(21, 23, 27, 0.94);
+    --surface-subtle: rgba(203, 213, 225, 0.07);
+    --blue: #cbd5e1;
+    --cyan: #e2e8f0;
+    --indigo: #94a3b8;
+    --button-start: #64748b;
+    --button-end: #475569;
+}
+
+.theme-sakura {
+    --bg: #2d1728;
+    --bg-2: #49243c;
+    --shell-bg: rgba(45, 23, 40, 0.84);
+    --sidebar-bg: rgba(37, 17, 32, 0.95);
+    --content-bg: rgba(45, 23, 40, 0.72);
+    --surface-card: rgba(67, 33, 57, 0.94);
+    --surface-control: rgba(38, 18, 33, 0.92);
+    --surface-subtle: rgba(249, 168, 212, 0.07);
+    --blue: #f9a8d4;
+    --cyan: #fbcfe8;
+    --indigo: #c084fc;
+    --button-start: #ec4899;
+    --button-end: #a855f7;
+}
+
+.theme-volcanic {
+    --bg: #25120e;
+    --bg-2: #3a1a12;
+    --shell-bg: rgba(37, 18, 14, 0.86);
+    --sidebar-bg: rgba(29, 13, 10, 0.96);
+    --content-bg: rgba(37, 18, 14, 0.74);
+    --surface-card: rgba(58, 28, 19, 0.94);
+    --surface-control: rgba(31, 14, 10, 0.92);
+    --surface-subtle: rgba(251, 146, 60, 0.07);
+    --blue: #fb923c;
+    --cyan: #fdba74;
+    --indigo: #ef4444;
+    --button-start: #ea580c;
+    --button-end: #dc2626;
+}
+
+.theme-crystal {
+    color-scheme: light;
+    --bg: #e8f3fa;
+    --bg-2: #f7fbff;
+    --panel: rgba(255, 255, 255, 0.94);
+    --panel-soft: #e8f2f8;
+    --card: #ffffff;
+    --card-2: #dcecf5;
+    --line: rgba(51, 91, 120, 0.2);
+    --text: #173044;
+    --muted: #526d80;
+    --blue: #0284c7;
+    --cyan: #0891b2;
+    --indigo: #6366f1;
+    --green: #059669;
+    --shell-bg: rgba(247, 251, 255, 0.94);
+    --sidebar-bg: rgba(232, 242, 248, 0.98);
+    --content-bg: rgba(255, 255, 255, 0.84);
+    --surface-card: rgba(255, 255, 255, 0.95);
+    --surface-control: rgba(232, 242, 248, 0.96);
+    --surface-subtle: rgba(51, 91, 120, 0.06);
+    --button-start: #0284c7;
+    --button-end: #6366f1;
+    --button-soft-bg: rgba(2, 132, 199, 0.1);
+    --button-soft-hover: rgba(2, 132, 199, 0.17);
+    --button-border: rgba(2, 132, 199, 0.32);
+    --button-focus: rgba(2, 132, 199, 0.35);
+}
+
+.theme-glacial {
+    --bg: #102a3c;
+    --bg-2: #1b4058;
+    --shell-bg: rgba(16, 42, 60, 0.84);
+    --sidebar-bg: rgba(12, 34, 50, 0.95);
+    --content-bg: rgba(16, 42, 60, 0.72);
+    --surface-card: rgba(25, 62, 85, 0.94);
+    --surface-control: rgba(12, 35, 52, 0.92);
+    --surface-subtle: rgba(125, 211, 252, 0.07);
+    --blue: #7dd3fc;
+    --cyan: #bae6fd;
+    --indigo: #93c5fd;
+    --button-start: #0ea5e9;
+    --button-end: #3b82f6;
+}
+
+.theme-eclipse {
+    --bg: #100b23;
+    --bg-2: #1b1235;
+    --shell-bg: rgba(16, 11, 35, 0.86);
+    --sidebar-bg: rgba(12, 8, 28, 0.96);
+    --content-bg: rgba(16, 11, 35, 0.74);
+    --surface-card: rgba(32, 22, 59, 0.94);
+    --surface-control: rgba(14, 9, 31, 0.92);
+    --surface-subtle: rgba(167, 139, 250, 0.08);
+    --blue: #a78bfa;
+    --cyan: #c4b5fd;
+    --indigo: #7c3aed;
+    --button-start: #7c3aed;
+    --button-end: #4f46e5;
+}
+
+.theme-nebula {
+    --bg: #1d1036;
+    --bg-2: #30154a;
+    --shell-bg: rgba(29, 16, 54, 0.84);
+    --sidebar-bg: rgba(23, 11, 45, 0.96);
+    --content-bg: rgba(29, 16, 54, 0.72);
+    --surface-card: rgba(49, 25, 76, 0.94);
+    --surface-control: rgba(25, 13, 47, 0.92);
+    --surface-subtle: rgba(192, 132, 252, 0.08);
+    --blue: #c084fc;
+    --cyan: #f0abfc;
+    --indigo: #a855f7;
+    --button-start: #9333ea;
+    --button-end: #db2777;
+    --surface-card: rgba(29, 43, 82, 0.94);
+    --surface-control: rgba(15, 24, 53, 0.92);
+    --surface-subtle: rgba(165, 180, 252, 0.08);
+}
+
+.theme-celestial {
+    --bg: #111b3b;
+    --bg-2: #1c2a52;
+    --shell-bg: rgba(17, 27, 59, 0.84);
+    --sidebar-bg: rgba(13, 21, 47, 0.96);
+    --content-bg: rgba(17, 27, 59, 0.72);
+    --blue: #a5b4fc;
+    --cyan: #fde68a;
+    --indigo: #818cf8;
+    --button-start: #6366f1;
+    --button-end: #d97706;
 }
 
 * { box-sizing: border-box; }
@@ -31,6 +287,63 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: radial-gradient(circle at top, #1e293b 0%, var(--bg) 35%, #020817 100%);
+    background: radial-gradient(circle at top, var(--bg-2) 0%, var(--bg) 100%);
+    color: var(--text);
+}
+
+html[class^="theme-"] .panel,
+html[class^="theme-"] .hero-card,
+html[class^="theme-"] .task-card,
+html[class^="theme-"] .mission-card,
+html[class^="theme-"] .stat-card,
+html[class^="theme-"] .rank-box,
+html[class^="theme-"] .trail-progress-item,
+html[class^="theme-"] .leader-item,
+html[class^="theme-"] .inventory-list li,
+html[class^="theme-"] .account-status,
+html[class^="theme-"] .campaign-summary,
+html[class^="theme-"] .campaign-panel,
+html[class^="theme-"] .exercise-panel,
+html[class^="theme-"] .lesson-header,
+html[class^="theme-"] .exercise-card,
+html[class^="theme-"] .test-intro,
+html[class^="theme-"] .test-card,
+html[class^="theme-"] .test-stage-card,
+html[class^="theme-"] .discipline-card,
+html[class^="theme-"] .avatar-border-option,
+html[class^="theme-"] .theme-option {
+    border-color: var(--line);
+    background: var(--surface-card);
+    color: var(--text);
+}
+
+html[class^="theme-"] .field input,
+html[class^="theme-"] .field select,
+html[class^="theme-"] .form-group input,
+html[class^="theme-"] .answer-btn,
+html[class^="theme-"] .option-btn,
+html[class^="theme-"] .test-option {
+    border-color: var(--line);
+    background-color: var(--surface-control);
+    color: var(--text);
+}
+
+html[class^="theme-"] .mini-stat,
+html[class^="theme-"] .trail-progress-item,
+html[class^="theme-"] .leader-item,
+html[class^="theme-"] .inventory-list li,
+html[class^="theme-"] .toggle-row {
+    border-color: var(--line);
+    background-color: var(--surface-subtle);
+}
+
+html[class^="theme-"] .panel h2,
+html[class^="theme-"] .panel h3,
+html[class^="theme-"] .hero-card h2,
+html[class^="theme-"] .campaign-panel h2,
+html[class^="theme-"] .exercise-panel h2,
+html[class^="theme-"] .lesson-header h2,
+html[class^="theme-"] .test-card h3,
+html[class^="theme-"] .test-stage-card h2 {
     color: var(--text);
 }
