@@ -1,12 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Quest | Disciplinas</title>
-    <script src="../../js/menu_js/definicoes.js"></script>
-    <link rel="stylesheet" href="../../styles/principal.css" />
-    <link rel="stylesheet" href="../../styles/disciplines.css" />
+    <script src="{% static 'meu_site/js/menu_js/definicoes.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'meu_site/css/principal.css' %}" />
+    <link rel="stylesheet" href="{% static 'meu_site/css/disciplines.css' %}" />
 </head>
 <body>
     <div class="app">
@@ -41,10 +42,10 @@
                     <p>Cada campanha tem desafios curtos conectados em uma trilha de evolução.</p>
                 </section>
                 <section class="discipline-grid" aria-label="Disciplinas">
-                    <a class="discipline-card" href="campanha.html?disciplina=portugues"><img src="../../imagens/disciplinas/portugues.svg" alt="Caderno de Português" /><div><span class="discipline-kicker">Campanha 01</span><h3>Português</h3><p>Palavras, leitura e interpretação.</p></div><span class="card-arrow">→</span></a>
-                    <a class="discipline-card" href="campanha.html?disciplina=matematica"><img src="../../imagens/disciplinas/matematica.svg" alt="Quadro de Matemática" /><div><span class="discipline-kicker">Campanha 02</span><h3>Matemática</h3><p>Raciocínio, números e desafios.</p></div><span class="card-arrow">→</span></a>
-                    <a class="discipline-card" href="campanha.html?disciplina=ingles"><img src="../../imagens/disciplinas/ingles.svg" alt="Globo de Inglês" /><div><span class="discipline-kicker">Campanha 03</span><h3>Inglês</h3><p>Vocabulário e comunicação.</p></div><span class="card-arrow">→</span></a>
-                    <a class="discipline-card" href="campanha.html?disciplina=historia"><img src="../../imagens/disciplinas/historia.svg" alt="Templo de História" /><div><span class="discipline-kicker">Campanha 04</span><h3>História</h3><p>Ideias, povos e grandes momentos.</p></div><span class="card-arrow">→</span></a>
+                    <a class="discipline-card" href="campanha.html?disciplina=portugues"><img src="{% static 'meu_site/images/disciplinas/portugues.svg' %}" alt="Caderno de Português" /><div><span class="discipline-kicker">Campanha 01</span><h3>Português</h3><p>Palavras, leitura e interpretação.</p></div><span class="card-arrow">→</span></a>
+                    <a class="discipline-card" href="campanha.html?disciplina=matematica"><img src="{% static 'meu_site/images/disciplinas/matematica.svg' %}" alt="Quadro de Matemática" /><div><span class="discipline-kicker">Campanha 02</span><h3>Matemática</h3><p>Raciocínio, números e desafios.</p></div><span class="card-arrow">→</span></a>
+                    <a class="discipline-card" href="campanha.html?disciplina=ingles"><img src="{% static 'meu_site/images/disciplinas/ingles.svg' %}" alt="Globo de Inglês" /><div><span class="discipline-kicker">Campanha 03</span><h3>Inglês</h3><p>Vocabulário e comunicação.</p></div><span class="card-arrow">→</span></a>
+                    <a class="discipline-card" href="campanha.html?disciplina=historia"><img src="{% static 'meu_site/images/disciplinas/historia.svg' %}" alt="Templo de História" /><div><span class="discipline-kicker">Campanha 04</span><h3>História</h3><p>Ideias, povos e grandes momentos.</p></div><span class="card-arrow">→</span></a>
                 </section>
             </main>
         </div>

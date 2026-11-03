@@ -1,13 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Quest | Testes diários</title>
-    <script src="../../js/menu_js/definicoes.js"></script>
-    <link rel="stylesheet" href="../../styles/principal.css" />
-    <link rel="stylesheet" href="../../styles/exercises.css" />
-    <link rel="stylesheet" href="../../styles/test.css" />
+    <script src="{% static 'meu_site/js/menu_js/definicoes.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'meu_site/css/principal.css' %}" />
+    <link rel="stylesheet" href="{% static 'meu_site/css/exercises.css' %}" />
+    <link rel="stylesheet" href="{% static 'meu_site/css/test.css' %}" />
 </head>
 <body>
     <div class="app"><div class="shell">
@@ -22,8 +23,8 @@
             <div class="test-footer"><p id="test-feedback" aria-live="polite"></p><button class="primary-btn" id="finish-test" type="button">Corrigir teste</button><button class="primary-btn hidden" id="retry-test" type="button">Fazer recuperação</button><button class="primary-btn hidden" id="repeat-with-ticket" type="button">Usar bilhete para repetir</button><a class="primary-btn hidden" id="next-level" href="#">Avançar de etapa →</a></div>
         </main>
     </div></div>
-    <script src="../../js/menu_js/missoes.js"></script>
-    <script src="../../js/area_de_estudo/conteudos-avancados.js"></script>
-    <script src="../../js/area_de_estudo/teste.js"></script>
+    <script src="{% static 'meu_site/js/menu_js/missoes.js' %}"></script>
+    <script src="{% static 'meu_site/js/area_de_estudo/conteudos-avancados.js' %}"></script>
+    <script src="{% static 'meu_site/js/area_de_estudo/teste.js' %}"></script>
 </body>
 </html>

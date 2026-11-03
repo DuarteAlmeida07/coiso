@@ -1,8 +1,8 @@
 const disciplineCatalog = [
-    { id: 'portugues', name: 'Português', description: 'Leitura, escrita e interpretação.', image: '../../imagens/disciplinas/portugues.svg' },
-    { id: 'matematica', name: 'Matemática', description: 'Números, problemas e raciocínio.', image: '../../imagens/disciplinas/matematica.svg' },
-    { id: 'ingles', name: 'Inglês', description: 'Vocabulário e comunicação.', image: '../../imagens/disciplinas/ingles.svg' },
-    { id: 'historia', name: 'História', description: 'Povos, fontes e acontecimentos.', image: '../../imagens/disciplinas/historia.svg' }
+    { id: 'portugues', name: 'Português', description: 'Leitura, escrita e interpretação.', image: '/static/meu_site/images/disciplinas/portugues.svg' },
+    { id: 'matematica', name: 'Matemática', description: 'Números, problemas e raciocínio.', image: '/static/meu_site/images/disciplinas/matematica.svg' },
+    { id: 'ingles', name: 'Inglês', description: 'Vocabulário e comunicação.', image: '/static/meu_site/images/disciplinas/ingles.svg' },
+    { id: 'historia', name: 'História', description: 'Povos, fontes e acontecimentos.', image: '/static/meu_site/images/disciplinas/historia.svg' }
 ];
 const stageNames = ['Fundamentos', 'Aprofundamento', 'Domínio'];
 const loggedUser = JSON.parse(sessionStorage.getItem('study-quest-session') || localStorage.getItem('study-quest-session') || 'null');
