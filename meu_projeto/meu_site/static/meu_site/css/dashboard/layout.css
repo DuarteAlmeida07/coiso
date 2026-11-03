@@ -7,7 +7,7 @@
 .shell {
     display: grid;
     grid-template-columns: 260px 1fr;
-    background: rgba(15, 23, 42, 0.68);
+    background: var(--shell-bg);
     border: 1px solid var(--line);
     border-radius: 28px;
     box-shadow: var(--shadow);
@@ -16,7 +16,7 @@
 }
 
 .sidebar {
-    background: rgba(15, 23, 42, 0.9);
+    background: var(--sidebar-bg);
     border-right: 1px solid var(--line);
     padding: 26px 18px;
 }
@@ -27,6 +27,14 @@
     gap: 12px;
     margin-bottom: 28px;
     padding: 8px 10px;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.brand:visited,
+.brand:hover,
+.brand:active {
+    color: var(--text);
 }
 
 .brand-mark {
@@ -107,7 +115,7 @@
 }
 
 .content {
-    background: rgba(15, 23, 42, 0.6);
+    background: var(--content-bg);
     padding: 22px 28px 30px;
 }
 

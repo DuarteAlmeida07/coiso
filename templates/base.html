@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR" class="theme-{{ profile.settings.theme if profile else 'night' }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Study Quest{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('styles', filename='principal.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+{% if current_user %}
+<div class="app">
+    <div class="shell">
+        <aside class="sidebar">
+            <a class="brand" href="/html/menu_html/dashboard.html"><span class="brand-mark">S</span><h2>Study Quest</h2></a>
+            <nav class="nav" aria-label="Navegação principal">
+                <a class="nav-item {% if page == 'dashboard' %}active{% endif %}" href="/html/menu_html/dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
+                <a class="nav-item {% if page == 'missions' %}active{% endif %}" href="/html/menu_html/missoes.html"><span class="nav-icon">🎯</span>Missões</a>
+                <a class="nav-item {% if page in ['journey', 'disciplines', 'campaign', 'exercises'] %}active{% endif %}" href="/html/menu_html/jornada.html"><span class="nav-icon">📚</span>Jornada</a>
+                <a class="nav-item {% if page in ['tests', 'final_test'] %}active{% endif %}" href="/html/menu_html/testes.html"><span class="nav-icon">✓</span>Testes</a>
+                <a class="nav-item {% if page == 'ranking' %}active{% endif %}" href="/html/menu_html/ranking.html"><span class="nav-icon">🏆</span>Ranking</a>
+                <a class="nav-item {% if page == 'shop' %}active{% endif %}" href="/html/menu_html/loja.html"><span class="nav-icon">🛍️</span>Loja</a>
+                <a class="nav-item {% if page == 'avatar' %}active{% endif %}" href="/html/menu_html/avatar.html"><span class="nav-icon">◉</span>Meu avatar</a>
+                <a class="nav-item {% if page == 'settings' %}active{% endif %}" href="/html/menu_html/definicoes.html"><span class="nav-icon">⚙</span>Definições</a>
+            </nav>
+            <div class="side-card">
+                {% if page == 'shop' %}
+                <div class="mini">Tokens disponíveis</div><strong>{{ "{:,.0f}".format(token_balance).replace(",", ".") }}</strong><span>Complete missões para ganhar mais</span>
+                {% else %}
+                <div class="mini">XP total</div><strong>{{ profile.xp }}</strong><span>Nível {{ level_number }}</span>
+                {% endif %}
+            </div>
+            <form action="{{ url_for('logout') }}" method="post" class="logout-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="ghost-btn" type="submit">Terminar sessão</button>
+            </form>
+        </aside>
+        <main class="content {% if page == 'tests' %}test-content{% endif %}">
+            {% if page != 'tests' %}
+            <header class="topbar">
+                <div class="title-block">
+                    <h1>{% block heading %}Olá, {{ current_user.name }}{% endblock %}</h1>
+                    {% if page == 'avatar' %}<p>Crie uma identidade que acompanhe sua jornada de estudos.</p>
+                    {% elif page == 'settings' %}<p>Personalize o Study Quest para estudar do seu jeito.</p>
+                    {% elif page == 'shop' %}<p>Use seus Tokens para desbloquear cosméticos e personalizar sua jornada.</p>
+                    {% elif page == 'dashboard' %}<p>Acompanhe sua jornada de estudos.</p>{% endif %}
+                </div>
+                <div class="account-status">
+                    <div class="account-metric"><span>Tokens</span><strong>{{ "{:,.0f}".format(token_balance).replace(",", ".") }}</strong></div>
+                    <div class="account-xp"><span>XP para próximo nível</span><div class="account-xp-bar"><span style="width: {{ level_xp / 5 }}%"></span></div></div>
+                    <div class="account-metric"><span>Nível</span><strong>{{ level_number }}</strong></div>
+                </div>
+            </header>
+            {% endif %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="flash-list" role="status">
+                    {% for category, message in messages %}<p class="flash {{ category }}">{{ message }}</p>{% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</div>
+    {% block page_overlays %}{% endblock %}
+    {% else %}
+<main class="content auth-content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-list" role="status">
+            {% for category, message in messages %}<p class="flash {{ category }}">{{ message }}</p>{% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    {% block auth_content %}{% endblock %}
+</main>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,4672 @@
+{
+  "disciplines": [
+    {
+      "id": "portugues",
+      "name": "Português",
+      "subtitle": "Construa sua leitura, uma palavra de cada vez.",
+      "lesson_nodes": [
+        "Palavras",
+        "Classes gramaticais",
+        "Sentidos",
+        "Verbos",
+        "Pontuação",
+        "Interpretação"
+      ]
+    },
+    {
+      "id": "matematica",
+      "name": "Matemática",
+      "subtitle": "Transforme cada problema em um próximo passo.",
+      "lesson_nodes": [
+        "Adição",
+        "Multiplicação",
+        "Divisão",
+        "Equações",
+        "Frações",
+        "Desafio final"
+      ]
+    },
+    {
+      "id": "ingles",
+      "name": "Inglês",
+      "subtitle": "Unlock new words and make your voice travel.",
+      "lesson_nodes": [
+        "First words",
+        "Greetings",
+        "People",
+        "Daily life",
+        "Colors",
+        "Final quest"
+      ]
+    },
+    {
+      "id": "historia",
+      "name": "História",
+      "subtitle": "Viaje pelo tempo e conecte os acontecimentos.",
+      "lesson_nodes": [
+        "Antiguidade",
+        "Civilizações",
+        "Invenções",
+        "Territórios",
+        "Fontes",
+        "Era moderna"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "name": "Fundamentos",
+      "nodes": [
+        "Entrada",
+        "Base",
+        "Prática",
+        "Desafio",
+        "Revisão",
+        "Síntese"
+      ]
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "name": "Fundamentos",
+      "nodes": [
+        "Entrada",
+        "Base",
+        "Prática",
+        "Desafio",
+        "Revisão",
+        "Síntese"
+      ]
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "name": "Fundamentos",
+      "nodes": [
+        "Entrada",
+        "Base",
+        "Prática",
+        "Desafio",
+        "Revisão",
+        "Síntese"
+      ]
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "name": "Fundamentos",
+      "nodes": [
+        "Entrada",
+        "Base",
+        "Prática",
+        "Desafio",
+        "Revisão",
+        "Síntese"
+      ]
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "name": "Aprofundamento",
+      "nodes": [
+        "Conexões",
+        "Análise",
+        "Estratégia",
+        "Aplicação",
+        "Revisão crítica",
+        "Síntese avançada"
+      ]
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "name": "Aprofundamento",
+      "nodes": [
+        "Conexões",
+        "Análise",
+        "Estratégia",
+        "Aplicação",
+        "Revisão crítica",
+        "Síntese avançada"
+      ]
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "name": "Aprofundamento",
+      "nodes": [
+        "Conexões",
+        "Análise",
+        "Estratégia",
+        "Aplicação",
+        "Revisão crítica",
+        "Síntese avançada"
+      ]
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "name": "Aprofundamento",
+      "nodes": [
+        "Conexões",
+        "Análise",
+        "Estratégia",
+        "Aplicação",
+        "Revisão crítica",
+        "Síntese avançada"
+      ]
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "name": "Domínio",
+      "nodes": [
+        "Problema",
+        "Investigação",
+        "Hipóteses",
+        "Evidências",
+        "Argumentação",
+        "Domínio"
+      ]
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "name": "Domínio",
+      "nodes": [
+        "Problema",
+        "Investigação",
+        "Hipóteses",
+        "Evidências",
+        "Argumentação",
+        "Domínio"
+      ]
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "name": "Domínio",
+      "nodes": [
+        "Problema",
+        "Investigação",
+        "Hipóteses",
+        "Evidências",
+        "Argumentação",
+        "Domínio"
+      ]
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "name": "Domínio",
+      "nodes": [
+        "Problema",
+        "Investigação",
+        "Hipóteses",
+        "Evidências",
+        "Argumentação",
+        "Domínio"
+      ]
+    }
+  ],
+  "lesson_questions": [
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Qual é o plural de “cidadão”?",
+      "options": [
+        "Cidadões",
+        "Cidadãos",
+        "Cidadães"
+      ],
+      "correct_index": 1,
+      "explanation": "A forma correta é “cidadãos”."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Qual palavra é um substantivo?",
+      "options": [
+        "Correr",
+        "Bonito",
+        "Cidade"
+      ],
+      "correct_index": 2,
+      "explanation": "“Cidade” nomeia um lugar."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Qual é um sinônimo de “feliz”?",
+      "options": [
+        "Alegre",
+        "Distante",
+        "Pequeno"
+      ],
+      "correct_index": 0,
+      "explanation": "“Alegre” tem sentido parecido com “feliz”."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Em “A menina leu”, qual é o verbo?",
+      "options": [
+        "A",
+        "menina",
+        "leu"
+      ],
+      "correct_index": 2,
+      "explanation": "“Leu” indica uma ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Qual frase está pontuada corretamente?",
+      "options": [
+        "Vamos estudar?",
+        "Vamos estudar.",
+        "Vamos estudar,"
+      ],
+      "correct_index": 1,
+      "explanation": "O ponto final encerra uma frase declarativa."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "O que fazemos ao interpretar um texto?",
+      "options": [
+        "Decoramos palavras",
+        "Construímos sentidos",
+        "Contamos letras"
+      ],
+      "correct_index": 1,
+      "explanation": "Interpretar é relacionar informações."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "Qual palavra indica uma ação?",
+      "options": [
+        "Janela",
+        "Cantar",
+        "Azul"
+      ],
+      "correct_index": 1,
+      "explanation": "“Cantar” é um verbo."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Qual é o antônimo de “alto”?",
+      "options": [
+        "Baixo",
+        "Grande",
+        "Largo"
+      ],
+      "correct_index": 0,
+      "explanation": "“Baixo” expressa a ideia oposta."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Que sinal termina uma pergunta?",
+      "options": [
+        "Vírgula",
+        "Interrogação",
+        "Dois-pontos"
+      ],
+      "correct_index": 1,
+      "explanation": "O ponto de interrogação termina perguntas."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "Qual palavra está correta?",
+      "options": [
+        "Exceção",
+        "Excessão",
+        "Eceção"
+      ],
+      "correct_index": 0,
+      "explanation": "A grafia correta é “exceção”."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "O título ajuda a identificar o...",
+      "options": [
+        "Assunto",
+        "Tamanho",
+        "Autor apenas"
+      ],
+      "correct_index": 0,
+      "explanation": "O título dá uma pista sobre o assunto."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Uma informação explícita aparece...",
+      "options": [
+        "Escondida",
+        "Claramente no texto",
+        "Só na ilustração"
+      ],
+      "correct_index": 1,
+      "explanation": "Ela está escrita de forma clara e direta."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Quanto é 7 + 8?",
+      "options": [
+        "14",
+        "15",
+        "16"
+      ],
+      "correct_index": 1,
+      "explanation": "7 + 8 = 15."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Quanto é 12 + 9?",
+      "options": [
+        "19",
+        "20",
+        "21"
+      ],
+      "correct_index": 2,
+      "explanation": "12 + 9 = 21."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Quanto é 9 × 3?",
+      "options": [
+        "27",
+        "21",
+        "18"
+      ],
+      "correct_index": 0,
+      "explanation": "9 + 9 + 9 = 27."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Quanto é 6 × 4?",
+      "options": [
+        "20",
+        "24",
+        "28"
+      ],
+      "correct_index": 1,
+      "explanation": "Seis grupos de quatro formam 24."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Quanto é 20 ÷ 5?",
+      "options": [
+        "4",
+        "5",
+        "15"
+      ],
+      "correct_index": 0,
+      "explanation": "20 dividido em cinco grupos resulta em 4."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Quanto é 36 ÷ 6?",
+      "options": [
+        "5",
+        "6",
+        "7"
+      ],
+      "correct_index": 1,
+      "explanation": "Como 6 × 6 = 36, 36 ÷ 6 = 6."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "Se x + 5 = 12, qual é x?",
+      "options": [
+        "5",
+        "7",
+        "17"
+      ],
+      "correct_index": 1,
+      "explanation": "Subtraindo 5, x = 7."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Se y - 3 = 10, qual é y?",
+      "options": [
+        "7",
+        "13",
+        "30"
+      ],
+      "correct_index": 1,
+      "explanation": "Somando 3, y = 13."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Qual fração representa metade?",
+      "options": [
+        "1/3",
+        "1/2",
+        "2/3"
+      ],
+      "correct_index": 1,
+      "explanation": "Duas partes iguais formam 1/2."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "Qual é maior?",
+      "options": [
+        "1/4",
+        "3/4",
+        "2/4"
+      ],
+      "correct_index": 1,
+      "explanation": "Com o mesmo denominador, 3/4 é maior."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Quanto é 100 - 37?",
+      "options": [
+        "63",
+        "67",
+        "73"
+      ],
+      "correct_index": 0,
+      "explanation": "100 - 37 = 63."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Perímetro de um quadrado de lado 4?",
+      "options": [
+        "8",
+        "12",
+        "16"
+      ],
+      "correct_index": 2,
+      "explanation": "São quatro lados de 4: o perímetro é 16."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Meaning of “book”?",
+      "options": [
+        "Livro",
+        "Mesa",
+        "Janela"
+      ],
+      "correct_index": 0,
+      "explanation": "“Book” significa livro."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Meaning of “school”?",
+      "options": [
+        "Casa",
+        "Escola",
+        "Rua"
+      ],
+      "correct_index": 1,
+      "explanation": "“School” significa escola."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Choose the greeting:",
+      "options": [
+        "Good morning",
+        "Good sleep",
+        "Morning bye"
+      ],
+      "correct_index": 0,
+      "explanation": "“Good morning” significa bom dia."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "How do you say “obrigado”?",
+      "options": [
+        "Please",
+        "Thanks",
+        "Sorry"
+      ],
+      "correct_index": 1,
+      "explanation": "“Thanks” significa obrigado."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Plural of “child”?",
+      "options": [
+        "Childs",
+        "Children",
+        "Childes"
+      ],
+      "correct_index": 1,
+      "explanation": "“Children” é o plural irregular de child."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Complete: “She ___ my friend.”",
+      "options": [
+        "am",
+        "is",
+        "are"
+      ],
+      "correct_index": 1,
+      "explanation": "Com she usamos is."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "Complete: “I ___ a student.”",
+      "options": [
+        "am",
+        "is",
+        "are"
+      ],
+      "correct_index": 0,
+      "explanation": "Com I usamos am."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Choose the correct sentence:",
+      "options": [
+        "They is happy",
+        "They are happy",
+        "They am happy"
+      ],
+      "correct_index": 1,
+      "explanation": "Com they usamos are."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "What color is “blue”?",
+      "options": [
+        "Vermelho",
+        "Verde",
+        "Azul"
+      ],
+      "correct_index": 2,
+      "explanation": "“Blue” significa azul."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "What color is “yellow”?",
+      "options": [
+        "Amarelo",
+        "Roxo",
+        "Preto"
+      ],
+      "correct_index": 0,
+      "explanation": "“Yellow” significa amarelo."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Opposite of “big”?",
+      "options": [
+        "Small",
+        "Long",
+        "Fast"
+      ],
+      "correct_index": 0,
+      "explanation": "“Small” é o oposto de big."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Opposite of “hot”?",
+      "options": [
+        "Cold",
+        "Warm",
+        "Tall"
+      ],
+      "correct_index": 0,
+      "explanation": "“Cold” é o oposto de hot."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Onde surgiu a democracia antiga?",
+      "options": [
+        "Atenas",
+        "Roma",
+        "Paris"
+      ],
+      "correct_index": 0,
+      "explanation": "A democracia surgiu em Atenas."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Onde ficam as pirâmides de Gizé?",
+      "options": [
+        "Egito",
+        "Grécia",
+        "México"
+      ],
+      "correct_index": 0,
+      "explanation": "As pirâmides ficam no Egito."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Qual rio foi essencial para o Egito?",
+      "options": [
+        "Nilo",
+        "Amazonas",
+        "Tejo"
+      ],
+      "correct_index": 0,
+      "explanation": "O Nilo fornecia água e terras férteis."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Qual cidade é associada ao Império Romano?",
+      "options": [
+        "Roma",
+        "Londres",
+        "Pequim"
+      ],
+      "correct_index": 0,
+      "explanation": "Roma foi o centro do Império Romano."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Qual invenção marcou a imprensa?",
+      "options": [
+        "Bússola",
+        "Prensa de Gutenberg",
+        "Telescópio"
+      ],
+      "correct_index": 1,
+      "explanation": "A prensa permitiu reproduzir livros em escala."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Quem aperfeiçoou a lâmpada elétrica?",
+      "options": [
+        "Thomas Edison",
+        "Galileu",
+        "Aristóteles"
+      ],
+      "correct_index": 0,
+      "explanation": "Edison aperfeiçoou um modelo comercial."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "Em que continente fica o Brasil?",
+      "options": [
+        "África",
+        "Europa",
+        "América do Sul"
+      ],
+      "correct_index": 2,
+      "explanation": "O Brasil fica na América do Sul."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "O que é uma fronteira?",
+      "options": [
+        "Limite territorial",
+        "Profissão",
+        "Calendário"
+      ],
+      "correct_index": 0,
+      "explanation": "Fronteira é o limite entre territórios."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "O que é uma fonte histórica?",
+      "options": [
+        "Evidência do passado",
+        "Previsão",
+        "Regra matemática"
+      ],
+      "correct_index": 0,
+      "explanation": "Objetos e relatos podem ser fontes históricas."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "Uma fotografia antiga pode ser fonte...",
+      "options": [
+        "Histórica",
+        "Apenas literária",
+        "Sempre científica"
+      ],
+      "correct_index": 0,
+      "explanation": "Ela registra vestígios de uma época."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Onde começou a Revolução Industrial?",
+      "options": [
+        "Inglaterra",
+        "Japão",
+        "Brasil"
+      ],
+      "correct_index": 0,
+      "explanation": "Ela começou na Inglaterra."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "O que as máquinas mudaram nas fábricas?",
+      "options": [
+        "A produção",
+        "Os oceanos",
+        "O alfabeto"
+      ],
+      "correct_index": 0,
+      "explanation": "As máquinas transformaram a produção."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Em “Apesar da chuva, a turma saiu”, “apesar” indica:",
+      "options": [
+        "Causa",
+        "Concessão",
+        "Conclusão"
+      ],
+      "correct_index": 1,
+      "explanation": "Apresenta um obstáculo que não impede a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Qual conclusão é coerente?",
+      "options": [
+        "Estudou, portanto melhorou.",
+        "Estudou, porém não abriu o livro.",
+        "Estudou, porque talvez."
+      ],
+      "correct_index": 0,
+      "explanation": "“Portanto” liga uma ideia à sua consequência."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Em “A diretora comunicou a decisão”, o sujeito é:",
+      "options": [
+        "A decisão",
+        "A diretora",
+        "A comunicação"
+      ],
+      "correct_index": 1,
+      "explanation": "A diretora pratica a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Qual é a voz passiva de “A equipa venceu o jogo”?",
+      "options": [
+        "A equipa venceu o jogo.",
+        "O jogo foi vencido pela equipa.",
+        "A equipa está vencendo."
+      ],
+      "correct_index": 1,
+      "explanation": "Na voz passiva, o foco passa para quem recebe a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "“Mar de pessoas” é uma:",
+      "options": [
+        "Metáfora",
+        "Enumeração",
+        "Pergunta"
+      ],
+      "correct_index": 0,
+      "explanation": "Cria uma imagem por aproximação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "A rua estava molhada e havia guarda-chuvas. Podemos inferir que:",
+      "options": [
+        "Choveu ou chovia.",
+        "Era certamente verão.",
+        "Ninguém saiu."
+      ],
+      "correct_index": 0,
+      "explanation": "As pistas indicam chuva."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "“Ela leu para compreender” equivale a:",
+      "options": [
+        "Ela leu a fim de compreender.",
+        "Ela leu, embora compreendesse.",
+        "Ela leu, mas não compreendeu."
+      ],
+      "correct_index": 0,
+      "explanation": "“A fim de” indica finalidade."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "As vírgulas em “O projeto, que foi premiado, será ampliado”:",
+      "options": [
+        "Acrescentam uma explicação.",
+        "Indicam uma ordem.",
+        "Contradizem o projeto."
+      ],
+      "correct_index": 0,
+      "explanation": "O trecho entre vírgulas explica o projeto."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Qual argumento defende melhor a leitura diária?",
+      "options": [
+        "Todos gostam de ler.",
+        "A prática amplia vocabulário e compreensão.",
+        "Ler é sempre fácil."
+      ],
+      "correct_index": 1,
+      "explanation": "Um argumento forte apresenta uma razão relacionada."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "Um bom resumo deve:",
+      "options": [
+        "Preservar a ideia central.",
+        "Repetir todos os detalhes.",
+        "Falar de outro assunto."
+      ],
+      "correct_index": 0,
+      "explanation": "O resumo mantém a ideia principal."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Em um texto argumentativo, a tese é:",
+      "options": [
+        "A posição defendida.",
+        "Um exemplo isolado.",
+        "A lista de personagens."
+      ],
+      "correct_index": 0,
+      "explanation": "A tese é a ideia que o autor sustenta."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "O que reforça a credibilidade de uma notícia?",
+      "options": [
+        "Dados e fonte identificada.",
+        "Muitos pontos de exclamação.",
+        "Uma opinião anónima."
+      ],
+      "correct_index": 0,
+      "explanation": "Dados verificáveis apoiam a notícia."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Em “Apesar da chuva, a turma saiu”, “apesar” indica:",
+      "options": [
+        "Causa",
+        "Concessão",
+        "Conclusão"
+      ],
+      "correct_index": 1,
+      "explanation": "Apresenta um obstáculo que não impede a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Qual conclusão é coerente?",
+      "options": [
+        "Estudou, portanto melhorou.",
+        "Estudou, porém não abriu o livro.",
+        "Estudou, porque talvez."
+      ],
+      "correct_index": 0,
+      "explanation": "“Portanto” liga uma ideia à sua consequência."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Em “A diretora comunicou a decisão”, o sujeito é:",
+      "options": [
+        "A decisão",
+        "A diretora",
+        "A comunicação"
+      ],
+      "correct_index": 1,
+      "explanation": "A diretora pratica a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Qual é a voz passiva de “A equipa venceu o jogo”?",
+      "options": [
+        "A equipa venceu o jogo.",
+        "O jogo foi vencido pela equipa.",
+        "A equipa está vencendo."
+      ],
+      "correct_index": 1,
+      "explanation": "Na voz passiva, o foco passa para quem recebe a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "“Mar de pessoas” é uma:",
+      "options": [
+        "Metáfora",
+        "Enumeração",
+        "Pergunta"
+      ],
+      "correct_index": 0,
+      "explanation": "Cria uma imagem por aproximação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "A rua estava molhada e havia guarda-chuvas. Podemos inferir que:",
+      "options": [
+        "Choveu ou chovia.",
+        "Era certamente verão.",
+        "Ninguém saiu."
+      ],
+      "correct_index": 0,
+      "explanation": "As pistas indicam chuva."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "“Ela leu para compreender” equivale a:",
+      "options": [
+        "Ela leu a fim de compreender.",
+        "Ela leu, embora compreendesse.",
+        "Ela leu, mas não compreendeu."
+      ],
+      "correct_index": 0,
+      "explanation": "“A fim de” indica finalidade."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "As vírgulas em “O projeto, que foi premiado, será ampliado”:",
+      "options": [
+        "Acrescentam uma explicação.",
+        "Indicam uma ordem.",
+        "Contradizem o projeto."
+      ],
+      "correct_index": 0,
+      "explanation": "O trecho entre vírgulas explica o projeto."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Qual argumento defende melhor a leitura diária?",
+      "options": [
+        "Todos gostam de ler.",
+        "A prática amplia vocabulário e compreensão.",
+        "Ler é sempre fácil."
+      ],
+      "correct_index": 1,
+      "explanation": "Um argumento forte apresenta uma razão relacionada."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "Um bom resumo deve:",
+      "options": [
+        "Preservar a ideia central.",
+        "Repetir todos os detalhes.",
+        "Falar de outro assunto."
+      ],
+      "correct_index": 0,
+      "explanation": "O resumo mantém a ideia principal."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Em um texto argumentativo, a tese é:",
+      "options": [
+        "A posição defendida.",
+        "Um exemplo isolado.",
+        "A lista de personagens."
+      ],
+      "correct_index": 0,
+      "explanation": "A tese é a ideia que o autor sustenta."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "O que reforça a credibilidade de uma notícia?",
+      "options": [
+        "Dados e fonte identificada.",
+        "Muitos pontos de exclamação.",
+        "Uma opinião anónima."
+      ],
+      "correct_index": 0,
+      "explanation": "Dados verificáveis apoiam a notícia."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "80 euros com 15% de desconto custam:",
+      "options": [
+        "68 euros",
+        "72 euros",
+        "92 euros"
+      ],
+      "correct_index": 0,
+      "explanation": "15% de 80 é 12; 80 - 12 = 68 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "18 acertos em 24 questões representam:",
+      "options": [
+        "60%",
+        "75%",
+        "80%"
+      ],
+      "correct_index": 1,
+      "explanation": "18/24 = 0,75, ou 75%."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "“O dobro de um número mais 5” é:",
+      "options": [
+        "2x + 5",
+        "x + 10",
+        "2(x + 5)"
+      ],
+      "correct_index": 0,
+      "explanation": "O dobro é 2x; depois somamos 5."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Se 3x - 4 = 17, x vale:",
+      "options": [
+        "5",
+        "7",
+        "9"
+      ],
+      "correct_index": 1,
+      "explanation": "Somando 4 e dividindo por 3, x = 7."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Área de um retângulo de 8 m por 3,5 m:",
+      "options": [
+        "11,5 m²",
+        "28 m²",
+        "32 m²"
+      ],
+      "correct_index": 1,
+      "explanation": "Área = base × altura = 28 m²."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Ângulo suplementar a 65°:",
+      "options": [
+        "25°",
+        "115°",
+        "245°"
+      ],
+      "correct_index": 1,
+      "explanation": "Ângulos suplementares somam 180°."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "Mediana de 3, 7, 8, 10 e 14:",
+      "options": [
+        "7",
+        "8",
+        "10"
+      ],
+      "correct_index": 1,
+      "explanation": "O valor central é 8."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Se 4 cadernos custam 18 euros, 10 custam:",
+      "options": [
+        "36 euros",
+        "45 euros",
+        "54 euros"
+      ],
+      "correct_index": 1,
+      "explanation": "Cada caderno custa 4,50 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Fração equivalente a 3/5:",
+      "options": [
+        "6/10",
+        "5/8",
+        "9/20"
+      ],
+      "correct_index": 0,
+      "explanation": "Multiplicar por 2 gera 6/10."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "3/4 de litro correspondem a:",
+      "options": [
+        "250 ml",
+        "500 ml",
+        "750 ml"
+      ],
+      "correct_index": 2,
+      "explanation": "Três quartos de 1000 ml são 750 ml."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Aumento de 50 para 65 representa:",
+      "options": [
+        "15%",
+        "30%",
+        "35%"
+      ],
+      "correct_index": 1,
+      "explanation": "O aumento de 15 é 30% de 50."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Num mapa, 1 cm representa 5 km. 7 cm representam:",
+      "options": [
+        "12 km",
+        "35 km",
+        "40 km"
+      ],
+      "correct_index": 1,
+      "explanation": "7 × 5 = 35 km."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "80 euros com 15% de desconto custam:",
+      "options": [
+        "68 euros",
+        "72 euros",
+        "92 euros"
+      ],
+      "correct_index": 0,
+      "explanation": "15% de 80 é 12; 80 - 12 = 68 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "18 acertos em 24 questões representam:",
+      "options": [
+        "60%",
+        "75%",
+        "80%"
+      ],
+      "correct_index": 1,
+      "explanation": "18/24 = 0,75, ou 75%."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "“O dobro de um número mais 5” é:",
+      "options": [
+        "2x + 5",
+        "x + 10",
+        "2(x + 5)"
+      ],
+      "correct_index": 0,
+      "explanation": "O dobro é 2x; depois somamos 5."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Se 3x - 4 = 17, x vale:",
+      "options": [
+        "5",
+        "7",
+        "9"
+      ],
+      "correct_index": 1,
+      "explanation": "Somando 4 e dividindo por 3, x = 7."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Área de um retângulo de 8 m por 3,5 m:",
+      "options": [
+        "11,5 m²",
+        "28 m²",
+        "32 m²"
+      ],
+      "correct_index": 1,
+      "explanation": "Área = base × altura = 28 m²."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Ângulo suplementar a 65°:",
+      "options": [
+        "25°",
+        "115°",
+        "245°"
+      ],
+      "correct_index": 1,
+      "explanation": "Ângulos suplementares somam 180°."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "Mediana de 3, 7, 8, 10 e 14:",
+      "options": [
+        "7",
+        "8",
+        "10"
+      ],
+      "correct_index": 1,
+      "explanation": "O valor central é 8."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Se 4 cadernos custam 18 euros, 10 custam:",
+      "options": [
+        "36 euros",
+        "45 euros",
+        "54 euros"
+      ],
+      "correct_index": 1,
+      "explanation": "Cada caderno custa 4,50 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Fração equivalente a 3/5:",
+      "options": [
+        "6/10",
+        "5/8",
+        "9/20"
+      ],
+      "correct_index": 0,
+      "explanation": "Multiplicar por 2 gera 6/10."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "3/4 de litro correspondem a:",
+      "options": [
+        "250 ml",
+        "500 ml",
+        "750 ml"
+      ],
+      "correct_index": 2,
+      "explanation": "Três quartos de 1000 ml são 750 ml."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Aumento de 50 para 65 representa:",
+      "options": [
+        "15%",
+        "30%",
+        "35%"
+      ],
+      "correct_index": 1,
+      "explanation": "O aumento de 15 é 30% de 50."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Num mapa, 1 cm representa 5 km. 7 cm representam:",
+      "options": [
+        "12 km",
+        "35 km",
+        "40 km"
+      ],
+      "correct_index": 1,
+      "explanation": "7 × 5 = 35 km."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Choose the correct past sentence:",
+      "options": [
+        "She visited the museum yesterday.",
+        "She visit the museum yesterday.",
+        "She visiting yesterday."
+      ],
+      "correct_index": 0,
+      "explanation": "The regular past of visit is visited."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Complete: “If I study, I ___ pass.”",
+      "options": [
+        "will",
+        "would yesterday",
+        "am"
+      ],
+      "correct_index": 0,
+      "explanation": "The first conditional uses will."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Which sentence is present perfect?",
+      "options": [
+        "They have finished the task.",
+        "They finish yesterday.",
+        "They finishing now."
+      ],
+      "correct_index": 0,
+      "explanation": "Have finished connects a past action to the present."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Best connector: “It was late, ___ we continued.”",
+      "options": [
+        "but",
+        "because",
+        "so that"
+      ],
+      "correct_index": 0,
+      "explanation": "But expresses contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "“You must wear a helmet” expresses:",
+      "options": [
+        "Obligation",
+        "Past time",
+        "A place"
+      ],
+      "correct_index": 0,
+      "explanation": "Must indicates obligation."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Correct comparative:",
+      "options": [
+        "This is more difficult than the first.",
+        "This is difficulter the first.",
+        "This difficult than first."
+      ],
+      "correct_index": 0,
+      "explanation": "Long adjectives use more + adjective."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "“Although” introduces:",
+      "options": [
+        "Contrast",
+        "Numbers",
+        "A definition"
+      ],
+      "correct_index": 0,
+      "explanation": "Although connects contrasting ideas."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Complete: “The book ___ by many students.”",
+      "options": [
+        "was read",
+        "readed",
+        "is reading"
+      ],
+      "correct_index": 0,
+      "explanation": "The passive uses was + past participle."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Polite request for clarification:",
+      "options": [
+        "Could you explain that, please?",
+        "Explain now!",
+        "What this?"
+      ],
+      "correct_index": 0,
+      "explanation": "Could you... please? is polite."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "“However” usually signals:",
+      "options": [
+        "Contrast",
+        "Cause",
+        "An example only"
+      ],
+      "correct_index": 0,
+      "explanation": "However marks contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Best summary: “Tom was tired, but he finished.”",
+      "options": [
+        "Tom finished despite being tired.",
+        "Tom abandoned it.",
+        "Tom was never tired."
+      ],
+      "correct_index": 0,
+      "explanation": "Despite expresses the same contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "A conclusion should:",
+      "options": [
+        "Synthesize the ideas.",
+        "Add unrelated characters.",
+        "Remove the argument."
+      ],
+      "correct_index": 0,
+      "explanation": "A conclusion brings the main ideas together."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Choose the correct past sentence:",
+      "options": [
+        "She visited the museum yesterday.",
+        "She visit the museum yesterday.",
+        "She visiting yesterday."
+      ],
+      "correct_index": 0,
+      "explanation": "The regular past of visit is visited."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "Complete: “If I study, I ___ pass.”",
+      "options": [
+        "will",
+        "would yesterday",
+        "am"
+      ],
+      "correct_index": 0,
+      "explanation": "The first conditional uses will."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Which sentence is present perfect?",
+      "options": [
+        "They have finished the task.",
+        "They finish yesterday.",
+        "They finishing now."
+      ],
+      "correct_index": 0,
+      "explanation": "Have finished connects a past action to the present."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Best connector: “It was late, ___ we continued.”",
+      "options": [
+        "but",
+        "because",
+        "so that"
+      ],
+      "correct_index": 0,
+      "explanation": "But expresses contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "“You must wear a helmet” expresses:",
+      "options": [
+        "Obligation",
+        "Past time",
+        "A place"
+      ],
+      "correct_index": 0,
+      "explanation": "Must indicates obligation."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "Correct comparative:",
+      "options": [
+        "This is more difficult than the first.",
+        "This is difficulter the first.",
+        "This difficult than first."
+      ],
+      "correct_index": 0,
+      "explanation": "Long adjectives use more + adjective."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "“Although” introduces:",
+      "options": [
+        "Contrast",
+        "Numbers",
+        "A definition"
+      ],
+      "correct_index": 0,
+      "explanation": "Although connects contrasting ideas."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Complete: “The book ___ by many students.”",
+      "options": [
+        "was read",
+        "readed",
+        "is reading"
+      ],
+      "correct_index": 0,
+      "explanation": "The passive uses was + past participle."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Polite request for clarification:",
+      "options": [
+        "Could you explain that, please?",
+        "Explain now!",
+        "What this?"
+      ],
+      "correct_index": 0,
+      "explanation": "Could you... please? is polite."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "“However” usually signals:",
+      "options": [
+        "Contrast",
+        "Cause",
+        "An example only"
+      ],
+      "correct_index": 0,
+      "explanation": "However marks contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "Best summary: “Tom was tired, but he finished.”",
+      "options": [
+        "Tom finished despite being tired.",
+        "Tom abandoned it.",
+        "Tom was never tired."
+      ],
+      "correct_index": 0,
+      "explanation": "Despite expresses the same contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "A conclusion should:",
+      "options": [
+        "Synthesize the ideas.",
+        "Add unrelated characters.",
+        "Remove the argument."
+      ],
+      "correct_index": 0,
+      "explanation": "A conclusion brings the main ideas together."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Agricultural surpluses helped ancient societies because they:",
+      "options": [
+        "Supported specialization and cities.",
+        "Ended all conflicts.",
+        "Stopped trade."
+      ],
+      "correct_index": 0,
+      "explanation": "Surpluses allowed different types of work."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "A primary source is usually:",
+      "options": [
+        "Produced in the period studied.",
+        "Always written centuries later.",
+        "Only a map."
+      ],
+      "correct_index": 0,
+      "explanation": "It is a direct trace from the period."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Historians compare sources to:",
+      "options": [
+        "Identify perspectives and corroborate evidence.",
+        "Avoid context.",
+        "Choose the longest text."
+      ],
+      "correct_index": 0,
+      "explanation": "Comparison reveals agreements and viewpoints."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Chronology helps understand:",
+      "options": [
+        "Order and duration of events.",
+        "The price of every object.",
+        "Only borders."
+      ],
+      "correct_index": 0,
+      "explanation": "It organizes events in time."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Printing increased circulation because texts could be:",
+      "options": [
+        "Reproduced more quickly and widely.",
+        "Impossible to copy.",
+        "Used only orally."
+      ],
+      "correct_index": 0,
+      "explanation": "Reproduction made ideas easier to circulate."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "An author’s purpose matters because it may:",
+      "options": [
+        "Select facts to persuade an audience.",
+        "Remove all perspective.",
+        "Change the date."
+      ],
+      "correct_index": 0,
+      "explanation": "Purpose influences selection and emphasis."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "An imperial map can reveal:",
+      "options": [
+        "How power represented territory.",
+        "Every citizen’s thoughts.",
+        "Only the weather."
+      ],
+      "correct_index": 0,
+      "explanation": "Maps contain geographic and political choices."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Context helps explain a historical law by showing:",
+      "options": [
+        "The problems and power relations behind it.",
+        "That it is fictional.",
+        "That evidence is unnecessary."
+      ],
+      "correct_index": 0,
+      "explanation": "Context connects the law to its society."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Continuity means:",
+      "options": [
+        "An element remains over time.",
+        "A single sudden event.",
+        "A source without an author."
+      ],
+      "correct_index": 0,
+      "explanation": "Continuity identifies what persists."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "A historical consequence is:",
+      "options": [
+        "An effect connected to an earlier event.",
+        "A random date.",
+        "A personal preference."
+      ],
+      "correct_index": 0,
+      "explanation": "Consequences are effects of actions."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "A reliable historical argument uses:",
+      "options": [
+        "Evidence interpreted in context.",
+        "One unsupported opinion.",
+        "A rumour."
+      ],
+      "correct_index": 0,
+      "explanation": "Evidence and context support historical reasoning."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Accounts of an event can differ because witnesses have:",
+      "options": [
+        "Different positions and perspectives.",
+        "Different pasts each day.",
+        "Dates without meaning."
+      ],
+      "correct_index": 0,
+      "explanation": "Perspective shapes what each account notices."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 0,
+      "prompt": "Agricultural surpluses helped ancient societies because they:",
+      "options": [
+        "Supported specialization and cities.",
+        "Ended all conflicts.",
+        "Stopped trade."
+      ],
+      "correct_index": 0,
+      "explanation": "Surpluses allowed different types of work."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 0,
+      "ordinal": 1,
+      "prompt": "A primary source is usually:",
+      "options": [
+        "Produced in the period studied.",
+        "Always written centuries later.",
+        "Only a map."
+      ],
+      "correct_index": 0,
+      "explanation": "It is a direct trace from the period."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 0,
+      "prompt": "Historians compare sources to:",
+      "options": [
+        "Identify perspectives and corroborate evidence.",
+        "Avoid context.",
+        "Choose the longest text."
+      ],
+      "correct_index": 0,
+      "explanation": "Comparison reveals agreements and viewpoints."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 1,
+      "ordinal": 1,
+      "prompt": "Chronology helps understand:",
+      "options": [
+        "Order and duration of events.",
+        "The price of every object.",
+        "Only borders."
+      ],
+      "correct_index": 0,
+      "explanation": "It organizes events in time."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 0,
+      "prompt": "Printing increased circulation because texts could be:",
+      "options": [
+        "Reproduced more quickly and widely.",
+        "Impossible to copy.",
+        "Used only orally."
+      ],
+      "correct_index": 0,
+      "explanation": "Reproduction made ideas easier to circulate."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 2,
+      "ordinal": 1,
+      "prompt": "An author’s purpose matters because it may:",
+      "options": [
+        "Select facts to persuade an audience.",
+        "Remove all perspective.",
+        "Change the date."
+      ],
+      "correct_index": 0,
+      "explanation": "Purpose influences selection and emphasis."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 0,
+      "prompt": "An imperial map can reveal:",
+      "options": [
+        "How power represented territory.",
+        "Every citizen’s thoughts.",
+        "Only the weather."
+      ],
+      "correct_index": 0,
+      "explanation": "Maps contain geographic and political choices."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 3,
+      "ordinal": 1,
+      "prompt": "Context helps explain a historical law by showing:",
+      "options": [
+        "The problems and power relations behind it.",
+        "That it is fictional.",
+        "That evidence is unnecessary."
+      ],
+      "correct_index": 0,
+      "explanation": "Context connects the law to its society."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 0,
+      "prompt": "Continuity means:",
+      "options": [
+        "An element remains over time.",
+        "A single sudden event.",
+        "A source without an author."
+      ],
+      "correct_index": 0,
+      "explanation": "Continuity identifies what persists."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 4,
+      "ordinal": 1,
+      "prompt": "A historical consequence is:",
+      "options": [
+        "An effect connected to an earlier event.",
+        "A random date.",
+        "A personal preference."
+      ],
+      "correct_index": 0,
+      "explanation": "Consequences are effects of actions."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 0,
+      "prompt": "A reliable historical argument uses:",
+      "options": [
+        "Evidence interpreted in context.",
+        "One unsupported opinion.",
+        "A rumour."
+      ],
+      "correct_index": 0,
+      "explanation": "Evidence and context support historical reasoning."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "node_index": 5,
+      "ordinal": 1,
+      "prompt": "Accounts of an event can differ because witnesses have:",
+      "options": [
+        "Different positions and perspectives.",
+        "Different pasts each day.",
+        "Dates without meaning."
+      ],
+      "correct_index": 0,
+      "explanation": "Perspective shapes what each account notices."
+    }
+  ],
+  "test_questions": [
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 0,
+      "prompt": "Qual frase usa “por que” corretamente?",
+      "options": [
+        "Por que você chegou?",
+        "Não sei porquê ele foi.",
+        "Ele faltou por quê estudar."
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 1,
+      "prompt": "Em “O livro antigo caiu”, qual palavra caracteriza o livro?",
+      "options": [
+        "Livro",
+        "Antigo",
+        "Caiu"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 2,
+      "prompt": "Qual alternativa apresenta uma opinião?",
+      "options": [
+        "A água ferve a 100 graus.",
+        "Acredito que este livro é ótimo.",
+        "O Brasil fica na América do Sul."
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 3,
+      "prompt": "Qual é o sujeito em “Os estudantes resolveram o desafio”?",
+      "options": [
+        "Resolveram",
+        "O desafio",
+        "Os estudantes"
+      ],
+      "correct_index": 2,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 4,
+      "prompt": "Qual conectivo indica oposição?",
+      "options": [
+        "Porque",
+        "Porém",
+        "Portanto"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 5,
+      "prompt": "A conclusão de um texto deve...",
+      "options": [
+        "Retomar a ideia principal",
+        "Adicionar um assunto sem relação",
+        "Repetir todas as palavras"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 6,
+      "prompt": "Qual palavra é acentuada corretamente?",
+      "options": [
+        "Lâmpada",
+        "Lampâda",
+        "Lampaniada"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 7,
+      "prompt": "Qual alternativa tem linguagem formal?",
+      "options": [
+        "A gente vai lá rapidinho.",
+        "Nós iremos à reunião.",
+        "Bora para a reunião."
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 8,
+      "prompt": "Em “Embora chovesse, saímos”, “embora” indica...",
+      "options": [
+        "Causa",
+        "Concessão",
+        "Finalidade"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 9,
+      "prompt": "Qual recurso compara usando “como”?",
+      "options": [
+        "Metáfora",
+        "Comparação",
+        "Ironia"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 10,
+      "prompt": "A ideia central de um parágrafo é...",
+      "options": [
+        "O detalhe menos importante",
+        "A informação principal",
+        "A última palavra"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 1,
+      "ordinal": 11,
+      "prompt": "Inferir uma informação é...",
+      "options": [
+        "Copiá-la literalmente",
+        "Concluí-la a partir de pistas",
+        "Ignorá-la"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 0,
+      "prompt": "Uma compra de 120 euros teve 20% de desconto. Preço final?",
+      "options": [
+        "96 euros",
+        "100 euros",
+        "104 euros"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 1,
+      "prompt": "Qual expressão tem resultado 18?",
+      "options": [
+        "3 × 5",
+        "24 - 6",
+        "36 ÷ 3"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 2,
+      "prompt": "Se 3 cadernos custam 21 euros, quanto custa cada um?",
+      "options": [
+        "6 euros",
+        "7 euros",
+        "9 euros"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 3,
+      "prompt": "Qual número completa 2, 4, 8, 16, ...?",
+      "options": [
+        "20",
+        "24",
+        "32"
+      ],
+      "correct_index": 2,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 4,
+      "prompt": "Um retângulo mede 5 por 3. Qual sua área?",
+      "options": [
+        "8",
+        "15",
+        "16"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 5,
+      "prompt": "Qual fração é equivalente a 2/4?",
+      "options": [
+        "1/2",
+        "1/3",
+        "3/4"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 6,
+      "prompt": "Se 2x = 18, qual é x?",
+      "options": [
+        "8",
+        "9",
+        "10"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 7,
+      "prompt": "Qual é a média de 6, 8 e 10?",
+      "options": [
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 8,
+      "prompt": "Um ângulo reto mede...",
+      "options": [
+        "45 graus",
+        "90 graus",
+        "180 graus"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 9,
+      "prompt": "Qual número é divisível por 3?",
+      "options": [
+        "14",
+        "22",
+        "27"
+      ],
+      "correct_index": 2,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 10,
+      "prompt": "Se hoje é terça-feira, que dia será daqui a 10 dias?",
+      "options": [
+        "Sexta-feira",
+        "Sábado",
+        "Domingo"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 1,
+      "ordinal": 11,
+      "prompt": "Qual razão equivale a 1 para 2?",
+      "options": [
+        "2:1",
+        "1:2",
+        "1:3"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 0,
+      "prompt": "Choose the correct question:",
+      "options": [
+        "Where you live?",
+        "Where do you live?",
+        "Where does you live?"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 1,
+      "prompt": "Complete: “There ___ two books.”",
+      "options": [
+        "is",
+        "are",
+        "am"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 2,
+      "prompt": "What does “because” express?",
+      "options": [
+        "Reason",
+        "Place",
+        "Time"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 3,
+      "prompt": "Choose the past of “go”:",
+      "options": [
+        "Goed",
+        "Went",
+        "Gone yesterday"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 4,
+      "prompt": "Complete: “She has ___ apple.”",
+      "options": [
+        "a",
+        "an",
+        "the one"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 5,
+      "prompt": "What is a synonym for “quick”?",
+      "options": [
+        "Fast",
+        "Slow",
+        "Late"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 6,
+      "prompt": "Choose the polite request:",
+      "options": [
+        "Give me water!",
+        "Could you pass the water, please?",
+        "Water now."
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 7,
+      "prompt": "“Yesterday” refers to...",
+      "options": [
+        "The past",
+        "The present",
+        "The future"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 8,
+      "prompt": "Complete: “I have lived here ___ 2020.”",
+      "options": [
+        "for",
+        "since",
+        "at"
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 9,
+      "prompt": "Which sentence is comparative?",
+      "options": [
+        "This is big.",
+        "This is bigger than that.",
+        "This is the biggest."
+      ],
+      "correct_index": 1,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 10,
+      "prompt": "What does “although” show?",
+      "options": [
+        "Contrast",
+        "Addition",
+        "Place"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 1,
+      "ordinal": 11,
+      "prompt": "Choose the correct response to “How are you?”",
+      "options": [
+        "I am fine, thanks.",
+        "I am twelve years.",
+        "I fine are."
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 0,
+      "prompt": "Por que o rio Nilo era importante para o Egito?",
+      "options": [
+        "Garantia terras férteis",
+        "Separava a Europa",
+        "Era uma estrada romana"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 1,
+      "prompt": "Qual característica define uma república?",
+      "options": [
+        "Governo representativo",
+        "Governo sempre hereditário",
+        "Ausência de leis"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 2,
+      "prompt": "Para que serviam as rotas comerciais antigas?",
+      "options": [
+        "Trocar produtos e ideias",
+        "Construir vulcões",
+        "Medir o tempo apenas"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 3,
+      "prompt": "Uma mudança de longa duração é chamada de...",
+      "options": [
+        "Processo histórico",
+        "Acidente isolado",
+        "Lenda"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 4,
+      "prompt": "O que a prensa facilitou?",
+      "options": [
+        "Circulação de textos",
+        "Navegação espacial",
+        "Produção de energia"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 5,
+      "prompt": "Uma fonte primária foi produzida...",
+      "options": [
+        "No período estudado",
+        "Sempre séculos depois",
+        "Apenas por historiadores"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 6,
+      "prompt": "Por que mapas são fontes históricas?",
+      "options": [
+        "Revelam visões sobre territórios",
+        "Não possuem informações",
+        "Substituem todos os relatos"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 7,
+      "prompt": "O que é cronologia?",
+      "options": [
+        "Organização dos acontecimentos no tempo",
+        "Estudo de moedas",
+        "Divisão de territórios"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 8,
+      "prompt": "A industrialização alterou principalmente...",
+      "options": [
+        "Trabalho e produção",
+        "A rotação da Terra",
+        "O alfabeto grego"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 9,
+      "prompt": "O que significa cultura?",
+      "options": [
+        "Modos de vida e significados",
+        "Somente obras de arte",
+        "Apenas leis"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 10,
+      "prompt": "Analisar uma fonte exige observar...",
+      "options": [
+        "Autor, contexto e intenção",
+        "Somente o tamanho",
+        "A cor do papel"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "historia",
+      "level": 1,
+      "ordinal": 11,
+      "prompt": "Por que diferentes grupos narram a história de formas diversas?",
+      "options": [
+        "Possuem experiências e perspectivas distintas",
+        "Porque fatos não existem",
+        "Porque datas são sempre iguais"
+      ],
+      "correct_index": 0,
+      "explanation": ""
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 0,
+      "prompt": "Em “Apesar da chuva, a turma saiu”, “apesar” indica:",
+      "options": [
+        "Causa",
+        "Concessão",
+        "Conclusão"
+      ],
+      "correct_index": 1,
+      "explanation": "Apresenta um obstáculo que não impede a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 1,
+      "prompt": "Qual conclusão é coerente?",
+      "options": [
+        "Estudou, portanto melhorou.",
+        "Estudou, porém não abriu o livro.",
+        "Estudou, porque talvez."
+      ],
+      "correct_index": 0,
+      "explanation": "“Portanto” liga uma ideia à sua consequência."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 2,
+      "prompt": "Em “A diretora comunicou a decisão”, o sujeito é:",
+      "options": [
+        "A decisão",
+        "A diretora",
+        "A comunicação"
+      ],
+      "correct_index": 1,
+      "explanation": "A diretora pratica a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 3,
+      "prompt": "Qual é a voz passiva de “A equipa venceu o jogo”?",
+      "options": [
+        "A equipa venceu o jogo.",
+        "O jogo foi vencido pela equipa.",
+        "A equipa está vencendo."
+      ],
+      "correct_index": 1,
+      "explanation": "Na voz passiva, o foco passa para quem recebe a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 4,
+      "prompt": "“Mar de pessoas” é uma:",
+      "options": [
+        "Metáfora",
+        "Enumeração",
+        "Pergunta"
+      ],
+      "correct_index": 0,
+      "explanation": "Cria uma imagem por aproximação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 5,
+      "prompt": "A rua estava molhada e havia guarda-chuvas. Podemos inferir que:",
+      "options": [
+        "Choveu ou chovia.",
+        "Era certamente verão.",
+        "Ninguém saiu."
+      ],
+      "correct_index": 0,
+      "explanation": "As pistas indicam chuva."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 6,
+      "prompt": "“Ela leu para compreender” equivale a:",
+      "options": [
+        "Ela leu a fim de compreender.",
+        "Ela leu, embora compreendesse.",
+        "Ela leu, mas não compreendeu."
+      ],
+      "correct_index": 0,
+      "explanation": "“A fim de” indica finalidade."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 7,
+      "prompt": "As vírgulas em “O projeto, que foi premiado, será ampliado”:",
+      "options": [
+        "Acrescentam uma explicação.",
+        "Indicam uma ordem.",
+        "Contradizem o projeto."
+      ],
+      "correct_index": 0,
+      "explanation": "O trecho entre vírgulas explica o projeto."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 8,
+      "prompt": "Qual argumento defende melhor a leitura diária?",
+      "options": [
+        "Todos gostam de ler.",
+        "A prática amplia vocabulário e compreensão.",
+        "Ler é sempre fácil."
+      ],
+      "correct_index": 1,
+      "explanation": "Um argumento forte apresenta uma razão relacionada."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 9,
+      "prompt": "Um bom resumo deve:",
+      "options": [
+        "Preservar a ideia central.",
+        "Repetir todos os detalhes.",
+        "Falar de outro assunto."
+      ],
+      "correct_index": 0,
+      "explanation": "O resumo mantém a ideia principal."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 10,
+      "prompt": "Em um texto argumentativo, a tese é:",
+      "options": [
+        "A posição defendida.",
+        "Um exemplo isolado.",
+        "A lista de personagens."
+      ],
+      "correct_index": 0,
+      "explanation": "A tese é a ideia que o autor sustenta."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 2,
+      "ordinal": 11,
+      "prompt": "O que reforça a credibilidade de uma notícia?",
+      "options": [
+        "Dados e fonte identificada.",
+        "Muitos pontos de exclamação.",
+        "Uma opinião anónima."
+      ],
+      "correct_index": 0,
+      "explanation": "Dados verificáveis apoiam a notícia."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 0,
+      "prompt": "Em “Apesar da chuva, a turma saiu”, “apesar” indica:",
+      "options": [
+        "Causa",
+        "Concessão",
+        "Conclusão"
+      ],
+      "correct_index": 1,
+      "explanation": "Apresenta um obstáculo que não impede a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 1,
+      "prompt": "Qual conclusão é coerente?",
+      "options": [
+        "Estudou, portanto melhorou.",
+        "Estudou, porém não abriu o livro.",
+        "Estudou, porque talvez."
+      ],
+      "correct_index": 0,
+      "explanation": "“Portanto” liga uma ideia à sua consequência."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 2,
+      "prompt": "Em “A diretora comunicou a decisão”, o sujeito é:",
+      "options": [
+        "A decisão",
+        "A diretora",
+        "A comunicação"
+      ],
+      "correct_index": 1,
+      "explanation": "A diretora pratica a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 3,
+      "prompt": "Qual é a voz passiva de “A equipa venceu o jogo”?",
+      "options": [
+        "A equipa venceu o jogo.",
+        "O jogo foi vencido pela equipa.",
+        "A equipa está vencendo."
+      ],
+      "correct_index": 1,
+      "explanation": "Na voz passiva, o foco passa para quem recebe a ação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 4,
+      "prompt": "“Mar de pessoas” é uma:",
+      "options": [
+        "Metáfora",
+        "Enumeração",
+        "Pergunta"
+      ],
+      "correct_index": 0,
+      "explanation": "Cria uma imagem por aproximação."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 5,
+      "prompt": "A rua estava molhada e havia guarda-chuvas. Podemos inferir que:",
+      "options": [
+        "Choveu ou chovia.",
+        "Era certamente verão.",
+        "Ninguém saiu."
+      ],
+      "correct_index": 0,
+      "explanation": "As pistas indicam chuva."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 6,
+      "prompt": "“Ela leu para compreender” equivale a:",
+      "options": [
+        "Ela leu a fim de compreender.",
+        "Ela leu, embora compreendesse.",
+        "Ela leu, mas não compreendeu."
+      ],
+      "correct_index": 0,
+      "explanation": "“A fim de” indica finalidade."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 7,
+      "prompt": "As vírgulas em “O projeto, que foi premiado, será ampliado”:",
+      "options": [
+        "Acrescentam uma explicação.",
+        "Indicam uma ordem.",
+        "Contradizem o projeto."
+      ],
+      "correct_index": 0,
+      "explanation": "O trecho entre vírgulas explica o projeto."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 8,
+      "prompt": "Qual argumento defende melhor a leitura diária?",
+      "options": [
+        "Todos gostam de ler.",
+        "A prática amplia vocabulário e compreensão.",
+        "Ler é sempre fácil."
+      ],
+      "correct_index": 1,
+      "explanation": "Um argumento forte apresenta uma razão relacionada."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 9,
+      "prompt": "Um bom resumo deve:",
+      "options": [
+        "Preservar a ideia central.",
+        "Repetir todos os detalhes.",
+        "Falar de outro assunto."
+      ],
+      "correct_index": 0,
+      "explanation": "O resumo mantém a ideia principal."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 10,
+      "prompt": "Em um texto argumentativo, a tese é:",
+      "options": [
+        "A posição defendida.",
+        "Um exemplo isolado.",
+        "A lista de personagens."
+      ],
+      "correct_index": 0,
+      "explanation": "A tese é a ideia que o autor sustenta."
+    },
+    {
+      "discipline_id": "portugues",
+      "level": 3,
+      "ordinal": 11,
+      "prompt": "O que reforça a credibilidade de uma notícia?",
+      "options": [
+        "Dados e fonte identificada.",
+        "Muitos pontos de exclamação.",
+        "Uma opinião anónima."
+      ],
+      "correct_index": 0,
+      "explanation": "Dados verificáveis apoiam a notícia."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 0,
+      "prompt": "80 euros com 15% de desconto custam:",
+      "options": [
+        "68 euros",
+        "72 euros",
+        "92 euros"
+      ],
+      "correct_index": 0,
+      "explanation": "15% de 80 é 12; 80 - 12 = 68 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 1,
+      "prompt": "18 acertos em 24 questões representam:",
+      "options": [
+        "60%",
+        "75%",
+        "80%"
+      ],
+      "correct_index": 1,
+      "explanation": "18/24 = 0,75, ou 75%."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 2,
+      "prompt": "“O dobro de um número mais 5” é:",
+      "options": [
+        "2x + 5",
+        "x + 10",
+        "2(x + 5)"
+      ],
+      "correct_index": 0,
+      "explanation": "O dobro é 2x; depois somamos 5."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 3,
+      "prompt": "Se 3x - 4 = 17, x vale:",
+      "options": [
+        "5",
+        "7",
+        "9"
+      ],
+      "correct_index": 1,
+      "explanation": "Somando 4 e dividindo por 3, x = 7."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 4,
+      "prompt": "Área de um retângulo de 8 m por 3,5 m:",
+      "options": [
+        "11,5 m²",
+        "28 m²",
+        "32 m²"
+      ],
+      "correct_index": 1,
+      "explanation": "Área = base × altura = 28 m²."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 5,
+      "prompt": "Ângulo suplementar a 65°:",
+      "options": [
+        "25°",
+        "115°",
+        "245°"
+      ],
+      "correct_index": 1,
+      "explanation": "Ângulos suplementares somam 180°."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 6,
+      "prompt": "Mediana de 3, 7, 8, 10 e 14:",
+      "options": [
+        "7",
+        "8",
+        "10"
+      ],
+      "correct_index": 1,
+      "explanation": "O valor central é 8."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 7,
+      "prompt": "Se 4 cadernos custam 18 euros, 10 custam:",
+      "options": [
+        "36 euros",
+        "45 euros",
+        "54 euros"
+      ],
+      "correct_index": 1,
+      "explanation": "Cada caderno custa 4,50 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 8,
+      "prompt": "Fração equivalente a 3/5:",
+      "options": [
+        "6/10",
+        "5/8",
+        "9/20"
+      ],
+      "correct_index": 0,
+      "explanation": "Multiplicar por 2 gera 6/10."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 9,
+      "prompt": "3/4 de litro correspondem a:",
+      "options": [
+        "250 ml",
+        "500 ml",
+        "750 ml"
+      ],
+      "correct_index": 2,
+      "explanation": "Três quartos de 1000 ml são 750 ml."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 10,
+      "prompt": "Aumento de 50 para 65 representa:",
+      "options": [
+        "15%",
+        "30%",
+        "35%"
+      ],
+      "correct_index": 1,
+      "explanation": "O aumento de 15 é 30% de 50."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 2,
+      "ordinal": 11,
+      "prompt": "Num mapa, 1 cm representa 5 km. 7 cm representam:",
+      "options": [
+        "12 km",
+        "35 km",
+        "40 km"
+      ],
+      "correct_index": 1,
+      "explanation": "7 × 5 = 35 km."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 0,
+      "prompt": "80 euros com 15% de desconto custam:",
+      "options": [
+        "68 euros",
+        "72 euros",
+        "92 euros"
+      ],
+      "correct_index": 0,
+      "explanation": "15% de 80 é 12; 80 - 12 = 68 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 1,
+      "prompt": "18 acertos em 24 questões representam:",
+      "options": [
+        "60%",
+        "75%",
+        "80%"
+      ],
+      "correct_index": 1,
+      "explanation": "18/24 = 0,75, ou 75%."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 2,
+      "prompt": "“O dobro de um número mais 5” é:",
+      "options": [
+        "2x + 5",
+        "x + 10",
+        "2(x + 5)"
+      ],
+      "correct_index": 0,
+      "explanation": "O dobro é 2x; depois somamos 5."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 3,
+      "prompt": "Se 3x - 4 = 17, x vale:",
+      "options": [
+        "5",
+        "7",
+        "9"
+      ],
+      "correct_index": 1,
+      "explanation": "Somando 4 e dividindo por 3, x = 7."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 4,
+      "prompt": "Área de um retângulo de 8 m por 3,5 m:",
+      "options": [
+        "11,5 m²",
+        "28 m²",
+        "32 m²"
+      ],
+      "correct_index": 1,
+      "explanation": "Área = base × altura = 28 m²."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 5,
+      "prompt": "Ângulo suplementar a 65°:",
+      "options": [
+        "25°",
+        "115°",
+        "245°"
+      ],
+      "correct_index": 1,
+      "explanation": "Ângulos suplementares somam 180°."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 6,
+      "prompt": "Mediana de 3, 7, 8, 10 e 14:",
+      "options": [
+        "7",
+        "8",
+        "10"
+      ],
+      "correct_index": 1,
+      "explanation": "O valor central é 8."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 7,
+      "prompt": "Se 4 cadernos custam 18 euros, 10 custam:",
+      "options": [
+        "36 euros",
+        "45 euros",
+        "54 euros"
+      ],
+      "correct_index": 1,
+      "explanation": "Cada caderno custa 4,50 euros."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 8,
+      "prompt": "Fração equivalente a 3/5:",
+      "options": [
+        "6/10",
+        "5/8",
+        "9/20"
+      ],
+      "correct_index": 0,
+      "explanation": "Multiplicar por 2 gera 6/10."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 9,
+      "prompt": "3/4 de litro correspondem a:",
+      "options": [
+        "250 ml",
+        "500 ml",
+        "750 ml"
+      ],
+      "correct_index": 2,
+      "explanation": "Três quartos de 1000 ml são 750 ml."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 10,
+      "prompt": "Aumento de 50 para 65 representa:",
+      "options": [
+        "15%",
+        "30%",
+        "35%"
+      ],
+      "correct_index": 1,
+      "explanation": "O aumento de 15 é 30% de 50."
+    },
+    {
+      "discipline_id": "matematica",
+      "level": 3,
+      "ordinal": 11,
+      "prompt": "Num mapa, 1 cm representa 5 km. 7 cm representam:",
+      "options": [
+        "12 km",
+        "35 km",
+        "40 km"
+      ],
+      "correct_index": 1,
+      "explanation": "7 × 5 = 35 km."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 0,
+      "prompt": "Choose the correct past sentence:",
+      "options": [
+        "She visited the museum yesterday.",
+        "She visit the museum yesterday.",
+        "She visiting yesterday."
+      ],
+      "correct_index": 0,
+      "explanation": "The regular past of visit is visited."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 1,
+      "prompt": "Complete: “If I study, I ___ pass.”",
+      "options": [
+        "will",
+        "would yesterday",
+        "am"
+      ],
+      "correct_index": 0,
+      "explanation": "The first conditional uses will."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 2,
+      "prompt": "Which sentence is present perfect?",
+      "options": [
+        "They have finished the task.",
+        "They finish yesterday.",
+        "They finishing now."
+      ],
+      "correct_index": 0,
+      "explanation": "Have finished connects a past action to the present."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 3,
+      "prompt": "Best connector: “It was late, ___ we continued.”",
+      "options": [
+        "but",
+        "because",
+        "so that"
+      ],
+      "correct_index": 0,
+      "explanation": "But expresses contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 4,
+      "prompt": "“You must wear a helmet” expresses:",
+      "options": [
+        "Obligation",
+        "Past time",
+        "A place"
+      ],
+      "correct_index": 0,
+      "explanation": "Must indicates obligation."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 5,
+      "prompt": "Correct comparative:",
+      "options": [
+        "This is more difficult than the first.",
+        "This is difficulter the first.",
+        "This difficult than first."
+      ],
+      "correct_index": 0,
+      "explanation": "Long adjectives use more + adjective."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 6,
+      "prompt": "“Although” introduces:",
+      "options": [
+        "Contrast",
+        "Numbers",
+        "A definition"
+      ],
+      "correct_index": 0,
+      "explanation": "Although connects contrasting ideas."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 7,
+      "prompt": "Complete: “The book ___ by many students.”",
+      "options": [
+        "was read",
+        "readed",
+        "is reading"
+      ],
+      "correct_index": 0,
+      "explanation": "The passive uses was + past participle."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 8,
+      "prompt": "Polite request for clarification:",
+      "options": [
+        "Could you explain that, please?",
+        "Explain now!",
+        "What this?"
+      ],
+      "correct_index": 0,
+      "explanation": "Could you... please? is polite."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 9,
+      "prompt": "“However” usually signals:",
+      "options": [
+        "Contrast",
+        "Cause",
+        "An example only"
+      ],
+      "correct_index": 0,
+      "explanation": "However marks contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 10,
+      "prompt": "Best summary: “Tom was tired, but he finished.”",
+      "options": [
+        "Tom finished despite being tired.",
+        "Tom abandoned it.",
+        "Tom was never tired."
+      ],
+      "correct_index": 0,
+      "explanation": "Despite expresses the same contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 2,
+      "ordinal": 11,
+      "prompt": "A conclusion should:",
+      "options": [
+        "Synthesize the ideas.",
+        "Add unrelated characters.",
+        "Remove the argument."
+      ],
+      "correct_index": 0,
+      "explanation": "A conclusion brings the main ideas together."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 0,
+      "prompt": "Choose the correct past sentence:",
+      "options": [
+        "She visited the museum yesterday.",
+        "She visit the museum yesterday.",
+        "She visiting yesterday."
+      ],
+      "correct_index": 0,
+      "explanation": "The regular past of visit is visited."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 1,
+      "prompt": "Complete: “If I study, I ___ pass.”",
+      "options": [
+        "will",
+        "would yesterday",
+        "am"
+      ],
+      "correct_index": 0,
+      "explanation": "The first conditional uses will."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 2,
+      "prompt": "Which sentence is present perfect?",
+      "options": [
+        "They have finished the task.",
+        "They finish yesterday.",
+        "They finishing now."
+      ],
+      "correct_index": 0,
+      "explanation": "Have finished connects a past action to the present."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 3,
+      "prompt": "Best connector: “It was late, ___ we continued.”",
+      "options": [
+        "but",
+        "because",
+        "so that"
+      ],
+      "correct_index": 0,
+      "explanation": "But expresses contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 4,
+      "prompt": "“You must wear a helmet” expresses:",
+      "options": [
+        "Obligation",
+        "Past time",
+        "A place"
+      ],
+      "correct_index": 0,
+      "explanation": "Must indicates obligation."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 5,
+      "prompt": "Correct comparative:",
+      "options": [
+        "This is more difficult than the first.",
+        "This is difficulter the first.",
+        "This difficult than first."
+      ],
+      "correct_index": 0,
+      "explanation": "Long adjectives use more + adjective."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 6,
+      "prompt": "“Although” introduces:",
+      "options": [
+        "Contrast",
+        "Numbers",
+        "A definition"
+      ],
+      "correct_index": 0,
+      "explanation": "Although connects contrasting ideas."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 7,
+      "prompt": "Complete: “The book ___ by many students.”",
+      "options": [
+        "was read",
+        "readed",
+        "is reading"
+      ],
+      "correct_index": 0,
+      "explanation": "The passive uses was + past participle."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 8,
+      "prompt": "Polite request for clarification:",
+      "options": [
+        "Could you explain that, please?",
+        "Explain now!",
+        "What this?"
+      ],
+      "correct_index": 0,
+      "explanation": "Could you... please? is polite."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 9,
+      "prompt": "“However” usually signals:",
+      "options": [
+        "Contrast",
+        "Cause",
+        "An example only"
+      ],
+      "correct_index": 0,
+      "explanation": "However marks contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 10,
+      "prompt": "Best summary: “Tom was tired, but he finished.”",
+      "options": [
+        "Tom finished despite being tired.",
+        "Tom abandoned it.",
+        "Tom was never tired."
+      ],
+      "correct_index": 0,
+      "explanation": "Despite expresses the same contrast."
+    },
+    {
+      "discipline_id": "ingles",
+      "level": 3,
+      "ordinal": 11,
+      "prompt": "A conclusion should:",
+      "options": [
+        "Synthesize the ideas.",
+        "Add unrelated characters.",
+        "Remove the argument."
+      ],
+      "correct_index": 0,
+      "explanation": "A conclusion brings the main ideas together."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 0,
+      "prompt": "Agricultural surpluses helped ancient societies because they:",
+      "options": [
+        "Supported specialization and cities.",
+        "Ended all conflicts.",
+        "Stopped trade."
+      ],
+      "correct_index": 0,
+      "explanation": "Surpluses allowed different types of work."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 1,
+      "prompt": "A primary source is usually:",
+      "options": [
+        "Produced in the period studied.",
+        "Always written centuries later.",
+        "Only a map."
+      ],
+      "correct_index": 0,
+      "explanation": "It is a direct trace from the period."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 2,
+      "prompt": "Historians compare sources to:",
+      "options": [
+        "Identify perspectives and corroborate evidence.",
+        "Avoid context.",
+        "Choose the longest text."
+      ],
+      "correct_index": 0,
+      "explanation": "Comparison reveals agreements and viewpoints."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 3,
+      "prompt": "Chronology helps understand:",
+      "options": [
+        "Order and duration of events.",
+        "The price of every object.",
+        "Only borders."
+      ],
+      "correct_index": 0,
+      "explanation": "It organizes events in time."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 4,
+      "prompt": "Printing increased circulation because texts could be:",
+      "options": [
+        "Reproduced more quickly and widely.",
+        "Impossible to copy.",
+        "Used only orally."
+      ],
+      "correct_index": 0,
+      "explanation": "Reproduction made ideas easier to circulate."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 5,
+      "prompt": "An author’s purpose matters because it may:",
+      "options": [
+        "Select facts to persuade an audience.",
+        "Remove all perspective.",
+        "Change the date."
+      ],
+      "correct_index": 0,
+      "explanation": "Purpose influences selection and emphasis."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 6,
+      "prompt": "An imperial map can reveal:",
+      "options": [
+        "How power represented territory.",
+        "Every citizen’s thoughts.",
+        "Only the weather."
+      ],
+      "correct_index": 0,
+      "explanation": "Maps contain geographic and political choices."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 7,
+      "prompt": "Context helps explain a historical law by showing:",
+      "options": [
+        "The problems and power relations behind it.",
+        "That it is fictional.",
+        "That evidence is unnecessary."
+      ],
+      "correct_index": 0,
+      "explanation": "Context connects the law to its society."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 8,
+      "prompt": "Continuity means:",
+      "options": [
+        "An element remains over time.",
+        "A single sudden event.",
+        "A source without an author."
+      ],
+      "correct_index": 0,
+      "explanation": "Continuity identifies what persists."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 9,
+      "prompt": "A historical consequence is:",
+      "options": [
+        "An effect connected to an earlier event.",
+        "A random date.",
+        "A personal preference."
+      ],
+      "correct_index": 0,
+      "explanation": "Consequences are effects of actions."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 10,
+      "prompt": "A reliable historical argument uses:",
+      "options": [
+        "Evidence interpreted in context.",
+        "One unsupported opinion.",
+        "A rumour."
+      ],
+      "correct_index": 0,
+      "explanation": "Evidence and context support historical reasoning."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 2,
+      "ordinal": 11,
+      "prompt": "Accounts of an event can differ because witnesses have:",
+      "options": [
+        "Different positions and perspectives.",
+        "Different pasts each day.",
+        "Dates without meaning."
+      ],
+      "correct_index": 0,
+      "explanation": "Perspective shapes what each account notices."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 0,
+      "prompt": "Agricultural surpluses helped ancient societies because they:",
+      "options": [
+        "Supported specialization and cities.",
+        "Ended all conflicts.",
+        "Stopped trade."
+      ],
+      "correct_index": 0,
+      "explanation": "Surpluses allowed different types of work."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 1,
+      "prompt": "A primary source is usually:",
+      "options": [
+        "Produced in the period studied.",
+        "Always written centuries later.",
+        "Only a map."
+      ],
+      "correct_index": 0,
+      "explanation": "It is a direct trace from the period."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 2,
+      "prompt": "Historians compare sources to:",
+      "options": [
+        "Identify perspectives and corroborate evidence.",
+        "Avoid context.",
+        "Choose the longest text."
+      ],
+      "correct_index": 0,
+      "explanation": "Comparison reveals agreements and viewpoints."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 3,
+      "prompt": "Chronology helps understand:",
+      "options": [
+        "Order and duration of events.",
+        "The price of every object.",
+        "Only borders."
+      ],
+      "correct_index": 0,
+      "explanation": "It organizes events in time."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 4,
+      "prompt": "Printing increased circulation because texts could be:",
+      "options": [
+        "Reproduced more quickly and widely.",
+        "Impossible to copy.",
+        "Used only orally."
+      ],
+      "correct_index": 0,
+      "explanation": "Reproduction made ideas easier to circulate."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 5,
+      "prompt": "An author’s purpose matters because it may:",
+      "options": [
+        "Select facts to persuade an audience.",
+        "Remove all perspective.",
+        "Change the date."
+      ],
+      "correct_index": 0,
+      "explanation": "Purpose influences selection and emphasis."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 6,
+      "prompt": "An imperial map can reveal:",
+      "options": [
+        "How power represented territory.",
+        "Every citizen’s thoughts.",
+        "Only the weather."
+      ],
+      "correct_index": 0,
+      "explanation": "Maps contain geographic and political choices."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 7,
+      "prompt": "Context helps explain a historical law by showing:",
+      "options": [
+        "The problems and power relations behind it.",
+        "That it is fictional.",
+        "That evidence is unnecessary."
+      ],
+      "correct_index": 0,
+      "explanation": "Context connects the law to its society."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 8,
+      "prompt": "Continuity means:",
+      "options": [
+        "An element remains over time.",
+        "A single sudden event.",
+        "A source without an author."
+      ],
+      "correct_index": 0,
+      "explanation": "Continuity identifies what persists."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 9,
+      "prompt": "A historical consequence is:",
+      "options": [
+        "An effect connected to an earlier event.",
+        "A random date.",
+        "A personal preference."
+      ],
+      "correct_index": 0,
+      "explanation": "Consequences are effects of actions."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 10,
+      "prompt": "A reliable historical argument uses:",
+      "options": [
+        "Evidence interpreted in context.",
+        "One unsupported opinion.",
+        "A rumour."
+      ],
+      "correct_index": 0,
+      "explanation": "Evidence and context support historical reasoning."
+    },
+    {
+      "discipline_id": "historia",
+      "level": 3,
+      "ordinal": 11,
+      "prompt": "Accounts of an event can differ because witnesses have:",
+      "options": [
+        "Different positions and perspectives.",
+        "Different pasts each day.",
+        "Dates without meaning."
+      ],
+      "correct_index": 0,
+      "explanation": "Perspective shapes what each account notices."
+    }
+  ],
+  "missions": [
+    {
+      "id": "nodes-three",
+      "title": "Concluir 3 nodes",
+      "description": "Conclua três nodes de campanha hoje.",
+      "xp": 60,
+      "tokens": 110,
+      "goal": 3,
+      "icon": "??",
+      "category": "Campanha"
+    },
+    {
+      "id": "nodes-four",
+      "title": "Concluir 4 nodes",
+      "description": "Conclua quatro nodes de campanha hoje.",
+      "xp": 85,
+      "tokens": 155,
+      "goal": 4,
+      "icon": "?",
+      "category": "Campanha"
+    },
+    {
+      "id": "final-test",
+      "title": "Passar um teste final",
+      "description": "Passe um teste final de campanha.",
+      "xp": 100,
+      "tokens": 180,
+      "goal": 1,
+      "type": "tests",
+      "icon": "??",
+      "category": "Teste final"
+    },
+    {
+      "id": "two-final-tests",
+      "title": "Passar 2 testes finais",
+      "description": "Passe os testes finais de duas etapas.",
+      "xp": 160,
+      "tokens": 290,
+      "goal": 2,
+      "type": "tests",
+      "icon": "??",
+      "category": "Testes finais"
+    },
+    {
+      "id": "two-per-discipline",
+      "title": "Concluir 2 nodes de cada disciplina",
+      "description": "Conclua dois nodes de Português, Matemática, Inglês e História.",
+      "xp": 180,
+      "tokens": 320,
+      "goal": 2,
+      "type": "nodes-per-discipline",
+      "icon": "??",
+      "category": "Todas as disciplinas"
+    },
+    {
+      "id": "two-disciplines",
+      "title": "Estudar 2 disciplinas",
+      "description": "Conclua pelo menos um node em duas disciplinas diferentes.",
+      "xp": 80,
+      "tokens": 145,
+      "goal": 2,
+      "type": "disciplines",
+      "icon": "??",
+      "category": "Explora??o"
+    },
+    {
+      "id": "three-disciplines",
+      "title": "Estudar 3 disciplinas",
+      "description": "Conclua pelo menos um node em três disciplinas diferentes.",
+      "xp": 110,
+      "tokens": 200,
+      "goal": 3,
+      "type": "disciplines",
+      "icon": "??",
+      "category": "Explora??o"
+    },
+    {
+      "id": "two-same-discipline",
+      "title": "Concluir 2 nodes na mesma disciplina",
+      "description": "Avance dois nodes numa das campanhas disponíveis.",
+      "xp": 65,
+      "tokens": 120,
+      "goal": 2,
+      "type": "discipline-nodes",
+      "icon": "??",
+      "category": "Foco"
+    },
+    {
+      "id": "three-stage-nodes",
+      "title": "Avançar 3 nodes numa etapa",
+      "description": "Conclua três nodes da mesma etapa.",
+      "xp": 75,
+      "tokens": 135,
+      "goal": 3,
+      "type": "stage",
+      "icon": "???",
+      "category": "Etapa"
+    },
+    {
+      "id": "complete-stage",
+      "title": "Completar os 6 nodes de uma etapa",
+      "description": "Conclua uma campanha para desbloquear o teste final.",
+      "xp": 120,
+      "tokens": 220,
+      "goal": 6,
+      "type": "stage",
+      "icon": "???",
+      "category": "Etapa"
+    }
+  ],
+  "rarities": [
+    {
+      "id": "comum",
+      "name": "Comum",
+      "chance": 54.5,
+      "duplicate_tokens": 10,
+      "sort_order": 0
+    },
+    {
+      "id": "incomum",
+      "name": "Incomum",
+      "chance": 25,
+      "duplicate_tokens": 50,
+      "sort_order": 1
+    },
+    {
+      "id": "raro",
+      "name": "Raro",
+      "chance": 12,
+      "duplicate_tokens": 150,
+      "sort_order": 2
+    },
+    {
+      "id": "muito_raro",
+      "name": "Muito raro",
+      "chance": 5,
+      "duplicate_tokens": 300,
+      "sort_order": 3
+    },
+    {
+      "id": "lendario",
+      "name": "Lendário",
+      "chance": 3,
+      "duplicate_tokens": 500,
+      "sort_order": 4
+    },
+    {
+      "id": "mitico",
+      "name": "Mítico",
+      "chance": 0.5,
+      "duplicate_tokens": 1000,
+      "sort_order": 5
+    }
+  ],
+  "items": [
+    {
+      "id": "ocean",
+      "type": "theme",
+      "name": "Oceano",
+      "rarity": "comum",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-ocean"
+      }
+    },
+    {
+      "id": "forest",
+      "type": "theme",
+      "name": "Floresta",
+      "rarity": "comum",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-forest"
+      }
+    },
+    {
+      "id": "solar",
+      "type": "theme",
+      "name": "Solar",
+      "rarity": "incomum",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-solar"
+      }
+    },
+    {
+      "id": "coral",
+      "type": "theme",
+      "name": "Coral",
+      "rarity": "incomum",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-coral"
+      }
+    },
+    {
+      "id": "graphite",
+      "type": "theme",
+      "name": "Grafite",
+      "rarity": "incomum",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-graphite"
+      }
+    },
+    {
+      "id": "aurora",
+      "type": "theme",
+      "name": "Aurora",
+      "rarity": "raro",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-aurora"
+      }
+    },
+    {
+      "id": "sakura",
+      "type": "theme",
+      "name": "Sakura",
+      "rarity": "raro",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-sakura"
+      }
+    },
+    {
+      "id": "volcanic",
+      "type": "theme",
+      "name": "Vulcão",
+      "rarity": "raro",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-volcanic"
+      }
+    },
+    {
+      "id": "crystal",
+      "type": "theme",
+      "name": "Cristal",
+      "rarity": "muito_raro",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-crystal"
+      }
+    },
+    {
+      "id": "glacial",
+      "type": "theme",
+      "name": "Glacial",
+      "rarity": "muito_raro",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-glacial"
+      }
+    },
+    {
+      "id": "eclipse",
+      "type": "theme",
+      "name": "Eclipse",
+      "rarity": "muito_raro",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-eclipse"
+      }
+    },
+    {
+      "id": "nebula",
+      "type": "theme",
+      "name": "Nebulosa",
+      "rarity": "lendario",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-nebula"
+      }
+    },
+    {
+      "id": "celestial",
+      "type": "theme",
+      "name": "Celestial",
+      "rarity": "lendario",
+      "image_url": "",
+      "metadata": {
+        "theme_class": "theme-celestial"
+      }
+    },
+    {
+      "id": "mint-loop",
+      "type": "border",
+      "name": "Musgo Antigo",
+      "rarity": "comum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-mint-loop.svg",
+      "metadata": {}
+    },
+    {
+      "id": "skyline",
+      "type": "border",
+      "name": "Prata Lunar",
+      "rarity": "comum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-skyline.svg",
+      "metadata": {}
+    },
+    {
+      "id": "clover",
+      "type": "border",
+      "name": "Bosque Vivo",
+      "rarity": "comum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-clover.svg",
+      "metadata": {}
+    },
+    {
+      "id": "rose-gold",
+      "type": "border",
+      "name": "Filigrana de Bronze",
+      "rarity": "comum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-rose-gold.svg",
+      "metadata": {}
+    },
+    {
+      "id": "sunbeam",
+      "type": "border",
+      "name": "Runas de Âmbar",
+      "rarity": "comum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-sunbeam.svg",
+      "metadata": {}
+    },
+    {
+      "id": "lilac-mist",
+      "type": "border",
+      "name": "Pedra da Lua",
+      "rarity": "comum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-lilac-mist.svg",
+      "metadata": {}
+    },
+    {
+      "id": "tidal",
+      "type": "border",
+      "name": "Neon da Chuva",
+      "rarity": "incomum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-tidal.svg",
+      "metadata": {}
+    },
+    {
+      "id": "coral-reef",
+      "type": "border",
+      "name": "Jardim de Espinhos",
+      "rarity": "incomum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-coral-reef.svg",
+      "metadata": {}
+    },
+    {
+      "id": "citrus",
+      "type": "border",
+      "name": "Jade Selvagem",
+      "rarity": "incomum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-citrus.svg",
+      "metadata": {}
+    },
+    {
+      "id": "frostline",
+      "type": "border",
+      "name": "Aço Glacial",
+      "rarity": "incomum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-frostline.svg",
+      "metadata": {}
+    },
+    {
+      "id": "ember",
+      "type": "border",
+      "name": "Ferro de Brasa",
+      "rarity": "incomum",
+      "image_url": "/imagens/bordas%20de%20avatar/border-ember.svg",
+      "metadata": {}
+    },
+    {
+      "id": "aurora-ring",
+      "type": "border",
+      "name": "Serpente Esmeralda",
+      "rarity": "raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-aurora-ring.svg",
+      "metadata": {}
+    },
+    {
+      "id": "sakura-frame",
+      "type": "border",
+      "name": "Sakura em Flor",
+      "rarity": "raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-sakura-frame.svg",
+      "metadata": {}
+    },
+    {
+      "id": "nebula-gate",
+      "type": "border",
+      "name": "Circuito Violeta",
+      "rarity": "raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-nebula-gate.svg",
+      "metadata": {}
+    },
+    {
+      "id": "jade-crown",
+      "type": "border",
+      "name": "Copa de Carvalho",
+      "rarity": "raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-jade-crown.svg",
+      "metadata": {}
+    },
+    {
+      "id": "prismatic",
+      "type": "border",
+      "name": "Portal de Plasma",
+      "rarity": "muito_raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-prismatic.svg",
+      "metadata": {}
+    },
+    {
+      "id": "eclipse",
+      "type": "border",
+      "name": "Juramento do Eclipse",
+      "rarity": "muito_raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-eclipse.svg",
+      "metadata": {}
+    },
+    {
+      "id": "starfall",
+      "type": "border",
+      "name": "Constelação Safira",
+      "rarity": "muito_raro",
+      "image_url": "/imagens/bordas%20de%20avatar/border-starfall.svg",
+      "metadata": {}
+    },
+    {
+      "id": "celestial-crown",
+      "type": "border",
+      "name": "Árvore Ancestral",
+      "rarity": "lendario",
+      "image_url": "/imagens/bordas%20de%20avatar/border-celestial-crown.svg",
+      "metadata": {}
+    },
+    {
+      "id": "phoenix-flame",
+      "type": "border",
+      "name": "Dragão de Brasa",
+      "rarity": "lendario",
+      "image_url": "/imagens/bordas%20de%20avatar/border-phoenix-flame.svg",
+      "metadata": {}
+    },
+    {
+      "id": "test-ticket",
+      "type": "ticket",
+      "name": "Bilhete de repeti??o",
+      "rarity": "mitico",
+      "image_url": "",
+      "metadata": {}
+    }
+  ],
+  "avatar_colors": [
+    {
+      "id": "blue",
+      "name": "Azul"
+    },
+    {
+      "id": "green",
+      "name": "Verde"
+    },
+    {
+      "id": "sunset",
+      "name": "Pôr do sol"
+    },
+    {
+      "id": "violet",
+      "name": "Violeta"
+    }
+  ],
+  "avatar_default": {
+    "name": "Estudante",
+    "initials": "ES",
+    "color": "blue"
+  },
+  "appearance_themes": [
+    {
+      "id": "night",
+      "name": "Noite",
+      "purchase_item_id": null
+    },
+    {
+      "id": "dawn",
+      "name": "Dia",
+      "purchase_item_id": null
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "purchase_item_id": "aurora"
+    },
+    {
+      "id": "solar",
+      "name": "Solar",
+      "purchase_item_id": "solar"
+    },
+    {
+      "id": "ocean",
+      "name": "Oceano",
+      "purchase_item_id": "ocean"
+    },
+    {
+      "id": "forest",
+      "name": "Floresta",
+      "purchase_item_id": "forest"
+    },
+    {
+      "id": "coral",
+      "name": "Coral",
+      "purchase_item_id": "coral"
+    },
+    {
+      "id": "graphite",
+      "name": "Grafite",
+      "purchase_item_id": "graphite"
+    },
+    {
+      "id": "sakura",
+      "name": "Sakura",
+      "purchase_item_id": "sakura"
+    },
+    {
+      "id": "volcanic",
+      "name": "Vulc?o",
+      "purchase_item_id": "volcanic"
+    },
+    {
+      "id": "crystal",
+      "name": "Cristal",
+      "purchase_item_id": "crystal"
+    },
+    {
+      "id": "glacial",
+      "name": "Glacial",
+      "purchase_item_id": "glacial"
+    },
+    {
+      "id": "eclipse",
+      "name": "Eclipse",
+      "purchase_item_id": "eclipse"
+    },
+    {
+      "id": "nebula",
+      "name": "Nebulosa",
+      "purchase_item_id": "nebula"
+    },
+    {
+      "id": "celestial",
+      "name": "Celestial",
+      "purchase_item_id": "celestial"
+    }
+  ],
+  "store_boxes": [
+    {
+      "id": "theme",
+      "name": "Caixa misteriosa",
+      "price": 350
+    },
+    {
+      "id": "border",
+      "name": "Caixa de molduras",
+      "price": 350
+    }
+  ]
+}

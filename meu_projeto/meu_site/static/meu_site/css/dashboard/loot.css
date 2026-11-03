@@ -231,6 +231,301 @@
     align-items: center;
 }
 
+.case-open-form {
+    display: grid;
+    grid-template-columns: minmax(110px, 150px) minmax(0, 1fr);
+    align-items: end;
+    gap: 12px;
+}
+
+.case-quantity-label {
+    display: grid;
+    gap: 7px;
+    color: var(--muted);
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.case-quantity {
+    width: 100%;
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text);
+    background: var(--card);
+    font: inherit;
+}
+
+.case-open-form .redeem-button {
+    min-height: 44px;
+    border: 1px solid var(--button-border);
+}
+
+.case-opening-overlay[hidden],
+.case-opening-stage[hidden],
+.case-reward-grid[hidden] {
+    display: none;
+}
+
+.case-opening-overlay {
+    position: fixed;
+    z-index: 1100;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+    padding: 24px;
+    background: rgba(3, 8, 20, .84);
+    backdrop-filter: blur(12px);
+}
+
+.case-opening-card {
+    position: relative;
+    width: min(100%, 900px);
+    max-height: min(90vh, 900px);
+    overflow-y: auto;
+    padding: 30px;
+    border: 1px solid rgba(96, 165, 250, .4);
+    border-radius: 24px;
+    background: linear-gradient(145deg, #17233c, #0d1426 72%);
+    box-shadow: 0 24px 90px rgba(0, 0, 0, .6), 0 0 42px rgba(59, 130, 246, .16);
+    text-align: center;
+}
+
+.case-opening-card > .eyebrow {
+    margin-bottom: 12px;
+}
+
+.case-opening-card > h2 {
+    margin: 0 42px 12px;
+}
+
+.case-opening-close {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    color: var(--text);
+    background: rgba(148, 163, 184, .08);
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.case-opening-stage {
+    position: relative;
+    display: grid;
+    min-height: 260px;
+    place-items: center;
+    overflow: hidden;
+    margin: 18px 0;
+    border: 1px solid rgba(96, 165, 250, .2);
+    border-radius: 18px;
+    background:
+        radial-gradient(ellipse at center, rgba(37, 99, 235, .2), transparent 60%),
+        rgba(5, 11, 25, .6);
+}
+
+.case-opening-stage::before,
+.case-opening-stage::after {
+    position: absolute;
+    inset: -50%;
+    content: "";
+    pointer-events: none;
+}
+
+.case-opening-stage::before {
+    background: conic-gradient(from 0deg, transparent 0 35%, rgba(96, 165, 250, .08) 42%, transparent 52% 85%, rgba(34, 211, 238, .08) 92%, transparent);
+    animation: case-light-spin 7s linear infinite;
+}
+
+.case-opening-stage::after {
+    inset: 0;
+    opacity: 0;
+    background: radial-gradient(circle, rgba(251, 191, 36, .44), rgba(96, 165, 250, .16) 25%, transparent 68%);
+}
+
+.case-crate {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 180px;
+    height: 180px;
+    place-items: center;
+    border: 2px solid rgba(96, 165, 250, .55);
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(96, 165, 250, .27), rgba(129, 140, 248, .12));
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, .08), 0 18px 50px rgba(37, 99, 235, .25);
+}
+
+.case-crate img {
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .45));
+}
+
+.case-opening-status {
+    position: absolute;
+    z-index: 2;
+    right: 12px;
+    bottom: 8px;
+    left: 12px;
+    margin: 0;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.case-opening-stage.is-opening .case-crate {
+    animation: case-shake 1.35s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.case-opening-stage.is-opening::after {
+    animation: case-flash 1.8s ease-out both;
+}
+
+.case-opening-stage.is-opened .case-crate {
+    animation: case-burst .55s ease-out both;
+}
+
+.case-opening-stage.is-opened .case-crate img {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.3);
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.case-opening-stage.is-opened .case-opening-status {
+    color: var(--gold);
+}
+
+.case-reward-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.case-reward-grid.is-visible {
+    display: grid;
+}
+
+.case-reward-card {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 10px;
+    min-width: 0;
+    padding: 16px 12px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(30, 41, 59, .82);
+    opacity: 0;
+    transform: translateY(14px) scale(.96);
+}
+
+.case-reward-grid.is-visible .case-reward-card {
+    animation: reward-card-in .4s var(--reward-delay, 0ms) ease-out forwards;
+}
+
+.case-reward-card.rarity-comum { border-color: rgba(52, 211, 153, .4); }
+.case-reward-card.rarity-incomum { border-color: rgba(96, 165, 250, .4); }
+.case-reward-card.rarity-raro { border-color: rgba(244, 114, 182, .45); }
+.case-reward-card.rarity-muito_raro { border-color: rgba(192, 132, 252, .5); }
+.case-reward-card.rarity-lendario { border-color: rgba(251, 191, 36, .55); }
+.case-reward-card.rarity-mitico { border-color: rgba(248, 113, 113, .55); }
+
+.case-reward-number {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    color: var(--muted);
+    font-size: .75rem;
+}
+
+.case-reward-art {
+    display: grid;
+    width: 96px;
+    height: 96px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(15, 23, 42, .65);
+}
+
+.case-reward-art img,
+.case-reward-art .theme-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.case-reward-art > span:not(.theme-preview) {
+    font-size: 2.8rem;
+}
+
+.case-reward-card h3 {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-size: 1rem;
+}
+
+.case-reward-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .8rem;
+}
+
+@keyframes case-light-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes case-shake {
+    0%, 100% { transform: translateX(0) rotate(0) scale(1); }
+    12%, 38%, 64%, 88% { transform: translateX(-8px) rotate(-4deg) scale(1.02); }
+    25%, 51%, 76% { transform: translateX(8px) rotate(4deg) scale(1.04); }
+    92% { transform: translateY(-16px) scale(1.16); }
+}
+
+@keyframes case-flash {
+    45% { opacity: 0; }
+    65% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes case-burst {
+    0% { opacity: 1; transform: scale(1); }
+    60% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(.65) translateY(-40px); }
+}
+
+@keyframes reward-card-in {
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 620px) {
+    .loot-box-wrap { grid-template-columns: 1fr; }
+    .case-opening-overlay { padding: 10px; }
+    .case-opening-card { padding: 24px 14px; }
+    .case-opening-stage { min-height: 220px; }
+    .case-reward-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .case-opening-stage::before { animation-duration: 30s; }
+    .case-opening-stage.is-opening .case-crate,
+    .case-opening-stage.is-opening::after,
+    .case-opening-stage.is-opened .case-crate,
+    .case-reward-grid.is-visible .case-reward-card {
+        animation-duration: .01ms;
+        animation-iteration-count: 1;
+    }
+}
+
 .loot-reveal-backdrop[hidden] {
     display: none;
 }
