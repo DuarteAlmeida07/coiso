@@ -1,0 +1,13 @@
+{% url 'login' as login_url %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url={{ login_url }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Study Quest</title>
+  </head>
+  <body>
+    <p>A abrir o <a href="{{ login_url }}">Study Quest</a>...</p>
+  </body>
+</html>

@@ -484,17 +484,26 @@ def logout():
 
 @app.get("/styles/<path:filename>")
 def styles(filename):
-    return send_from_directory(ROOT / "styles", filename)
+    return send_from_directory(
+        ROOT / "meu_projeto" / "meu_site" / "static" / "meu_site" / "css",
+        filename,
+    )
 
 
 @app.get("/js/<path:filename>")
 def scripts(filename):
-    return send_from_directory(ROOT / "js", filename)
+    return send_from_directory(
+        ROOT / "meu_projeto" / "meu_site" / "static" / "meu_site" / "js",
+        filename,
+    )
 
 
 @app.get("/imagens/<path:filename>")
 def images(filename):
-    return send_from_directory(ROOT / "imagens", filename)
+    return send_from_directory(
+        ROOT / "meu_projeto" / "meu_site" / "static" / "meu_site" / "images",
+        filename,
+    )
 
 
 @app.get("/favicon.ico")

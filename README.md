@@ -1,8 +1,21 @@
 # Study Quest
 
-Study Quest is a server-rendered Flask application. Authentication, settings, missions, rewards, campaign progress, and test grading run in Python; the pages use regular HTML forms and do not require JavaScript.
+## Django project
 
-## Run locally
+The migrated site is organized as a Django application in `meu_projeto/`. From that directory, start it with:
+
+```powershell
+python -m pip install -r ..\requirements.txt
+python manage.py runserver
+```
+
+The pages keep their existing `/html/` paths, and the home page links to login. Static assets are served from the app's `static/meu_site/` directory.
+
+## Existing Flask application
+
+The repository also retains its server-rendered Flask application at the root. Authentication, settings, missions, rewards, campaign progress, and test grading run in Python; its pages use regular HTML forms and do not require JavaScript.
+
+### Run locally
 
 1. Use Python 3.10 or newer.
 2. Install the dependency:

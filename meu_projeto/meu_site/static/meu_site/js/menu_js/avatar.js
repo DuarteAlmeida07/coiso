@@ -1,0 +1,103 @@
+(() => {
+const avatarKey = 'study-quest-avatar';
+const defaultAvatar = { name: 'Estudante', initials: 'ES', color: 'blue' };
+const avatarColorGradients = {
+    blue: 'linear-gradient(135deg, #22d3ee, #6366f1)',
+    green: 'linear-gradient(135deg, #34d399, #0f766e)',
+    sunset: 'linear-gradient(135deg, #fb7185, #f59e0b)',
+    violet: 'linear-gradient(135deg, #a78bfa, #db2777)'
+};
+const avatar = JSON.parse(localStorage.getItem(avatarKey) || 'null') || defaultAvatar;
+const nameInput = document.querySelector('#avatar-name');
+const initialsInput = document.querySelector('#avatar-initials');
+const preview = document.querySelector('#avatar-preview');
+const previewName = document.querySelector('#avatar-preview-name');
+const colorInputs = document.querySelectorAll('input[name="avatar-color"]');
+const form = document.querySelector('#avatar-form');
+const status = document.querySelector('#avatar-status');
+const cosmetics = window.StudyQuestCosmetics;
+const borderInventoryKey = cosmetics.avatarBorderInventoryKey;
+const selectedBorderKey = cosmetics.selectedAvatarBorderKey;
+const ownedBorderIds = JSON.parse(localStorage.getItem(borderInventoryKey) || '[]');
+let selectedBorderId = localStorage.getItem(selectedBorderKey) || '';
+if (!ownedBorderIds.includes(selectedBorderId)) {
+    selectedBorderId = '';
+}
+
+function renderBorderInventory() {
+    const options = document.querySelector('#avatar-border-options');
+    const noBorder = document.createElement('label');
+    noBorder.className = 'avatar-border-option';
+    noBorder.innerHTML = '<input type="radio" name="avatar-border" value="" /><span class="avatar-border-swatch">ES</span><strong>Sem moldura</strong><small>Base</small>';
+    noBorder.querySelector('input').checked = !selectedBorderId;
+    options.appendChild(noBorder);
+
+    cosmetics.avatarBorders.forEach((border) => {
+        const isOwned = ownedBorderIds.includes(border.id);
+        const option = document.createElement('label');
+        option.className = `avatar-border-option${isOwned ? '' : ' locked'}`;
+        option.setAttribute('aria-disabled', String(!isOwned));
+
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'avatar-border';
+        input.value = border.id;
+        input.disabled = !isOwned;
+        input.checked = border.id === selectedBorderId;
+
+        const swatch = document.createElement('span');
+        swatch.className = 'avatar-border-swatch';
+        swatch.textContent = 'ES';
+        cosmetics.applyAvatarBorder(swatch, border.id);
+
+        const name = document.createElement('strong');
+        name.textContent = border.label;
+
+        const details = document.createElement('small');
+        details.textContent = `${cosmetics.rarityLabels[border.rarity]} · ${isOwned ? 'Desbloqueada' : 'Bloqueada'}`;
+
+        option.append(input, swatch, name, details);
+        options.appendChild(option);
+    });
+}
+
+function updatePreview() {
+    preview.textContent = initialsInput.value.trim().slice(0, 3).toUpperCase() || 'ES';
+    previewName.textContent = nameInput.value.trim() || 'Estudante';
+    const selectedColor = document.querySelector('input[name="avatar-color"]:checked');
+    preview.style.setProperty('--avatar-fill', avatarColorGradients[selectedColor.value]);
+    cosmetics.applyAvatarBorder(preview, selectedBorderId);
+}
+
+renderBorderInventory();
+nameInput.value = avatar.name;
+initialsInput.value = avatar.initials;
+document.querySelector(`input[value="${avatar.color}"]`).checked = true;
+updatePreview();
+
+nameInput.addEventListener('input', updatePreview);
+initialsInput.addEventListener('input', updatePreview);
+colorInputs.forEach((input) => input.addEventListener('change', updatePreview));
+document.querySelectorAll('input[name="avatar-border"]').forEach((input) => {
+    input.addEventListener('change', () => {
+        selectedBorderId = input.value;
+        localStorage.setItem(selectedBorderKey, selectedBorderId);
+        updatePreview();
+    });
+});
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const selectedColor = document.querySelector('input[name="avatar-color"]:checked').value;
+    const newAvatar = {
+        name: nameInput.value.trim() || 'Estudante',
+        initials: initialsInput.value.trim().slice(0, 3).toUpperCase() || 'ES',
+        color: selectedColor
+    };
+    localStorage.setItem(avatarKey, JSON.stringify(newAvatar));
+    status.textContent = 'Avatar atualizado com sucesso.';
+    window.setTimeout(() => {
+        status.textContent = '';
+    }, 3000);
+});
+})();
