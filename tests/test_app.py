@@ -96,8 +96,14 @@ class StudyQuestWebTests(unittest.TestCase):
                 response = self.client.get(path)
                 self.assertEqual(response.status_code, 200)
                 page = response.get_data(as_text=True).lower()
+                self.assertIn('class="account-status"', page)
+                self.assertNotIn('class="side-card"', page)
                 if path == "/html/menu_html/loja.html":
                     self.assertIn('/js/store.js', page)
+                elif path == "/html/menu_html/avatar.html":
+                    self.assertIn('/js/menu_js/avatar-autosave.js', page)
+                elif "exercicios.html" in path:
+                    self.assertIn('/js/menu_js/stage-autosave.js', page)
                 else:
                     self.assertNotIn("<script", page)
 
@@ -112,6 +118,18 @@ class StudyQuestWebTests(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         load_context.assert_called_once()
+
+    def test_catalog_initialization_corrects_legacy_volcanic_theme_name(self):
+        with application.db_connection() as connection:
+            connection.execute(
+                "UPDATE appearance_themes SET name = 'Vulc?o' WHERE id = 'volcanic'"
+            )
+            application.catalog.initialize_catalog(connection)
+            volcanic = connection.execute(
+                "SELECT name FROM appearance_themes WHERE id = 'volcanic'"
+            ).fetchone()
+
+        self.assertEqual(volcanic["name"], "Vulcão")
 
     def test_avatar_shows_all_frames_and_can_equip_owned_frame(self):
         self.create_account_and_login()
@@ -130,8 +148,14 @@ class StudyQuestWebTests(unittest.TestCase):
         self.assertIn('avatar-border-option unlocked', page)
         self.assertIn('avatar-border-status unlocked">Desbloqueada</span>', page)
         self.assertIn('avatar-border-status locked">Bloqueada</span>', page)
-        self.assertIn('type="submit" form="avatar-form">Atualizar avatar</button>', page)
+        self.assertLess(page.index('rarity-badge comum'), page.index('rarity-badge incomum'))
+        self.assertLess(page.index('rarity-badge incomum'), page.index('rarity-badge raro'))
+        self.assertLess(page.index('rarity-badge raro'), page.index('rarity-badge muito_raro'))
+        self.assertLess(page.index('rarity-badge muito_raro'), page.index('rarity-badge lendario'))
         self.assertIn('<form id="avatar-form" method="post">', page)
+        self.assertNotIn("Atualizar avatar", page)
+        self.assertIn('type="color" name="color"', page)
+        self.assertIn("avatar-autosave.js", page)
         self.assertIn("Bloqueada", page)
 
         response = self.client.post(
@@ -147,6 +171,49 @@ class StudyQuestWebTests(unittest.TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.state()["selected_border"], "mint-loop")
 
+    def test_avatar_changes_autosave_custom_color(self):
+        self.create_account_and_login()
+        response = self.client.get("/html/menu_html/avatar.html")
+        response = self.client.post(
+            "/html/menu_html/avatar.html",
+            data={
+                "csrf_token": self.csrf_token(response),
+                "name": "Inês",
+                "initials": "IM",
+                "color": "#12abEF",
+                "border": "",
+            },
+            headers={"X-Requested-With": "XMLHttpRequest"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {"ok": True})
+        state = self.state()
+        self.assertEqual(state["avatar"]["name"], "Inês")
+        self.assertEqual(state["avatar"]["initials"], "IM")
+        self.assertEqual(state["avatar"]["color"], "#12abEF")
+
+        page = self.client.get("/html/menu_html/avatar.html").get_data(as_text=True)
+        self.assertIn('value="#12abEF"', page)
+        self.assertIn("linear-gradient(135deg, #12abEF, #12abEF)", page)
+
+    def test_avatar_rejects_invalid_custom_color(self):
+        self.create_account_and_login()
+        response = self.client.get("/html/menu_html/avatar.html")
+        response = self.client.post(
+            "/html/menu_html/avatar.html",
+            data={
+                "csrf_token": self.csrf_token(response),
+                "name": "Ana",
+                "initials": "AS",
+                "color": "red; background-image: url(example)",
+                "border": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(self.state()["avatar"]["color"], "blue")
+
     def test_reference_pages_render_their_visual_sections(self):
         self.create_account_and_login()
 
@@ -154,6 +221,8 @@ class StudyQuestWebTests(unittest.TestCase):
         self.assertIn("Ajuste a experiência visual da plataforma.", settings)
         self.assertIn("theme-preview theme-night", settings)
         self.assertIn("theme-preview theme-dawn", settings)
+        self.assertIn('class="settings-page-layout"', settings)
+        self.assertLess(settings.index('class="settings-layout"'), settings.index('class="theme-settings-form"'))
         self.assertIn("Lembrete diário", settings)
 
         shop = self.client.get("/html/menu_html/loja.html").get_data(as_text=True)
@@ -200,6 +269,48 @@ class StudyQuestWebTests(unittest.TestCase):
         dashboard = self.client.get("/html/menu_html/dashboard.html")
         self.assertIn('class="theme-dawn"', dashboard.get_data(as_text=True))
         dashboard.close()
+
+    def test_theme_change_saves_independently_and_theme_list_is_grouped_by_rarity(self):
+        self.create_account_and_login()
+        state = self.state()
+        state["settings"]["daily_goal"] = "1 hora"
+        state["xp"] = 135
+        state["tokens"] = 246
+        with application.app.app_context():
+            application.save_state(state, application.load_user("ana@example.com"))
+
+        response = self.client.get("/html/menu_html/definicoes.html")
+        page = response.get_data(as_text=True)
+        self.assertIn('onchange="this.form.submit()"', page)
+        self.assertIn("Vulcão", page)
+        self.assertNotIn("Vulc?o", page)
+        self.assertLess(page.index('rarity-badge base'), page.index('rarity-badge incomum'))
+        self.assertLess(page.index('rarity-badge incomum'), page.index('rarity-badge raro'))
+        self.assertLess(page.index('rarity-badge raro'), page.index('rarity-badge muito_raro'))
+        self.assertLess(page.index('rarity-badge muito_raro'), page.index('rarity-badge lendario'))
+
+        response = self.client.post(
+            "/html/menu_html/definicoes.html",
+            data={
+                "csrf_token": self.csrf_token(response),
+                "action": "theme",
+                "theme": "dawn",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        state = self.state()
+        self.assertEqual(state["settings"]["theme"], "dawn")
+        self.assertEqual(state["settings"]["daily_goal"], "1 hora")
+        self.assertEqual(state["xp"], 135)
+        self.assertEqual(state["tokens"], 246)
+        for path in ("/html/menu_html/testes.html", "/html/menu_html/loja.html"):
+            with self.subTest(path=path):
+                page = self.client.get(path).get_data(as_text=True)
+                self.assertIn("<span>Tokens</span>", page)
+                self.assertIn("XP do nível · 135/500", page)
+                self.assertIn(">246</strong>", page)
+                self.assertIn("Nível", page)
 
     def test_shop_opens_up_to_five_boxes_and_animates_all_rewards(self):
         self.create_account_and_login()
@@ -293,6 +404,142 @@ class StudyQuestWebTests(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertIn("Aprovado com 8/8", response.get_data(as_text=True))
+        self.assertIn("portugues:1", self.state()["passed_tests"])
+
+    def test_exercise_answer_autosaves_and_restores_after_reload(self):
+        self.create_account_and_login()
+        path = "/html/area_de_estudo/exercicios.html?disciplina=portugues&level=1&node=0"
+        response = self.client.get(path)
+        self.assertNotIn(">Responder</button>", response.get_data(as_text=True))
+        with application.db_connection() as connection:
+            question = application.catalog.get_questions(
+                connection, "portugues", "lesson", 1, 0
+            )[0]
+        answer_index = (question["correct_index"] + 1) % len(question["options"])
+
+        response = self.client.post(
+            path,
+            data={
+                "csrf_token": self.csrf_token(response),
+                "action": "autosave",
+                "question": "0",
+                "question_id": question["id"],
+                "answer": str(answer_index),
+            },
+            headers={"X-Requested-With": "XMLHttpRequest"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {"ok": True})
+        refreshed_page = self.client.get(path).get_data(as_text=True)
+        self.assertIn(f'value="{answer_index}" required checked', refreshed_page)
+        self.assertEqual(
+            self.state()["answer_drafts"]["exercise:portugues:1:0"]["0"],
+            answer_index,
+        )
+
+    def test_stage_test_answers_autosave_and_restore_after_reload(self):
+        self.create_account_and_login()
+        state = self.state()
+        state["campaigns"]["portugues:1"] = list(range(6))
+        with application.app.app_context():
+            application.save_state(state, application.load_user("ana@example.com"))
+
+        path = "/html/area_de_estudo/teste.html?disciplina=portugues&level=1"
+        response = self.client.get(path)
+        self.assertNotIn(">Corrigir teste</button>", response.get_data(as_text=True))
+        with application.db_connection() as connection:
+            question_bank = application.catalog.get_questions(
+                connection, "portugues", "test", 1
+            )
+        selected_questions = random.Random(
+            f"{date.today().isoformat()}:portugues:1"
+        ).sample(question_bank, 8)
+        answer_index = (selected_questions[3]["correct_index"] + 1) % len(
+            selected_questions[3]["options"]
+        )
+        form_data = {
+            "csrf_token": self.csrf_token(response),
+            "action": "autosave",
+            "draft_index": "3",
+            "answer_3": str(answer_index),
+        }
+        form_data.update({
+            f"question_id_{index}": question["id"]
+            for index, question in enumerate(selected_questions)
+        })
+
+        response = self.client.post(
+            path,
+            data=form_data,
+            headers={"X-Requested-With": "XMLHttpRequest"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {"ok": True})
+        refreshed_page = self.client.get(path).get_data(as_text=True)
+        self.assertIn(f'name="answer_3" value="{answer_index}" required checked', refreshed_page)
+        draft_key = f"test:{date.today().isoformat()}:portugues:1"
+        self.assertEqual(self.state()["answer_drafts"][draft_key]["3"], answer_index)
+
+    def test_exercise_answer_is_checked_without_reloading_page(self):
+        self.create_account_and_login()
+        path = "/html/area_de_estudo/exercicios.html?disciplina=portugues&level=1&node=0"
+        response = self.client.get(path)
+        with application.db_connection() as connection:
+            question = application.catalog.get_questions(
+                connection, "portugues", "lesson", 1, 0
+            )[0]
+
+        response = self.client.post(
+            path,
+            data={
+                "csrf_token": self.csrf_token(response),
+                "action": "answer",
+                "question": "0",
+                "question_id": question["id"],
+                "answer": str(question["correct_index"]),
+            },
+            headers={"X-Requested-With": "XMLHttpRequest"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json["correct"])
+        self.assertEqual(response.json["solved_count"], 1)
+        self.assertEqual(response.json["total"], 2)
+        self.assertFalse(response.json["node_done"])
+        self.assertEqual(self.state()["pending_answers"]["portugues:1:0"], [0])
+
+    def test_stage_test_is_checked_without_reloading_page(self):
+        self.create_account_and_login()
+        state = self.state()
+        state["campaigns"]["portugues:1"] = list(range(6))
+        with application.app.app_context():
+            application.save_state(state, application.load_user("ana@example.com"))
+
+        path = "/html/area_de_estudo/teste.html?disciplina=portugues&level=1"
+        response = self.client.get(path)
+        with application.db_connection() as connection:
+            question_bank = application.catalog.get_questions(
+                connection, "portugues", "test", 1
+            )
+        selected_questions = random.Random(
+            f"{date.today().isoformat()}:portugues:1"
+        ).sample(question_bank, 8)
+        form_data = {"csrf_token": self.csrf_token(response), "action": "submit"}
+        for index, question in enumerate(selected_questions):
+            form_data[f"answer_{index}"] = str(question["correct_index"])
+            form_data[f"question_id_{index}"] = question["id"]
+
+        response = self.client.post(
+            path,
+            data=form_data,
+            headers={"X-Requested-With": "XMLHttpRequest"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json["passed"])
+        self.assertEqual(response.json["score"], 8)
         self.assertIn("portugues:1", self.state()["passed_tests"])
 
     def test_store_and_settings_update_are_saved(self):

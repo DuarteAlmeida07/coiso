@@ -17,6 +17,7 @@ from flask import (
     flash,
     g,
     has_request_context,
+    jsonify,
     redirect,
     render_template,
     request,
@@ -31,6 +32,12 @@ import catalog
 
 
 ROOT = Path(__file__).resolve().parent
+AVATAR_COLOR_VALUES = {
+    "blue": "#22d3ee",
+    "green": "#34d399",
+    "sunset": "#fb7185",
+    "violet": "#a78bfa",
+}
 
 
 def load_secret_key(secret_path=None):
@@ -115,6 +122,7 @@ def default_state(connection):
         "test_attempts": {},
         "test_results": {},
         "pending_answers": {},
+        "answer_drafts": {},
         "daily": {
             "date": date.today().isoformat(),
             "mission_ids": [mission["id"] for mission in random.sample(missions, 3)],
@@ -733,28 +741,53 @@ def avatar():
     with db_connection() as connection:
         colors = catalog.load_context(connection)["AVATAR_COLORS"]
         borders = catalog.get_items(connection, "border")
+        rarities = catalog.get_rarities(connection)
+    border_groups = [
+        {
+            "id": rarity["id"],
+            "name": rarity["name"],
+            "borders": [
+                border for border in borders if border["rarity"] == rarity["id"]
+            ],
+        }
+        for rarity in rarities
+    ]
+    border_groups = [group for group in border_groups if group["borders"]]
+    saved_color = state["avatar"]["color"]
+    avatar_color_value = AVATAR_COLOR_VALUES.get(saved_color, saved_color)
+    if not re.fullmatch(r"#[0-9a-fA-F]{6}", avatar_color_value):
+        avatar_color_value = AVATAR_COLOR_VALUES["blue"]
     if request.method == "POST":
         name = request.form.get("name", "").strip()[:30]
         initials = request.form.get("initials", "").strip()[:3].upper()
-        color = request.form.get("color", "blue")
-        border = request.form.get("border", "")
+        color = request.form.get("color", state["avatar"]["color"])
+        border = request.form.get("border", state["selected_border"])
         with db_connection() as connection:
             default_avatar = catalog.get_default_avatar(connection)
         owned_borders = {item["id"] for item in borders}
-        if color not in colors:
+        if not re.fullmatch(r"#[0-9a-fA-F]{6}", color) and color not in AVATAR_COLOR_VALUES:
             abort(400, "Cor de avatar inválida.")
         if border and border not in state["borders"]:
             abort(400, "Moldura não desbloqueada.")
         state["avatar"] = {
-            "name": name or default_avatar["name"],
-            "initials": initials or default_avatar["initials"],
+            "name": name or state["avatar"]["name"] or default_avatar["name"],
+            "initials": initials or state["avatar"]["initials"] or default_avatar["initials"],
             "color": color,
         }
         state["selected_border"] = border if border in owned_borders else ""
         save_state(state)
+        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+            return jsonify({"ok": True})
         flash("Avatar atualizado com sucesso.", "success")
         return redirect(request.path)
-    return render_page("avatar", state, colors=colors, borders=borders)
+    return render_page(
+        "avatar",
+        state,
+        colors=colors,
+        borders=borders,
+        border_groups=border_groups,
+        avatar_color_value=avatar_color_value,
+    )
 
 
 @app.route("/html/menu_html/definicoes.html", methods=["GET", "POST"])
@@ -762,17 +795,28 @@ def avatar():
 def settings():
     state = get_state()
     if request.method == "POST":
-        goal = request.form.get("daily_goal")
-        week_start = request.form.get("week_start")
-        theme = request.form.get("theme")
         available_themes = catalog_context()["THEME_NAMES"]
         free_themes = catalog_context()["FREE_THEME_IDS"]
         allowed_themes = free_themes | set(state["purchases"])
+        theme = request.form.get("theme")
+        if request.form.get("action") == "theme":
+            if theme not in available_themes or theme not in allowed_themes:
+                abort(400, "Tema não desbloqueado.")
+            state["settings"]["theme"] = theme
+            save_state(state)
+            flash("Tema atualizado.", "success")
+            return redirect(request.path)
+
+        goal = request.form.get("daily_goal")
+        week_start = request.form.get("week_start")
         if goal not in {"15 minutos", "30 minutos", "1 hora", "2 horas"}:
             abort(400, "Meta diária inválida.")
         if week_start not in {"Segunda-feira", "Domingo"}:
             abort(400, "Início da semana inválido.")
-        if theme not in available_themes or theme not in allowed_themes:
+        action = request.form.get("action")
+        if action != "preferences" and (
+            theme not in available_themes or theme not in allowed_themes
+        ):
             abort(400, "Tema não desbloqueado.")
         state["settings"] = {
             "daily_goal": goal,
@@ -780,7 +824,7 @@ def settings():
             "reminder": bool(request.form.get("reminder")),
             "weekly_summary": bool(request.form.get("weekly_summary")),
             "achievements": bool(request.form.get("achievements")),
-            "theme": theme,
+            "theme": state["settings"]["theme"] if action == "preferences" else theme,
         }
         display_name = request.form.get("name", "").strip()[:60]
         if display_name:
@@ -790,7 +834,13 @@ def settings():
         save_state(state)
         flash("Definições guardadas.", "success")
         return redirect(request.path)
-    return render_page("settings", state, themes=catalog_context()["THEME_NAMES"])
+    context = catalog_context()
+    return render_page(
+        "settings",
+        state,
+        themes=context["THEME_NAMES"],
+        theme_groups=context["THEME_GROUPS"],
+    )
 
 
 @app.route("/html/area_de_estudo/disciplinas.html")
@@ -864,9 +914,31 @@ def exercises():
     if len(questions) < 2 or len(node_names) != 6:
         abort(503, "Este node precisa de pelo menos duas perguntas ativas na base de dados.")
     answer_key = f"{key}:{node}"
+    draft_key = f"exercise:{answer_key}"
+    answer_drafts = state.setdefault("answer_drafts", {})
     solved = set(state["pending_answers"].get(answer_key, []))
     feedback = None
     if request.method == "POST":
+        if request.form.get("action") == "autosave":
+            try:
+                question_index = int(request.form.get("question", "-1"))
+                answer_index = int(request.form.get("answer", "-1"))
+            except ValueError:
+                abort(400, "Resposta inválida.")
+            if (
+                question_index not in range(len(questions))
+                or request.form.get("question_id") != questions[question_index]["id"]
+                or answer_index not in range(len(questions[question_index]["options"]))
+            ):
+                abort(400, "Resposta inválida.")
+            if question_index in solved:
+                abort(400, "Esta pergunta já foi concluída.")
+            if node > 0 and node - 1 not in completed:
+                abort(403, "Complete o nó anterior antes de continuar.")
+            answer_drafts.setdefault(draft_key, {})[str(question_index)] = answer_index
+            save_state(state)
+            return jsonify({"ok": True})
+
         if node > 0 and node - 1 not in completed:
             abort(403, "Complete o nó anterior antes de continuar.")
         try:
@@ -883,12 +955,14 @@ def exercises():
             abort(400, "Resposta inválida.")
         if answer_index == questions[question_index]["correct_index"]:
             solved.add(question_index)
+            answer_drafts.get(draft_key, {}).pop(str(question_index), None)
             feedback = "Resposta certa!"
             state["pending_answers"][answer_key] = sorted(solved)
             if len(solved) == len(questions):
                 completed.add(node)
                 state["campaigns"][key] = sorted(completed)
                 del state["pending_answers"][answer_key]
+                answer_drafts.pop(draft_key, None)
                 daily = daily_state(state)
                 event_id = {"discipline": discipline, "level": level, "node": node}
                 if event_id not in daily["nodes"]:
@@ -896,14 +970,37 @@ def exercises():
                 mission_list(state)
                 feedback = "Nó concluído! As explicações ficaram disponíveis."
         else:
+            answer_drafts.setdefault(draft_key, {})[str(question_index)] = answer_index
             feedback = "Ainda não. Tente outra opção."
         save_state(state)
+        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+            return jsonify({
+                "ok": True,
+                "correct": answer_index == questions[question_index]["correct_index"],
+                "feedback": feedback,
+                "explanation": questions[question_index]["explanation"],
+                "solved_count": len(solved),
+                "total": len(questions),
+                "node_done": node in completed,
+                "explanations": [question["explanation"] for question in questions],
+                "next_url": (
+                    url_for(
+                        "exercises",
+                        disciplina=discipline,
+                        level=level,
+                        node=node + 1,
+                    )
+                    if node < 5
+                    else url_for("campaign", disciplina=discipline, level=level)
+                ),
+            })
     if node > 0 and node - 1 not in completed:
         feedback = "Este nó está bloqueado. Volte ao caminho e complete o anterior."
     return render_page(
         "exercises", state, discipline=discipline, level=level, node=node,
         questions=questions, completed=completed, solved=solved, feedback=feedback,
         node_names=node_names,
+        answer_drafts=answer_drafts.get(draft_key, {}),
     )
 
 
@@ -930,9 +1027,33 @@ def final_test():
         abort(503, "O teste precisa de pelo menos oito perguntas ativas na base de dados.")
     rng = random.Random(attempts_key)
     questions = rng.sample(questions_source, 8)
+    answer_drafts = state.setdefault("answer_drafts", {})
+    draft_key = f"test:{attempts_key}"
     feedback = None
     result = None
     if request.method == "POST":
+        submitted_question_ids = [
+            request.form.get(f"question_id_{index}", "")
+            for index in range(len(questions))
+        ]
+        if submitted_question_ids != [question["id"] for question in questions]:
+            abort(400, "As perguntas mudaram desde que a página foi carregada. Atualize e tente novamente.")
+        if request.form.get("action") == "autosave":
+            index_value = request.form.get("draft_index", "")
+            try:
+                answer_index = int(request.form.get(f"answer_{index_value}", "-1"))
+                question_index = int(index_value)
+            except ValueError:
+                abort(400, "Resposta inválida.")
+            if (
+                question_index not in range(len(questions))
+                or answer_index not in range(len(questions[question_index]["options"]))
+            ):
+                abort(400, "Resposta inválida.")
+            answer_drafts.setdefault(draft_key, {})[str(question_index)] = answer_index
+            save_state(state)
+            return jsonify({"ok": True})
+
         use_ticket = bool(request.form.get("use_ticket"))
         regular_attempts = sum(not attempt.get("ticket") for attempt in attempts)
         if use_ticket:
@@ -942,13 +1063,12 @@ def final_test():
                 abort(400, "Usa primeiro as tentativas gratuitas disponíveis.")
         elif regular_attempts >= 2 or any(attempt.get("passed") for attempt in attempts):
             abort(403, "Não há mais tentativas gratuitas hoje.")
-        answers = [request.form.get(f"answer_{index}", "") for index in range(len(questions))]
-        submitted_question_ids = [
-            request.form.get(f"question_id_{index}", "")
+
+        saved_drafts = answer_drafts.get(draft_key, {})
+        answers = [
+            request.form.get(f"answer_{index}") or str(saved_drafts.get(str(index), ""))
             for index in range(len(questions))
         ]
-        if submitted_question_ids != [question["id"] for question in questions]:
-            abort(400, "As perguntas mudaram desde que a página foi carregada. Atualize e tente novamente.")
         if any(not answer for answer in answers):
             feedback = f"Responda às {len(questions)} perguntas antes de corrigir."
         else:
@@ -970,6 +1090,7 @@ def final_test():
             passed = score >= min(7, len(questions))
             result = {"score": score, "total": len(questions), "passed": passed}
             attempts.append({"score": score, "total": len(questions), "passed": passed, "ticket": use_ticket})
+            answer_drafts.pop(draft_key, None)
             state["test_attempts"][attempts_key] = attempts
             state["test_results"].setdefault(key, []).append({"score": score, "total": len(questions)})
             if passed:
@@ -990,9 +1111,29 @@ def final_test():
             else:
                 feedback = f"Nota {score}/{len(questions)}. Reveja o conteúdo e tente novamente mais tarde."
             save_state(state)
+            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                regular_attempts = sum(not attempt.get("ticket") for attempt in attempts)
+                return jsonify({
+                    "ok": True,
+                    "score": score,
+                    "total": len(questions),
+                    "passed": passed,
+                    "feedback": feedback,
+                    "attempts": len(attempts),
+                    "tickets": state["tickets"],
+                    "can_retry": not passed and (
+                        regular_attempts < 2 or state["tickets"] > 0
+                    ),
+                    "needs_ticket": not passed and regular_attempts >= 2,
+                    "journey_url": url_for("journey"),
+                    "next_stage_url": url_for(
+                        "campaign", disciplina=discipline, level=level + 1
+                    ) if level < 3 else url_for("journey"),
+                })
     return render_page(
         "final_test", state, discipline=discipline, level=level,
         questions=questions, attempts=attempts, feedback=feedback, result=result,
+        answer_drafts=answer_drafts.get(draft_key, {}),
     )
 
 

@@ -11,7 +11,7 @@
     border: 1px solid var(--line);
     border-radius: 28px;
     box-shadow: var(--shadow);
-    overflow: hidden;
+    overflow: visible;
     backdrop-filter: blur(18px);
 }
 
@@ -120,11 +120,18 @@
 }
 
 .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    margin-bottom: 26px;
+    margin: -22px -28px 26px;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--line);
+    background: var(--content-bg);
+    backdrop-filter: blur(18px);
 }
 
 .title-block h1 {
@@ -249,5 +256,7 @@
     .topbar {
         align-items: flex-start;
         flex-direction: column;
+        margin: -18px -14px 18px;
+        padding: 14px;
     }
 }

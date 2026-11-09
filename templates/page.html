@@ -198,14 +198,13 @@
     {% set equipped_border = borders|selectattr('id', 'equalto', state.selected_border)|first|default(None) %}
     <article class="panel avatar-preview-panel">
         <div class="avatar-preview-content">
-            <div class="avatar-large avatar-color-{{ state.avatar.color }}" aria-label="Pré-visualização do avatar">
-                {{ state.avatar.initials }}
+            <div class="avatar-large" style="--avatar-fill: linear-gradient(135deg, {{ avatar_color_value }}, {{ avatar_color_value }});" aria-label="Pré-visualização do avatar">
+                <span id="avatar-preview-initials">{{ state.avatar.initials }}</span>
                 {% if equipped_border and equipped_border.image_url %}<img class="avatar-frame-art" src="{{ equipped_border.image_url }}" alt="Moldura equipada: {{ equipped_border.name }}">{% endif %}
             </div>
-            <h2>{{ state.avatar.name }}</h2>
-            <p>{{ colors[state.avatar.color] }}{% if equipped_border %} · {{ equipped_border.name }}{% endif %}</p>
+            <h2 id="avatar-preview-name">{{ state.avatar.name }}</h2>
+            <p>{% if state.avatar.color in colors %}{{ colors[state.avatar.color] }}{% else %}{{ avatar_color_value }}{% endif %}{% if equipped_border %} · {{ equipped_border.name }}{% endif %}</p>
         </div>
-        <button class="primary-btn avatar-save-button" type="submit" form="avatar-form">Atualizar avatar</button>
     </article>
     <article class="panel avatar-form-panel">
         <div class="panel-header">
@@ -220,26 +219,30 @@
             </div>
             <fieldset class="field avatar-color-options">
                 <legend>Cor do avatar</legend>
-                {% for color, label in colors.items() %}
-                <label class="avatar-color avatar-color-{{ color }}" title="{{ label }}">
-                    <input type="radio" name="color" value="{{ color }}" aria-label="{{ label }}" {% if state.avatar.color == color %}checked{% endif %}>
-                </label>
-                {% endfor %}
+                <label class="avatar-color-picker-label" for="avatar-color-picker">Escolhe qualquer cor</label>
+                <input id="avatar-color-picker" type="color" name="color" value="{{ avatar_color_value }}" aria-label="Escolher cor do avatar">
+                <output id="avatar-color-value" for="avatar-color-picker">{{ avatar_color_value }}</output>
             </fieldset>
+            <p class="avatar-save-status" role="status" aria-live="polite"></p>
             <fieldset class="field avatar-border-inventory">
                 <legend>Inventário de molduras <span class="tag">{{ borders|length }} molduras</span></legend>
                 <div class="avatar-border-heading"><span>Escolha uma moldura desbloqueada</span><a href="{{ url_for('shop') }}#avatar-border-store">Obter molduras na loja</a></div>
-                <div class="avatar-border-options" aria-label="Molduras do avatar">
+                <div class="avatar-border-options avatar-border-base" aria-label="Molduras do avatar">
                     <label class="avatar-border-option {% if not state.selected_border %}selected{% endif %}">
                         <input type="radio" name="border" value="" {% if not state.selected_border %}checked{% endif %}>
-                        <span class="avatar-border-swatch avatar-color-{{ state.avatar.color }}">ES</span>
+                        <span class="avatar-border-swatch" style="--avatar-color: {{ avatar_color_value }};">ES</span>
                         <strong>Sem moldura</strong><small>Base · Disponível</small>
                     </label>
-                    {% for border in borders %}
+                </div>
+                {% for group in border_groups %}
+                <section class="avatar-border-rarity-group">
+                    <h3><span class="rarity-badge {{ group.id }}">{{ group.name }}</span></h3>
+                    <div class="avatar-border-options" aria-label="Molduras {{ group.name }}">
+                    {% for border in group.borders %}
                     {% set owned = border.id in state.borders %}
                     <label class="avatar-border-option {% if owned %}unlocked{% else %}locked{% endif %} {% if state.selected_border == border.id %}selected{% endif %}" aria-disabled="{{ 'false' if owned else 'true' }}">
                         <input type="radio" name="border" value="{{ border.id }}" {% if not owned %}disabled{% endif %} {% if state.selected_border == border.id %}checked{% endif %} aria-label="{{ border.name }} · {{ border.rarity_name }} · {{ 'Desbloqueada' if owned else 'Bloqueada' }}">
-                        <span class="avatar-border-swatch avatar-color-{{ state.avatar.color }}">
+                        <span class="avatar-border-swatch" style="--avatar-color: {{ avatar_color_value }};">
                             ES
                             {% if border.image_url %}<img class="avatar-border-art" src="{{ border.image_url }}" alt="" loading="lazy">{% endif %}
                         </span>
@@ -248,13 +251,18 @@
                         <span class="avatar-border-status {% if owned %}unlocked{% else %}locked{% endif %}">{{ 'Desbloqueada' if owned else 'Bloqueada' }}</span>
                     </label>
                     {% endfor %}
-                </div>
+                    </div>
+                </section>
+                {% endfor %}
             </fieldset>
         </form>
     </article>
 </section>
+<script src="{{ url_for('scripts', filename='menu_js/avatar-autosave.js') }}" defer></script>
 {% elif page == 'settings' %}
+<div class="settings-page-layout">
 <form method="post" class="settings-layout"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="action" value="preferences">
     <article class="panel settings-panel">
         <div class="panel-header"><div><h2>Perfil</h2><p class="panel-description">Estas informações aparecem na sua jornada.</p></div><span class="settings-icon" aria-hidden="true">◉</span></div>
         <div class="form-grid">
@@ -277,22 +285,33 @@
             {% endfor %}
         </div>
     </article>
+    <button class="primary-btn" type="submit">Guardar definições</button>
+</form>
+<form method="post" class="theme-settings-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="action" value="theme">
     <article class="panel settings-panel">
         <div class="panel-header"><div><h2>Tema</h2><p class="panel-description">Ajuste a experiência visual da plataforma.</p></div><span class="settings-icon" aria-hidden="true">✦</span></div>
-        <div class="theme-options">
-            {% for key, label in themes.items() %}
-            {% set unlocked = key in FREE_THEME_IDS or key in state.purchases %}
-            <label class="theme-option {% if state.settings.theme == key %}selected{% endif %} {% if not unlocked %}locked{% endif %}">
-                <input type="radio" name="theme" value="{{ key }}" {% if state.settings.theme == key %}checked{% endif %} {% if not unlocked %}disabled{% endif %}>
-                <span class="theme-preview theme-{{ key }}"></span>
-                <strong>{{ label }}</strong>
+        {% for group in theme_groups %}
+        <section class="theme-rarity-group">
+            <h3><span class="rarity-badge {{ group.id }}">{{ group.name }}</span></h3>
+            <div class="theme-options">
+            {% for theme in group.themes %}
+            {% set unlocked = theme.id in FREE_THEME_IDS or theme.id in state.purchases %}
+            <label class="theme-option {% if state.settings.theme == theme.id %}selected{% endif %} {% if not unlocked %}locked{% endif %}">
+                <input type="radio" name="theme" value="{{ theme.id }}" {% if state.settings.theme == theme.id %}checked{% endif %} {% if not unlocked %}disabled{% endif %} onchange="this.form.submit()">
+                <span class="theme-preview theme-{{ theme.id }}"></span>
+                <strong>{{ theme.name }}</strong>
                 {% if not unlocked %}<span class="theme-lock-status">Bloqueado</span>{% endif %}
             </label>
             {% endfor %}
-        </div>
+            </div>
+        </section>
+        {% endfor %}
     </article>
-    <button class="primary-btn" type="submit">Guardar definições</button>
+    <p class="theme-save-hint">O tema é aplicado e guardado automaticamente.</p>
 </form>
+</div>
 {% elif page == 'disciplines' %}
 <section class="discipline-intro panel"><div class="eyebrow">🧭 Seu próximo caminho</div><h2>Qual matéria quer dominar hoje?</h2><p>Cada campanha tem desafios curtos conectados em uma trilha de evolução.</p></section>
 <section class="discipline-grid">{% for id, discipline in DISCIPLINES.items() %}<a class="discipline-card panel" href="/html/area_de_estudo/campanha.html?disciplina={{ id }}"><img src="/imagens/disciplinas/{{ id }}.svg" alt=""><div><span class="discipline-kicker">Campanha {{ "%02d"|format(loop.index) }}</span><h3>{{ discipline.name }}</h3><p>{{ discipline.subtitle }}</p></div><span class="card-arrow">→</span></a>{% endfor %}</section>
@@ -312,8 +331,8 @@
 <section class="lesson-header"><div><span class="discipline-kicker">NÓ {{ node + 1 }} DE {{ node_names|length }}</span><h2>{{ node_names[node] }}</h2><p>Resolva as {{ questions|length }} perguntas e leia as explicações para avançar.</p></div><div class="lesson-progress"><strong>{{ solved|length }}/{{ questions|length }}</strong><span>resolvidos</span></div></section>
 <p class="lesson-feedback">{{ feedback or '' }}</p>
 <section class="exercise-list">
-{% for question in questions %}<article class="exercise-card {% if loop.index0 in solved or node_done %}solved{% endif %}"><h3><span>EXERCÍCIO {{ loop.index }}</span> de {{ questions|length }}</h3><p class="question">{{ question.prompt }}</p>
-    {% if loop.index0 not in solved and not node_done %}<form method="post" class="options"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="question" value="{{ loop.index0 }}"><input type="hidden" name="question_id" value="{{ question.id }}">{% for answer in question.options %}<label class="option-label"><input type="radio" name="answer" value="{{ loop.index0 }}" required>{{ answer }}</label>{% endfor %}<button class="primary-btn" type="submit">Responder</button></form>{% else %}<p class="explanation visible"><strong>Por que?</strong> {{ question.explanation }}</p>{% endif %}
+{% for question in questions %}{% set question_index = loop.index0 %}{% set saved_answer = answer_drafts.get(question_index|string) %}<article class="exercise-card {% if question_index in solved or node_done %}solved{% endif %}"><h3><span>EXERCÍCIO {{ loop.index }}</span> de {{ questions|length }}</h3><p class="question">{{ question.prompt }}</p>
+    {% if question_index not in solved and not node_done %}<form method="post" class="options" data-autosave-kind="exercise"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="question" value="{{ question_index }}"><input type="hidden" name="question_id" value="{{ question.id }}">{% for answer in question.options %}<label class="option-label"><input type="radio" name="answer" value="{{ loop.index0 }}" required {% if saved_answer is not none and saved_answer|int == loop.index0 %}checked{% endif %}>{{ answer }}</label>{% endfor %}<span class="answer-save-status" role="status" aria-live="polite"></span></form>{% else %}<p class="explanation visible"><strong>Por que?</strong> {{ question.explanation }}</p>{% endif %}
 </article>{% endfor %}
 </section>
 <div class="lesson-footer">{% if node_done %}<a class="primary-btn" href="{% if node < 5 %}/html/area_de_estudo/exercicios.html?disciplina={{ discipline }}&amp;level={{ level }}&amp;node={{ node + 1 }}{% else %}/html/area_de_estudo/campanha.html?disciplina={{ discipline }}&amp;level={{ level }}{% endif %}">{% if node < 5 %}Próximo nó →{% else %}Voltar ao caminho →{% endif %}</a>{% else %}<a class="ghost-btn" href="/html/area_de_estudo/campanha.html?disciplina={{ discipline }}&amp;level={{ level }}">Voltar ao mapa</a>{% endif %}</div>
@@ -321,18 +340,19 @@
 {% set approved = (discipline ~ ':' ~ level) in state.passed_tests %}
 <header class="study-heading"><p>Responda às 8 perguntas. É preciso acertar pelo menos 7.</p><a class="ghost-btn" href="/html/area_de_estudo/campanha.html?disciplina={{ discipline }}&amp;level={{ level }}">Voltar à campanha</a></header>
 {% if feedback %}<div class="panel test-feedback"><p>{{ feedback }}</p>{% if result and result.passed and level < 3 %}<a class="primary-btn" href="/html/area_de_estudo/campanha.html?disciplina={{ discipline }}&amp;level={{ level + 1 }}">Avançar de etapa →</a>{% elif result and result.passed %}<a class="primary-btn" href="/html/menu_html/jornada.html">Voltar à jornada →</a>{% endif %}</div>{% endif %}
-<p>Tentativas de hoje: {{ attempts|length }} · Bilhetes disponíveis: {{ state.tickets }}</p>
+<p class="test-attempts">Tentativas de hoje: {{ attempts|length }} · Bilhetes disponíveis: {{ state.tickets }}</p>
 {% if (not approved and attempts|rejectattr('ticket')|list|length < 2) or state.tickets > 0 %}
-<form method="post" class="test-list"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-{% for question in questions %}{% set question_number = loop.index0 %}<input type="hidden" name="question_id_{{ question_number }}" value="{{ question.id }}"><article class="test-card"><h3>Questão {{ loop.index }} de 8</h3><p>{{ question.prompt }}</p><div class="test-options">{% for option in question.options %}<label class="option-label"><input type="radio" name="answer_{{ question_number }}" value="{{ loop.index0 }}" required>{{ option }}</label>{% endfor %}</div></article>{% endfor %}
+<form method="post" class="test-list" data-autosave-kind="test"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{% for question in questions %}{% set question_number = loop.index0 %}{% set saved_answer = answer_drafts.get(question_number|string) %}<input type="hidden" name="question_id_{{ question_number }}" value="{{ question.id }}"><article class="test-card"><h3>Questão {{ loop.index }} de 8</h3><p>{{ question.prompt }}</p><div class="test-options">{% for option in question.options %}<label class="option-label"><input type="radio" name="answer_{{ question_number }}" value="{{ loop.index0 }}" required {% if saved_answer is not none and saved_answer|int == loop.index0 %}checked{% endif %}>{{ option }}</label>{% endfor %}</div></article>{% endfor %}
 {% if attempts|rejectattr('ticket')|list|length >= 2 or approved %}<label class="toggle-row"><span>Usar um bilhete para repetir ({{ state.tickets }} disponível/eis)</span><input type="checkbox" name="use_ticket" {% if state.tickets == 0 %}disabled{% endif %} required></label>{% endif %}
-<button class="primary-btn" type="submit">Corrigir teste</button>
+<span class="answer-save-status" role="status" aria-live="polite">As respostas serão corrigidas automaticamente quando terminares.</span>
 </form>
 {% elif approved %}<section class="panel"><h2>Etapa aprovada</h2>{% if level < 3 %}<a class="primary-btn" href="/html/area_de_estudo/campanha.html?disciplina={{ discipline }}&amp;level={{ level + 1 }}">Avançar de etapa →</a>{% else %}<a class="primary-btn" href="/html/menu_html/jornada.html">Voltar à jornada</a>{% endif %}</section>
 {% else %}<section class="panel"><p>Não há mais tentativas disponíveis hoje. Podes obter um bilhete na loja.</p><a class="primary-btn" href="/html/menu_html/loja.html">Ir à loja</a></section>{% endif %}
 {% endif %}
 {% endblock %}
 {% block page_overlays %}
+{% if page in ['exercises', 'final_test'] %}<script src="{{ url_for('scripts', filename='menu_js/stage-autosave.js') }}" defer></script>{% endif %}
 {% if page == 'shop' and results %}
 <div class="case-opening-overlay" id="case-opening" role="dialog" aria-modal="true" aria-labelledby="case-opening-title" aria-describedby="case-opening-status" hidden>
     <section class="case-opening-card">
