@@ -81,11 +81,14 @@
 .test-intro .eyebrow { margin-bottom: 6px; }
 .test-intro h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); }
 .test-selection-page .discipline-grid { margin-top: 0; }
-.account-status { display: grid; grid-template-columns: auto minmax(150px, 1fr) auto; align-items: center; gap: 22px; min-width: min(100%, 520px); padding: 14px 20px; border: 1px solid var(--line); border-radius: 18px; background: rgba(15, 23, 42, .72); }
+.account-status { display: grid; grid-template-columns: auto minmax(150px, 1fr) auto; align-items: center; gap: 22px; min-width: min(100%, 520px); padding: 10px 16px; border: 1px solid var(--line); border-radius: 18px; background: rgba(15, 23, 42, .72); }
+.test-content > .topbar:not(.tests-page-heading) { justify-content: flex-end; }
+.content > .tests-page-heading { position: static; margin: 0 0 20px; padding: 0; border: 0; background: transparent; backdrop-filter: none; }
 .account-metric, .account-xp { display: grid; gap: 4px; color: var(--muted); font-size: .78rem; }
 .account-metric strong { color: var(--text); font-size: 1rem; }
 .account-xp-bar { height: 8px; overflow: hidden; border-radius: 99px; background: rgba(148, 163, 184, .2); }
 .account-xp-bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--green), var(--cyan)); }
+.answer-save-status { min-height: 1em; color: var(--muted); font-size: .78rem; }
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
 .field { display: grid; gap: 8px; margin: 14px 0; color: var(--text); }
 .field input, .field select, .form-group input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); background: rgba(15, 23, 42, .82); }
@@ -134,7 +137,7 @@
 }
 @media (max-width: 680px) {
     .section-grid, .discipline-grid, .settings-layout, .form-grid, .auth-shell { grid-template-columns: 1fr; }
-    .account-status { grid-template-columns: auto minmax(80px, 1fr) auto; gap: 12px; min-width: 0; width: 100%; padding: 12px; }
+    .account-status { grid-template-columns: auto minmax(80px, 1fr) auto; gap: 12px; min-width: 0; width: 100%; padding: 10px; }
     .content { padding: 18px 14px; }
     .app { padding: 0 8px 20px; }
     .topbar, .study-heading { align-items: flex-start; flex-direction: column; }

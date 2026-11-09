@@ -259,6 +259,12 @@ def initialize_catalog(connection, seed_file=SEED_FILE):
                 sort_order,
             ),
         )
+        if theme["id"] == "volcanic":
+            connection.execute(
+                """UPDATE appearance_themes SET name = ?
+                WHERE id = ? AND name = 'Vulc?o'""",
+                (theme["name"], theme["id"]),
+            )
     for store_box in seed["store_boxes"]:
         connection.execute(
             """INSERT OR IGNORE INTO store_boxes (id, name, price)
@@ -304,21 +310,42 @@ def load_context(connection):
     level_names = {level: stage["name"] for level, stage in stages.items()}
     level_nodes = {level: stage["nodes"] for level, stage in stages.items()}
     theme_rows = connection.execute(
-        """SELECT id, name, purchase_item_id FROM appearance_themes
-        WHERE is_active = 1 ORDER BY sort_order"""
+        """SELECT appearance_themes.id, appearance_themes.name,
+        appearance_themes.purchase_item_id, rarities.id AS rarity_id,
+        rarities.name AS rarity_name
+        FROM appearance_themes
+        LEFT JOIN items ON items.id = appearance_themes.purchase_item_id
+        LEFT JOIN rarities ON rarities.id = items.rarity_id
+        WHERE appearance_themes.is_active = 1
+        ORDER BY COALESCE(rarities.sort_order, -1), appearance_themes.sort_order"""
     )
     themes = {}
     free_theme_ids = set()
+    theme_groups = []
+    groups_by_rarity = {}
     for row in theme_rows:
         themes[row["id"]] = row["name"]
         if row["purchase_item_id"] is None:
             free_theme_ids.add(row["id"])
+        rarity_id = row["rarity_id"] or "base"
+        if rarity_id not in groups_by_rarity:
+            group = {
+                "id": rarity_id,
+                "name": row["rarity_name"] or "Gratuitos",
+                "themes": [],
+            }
+            groups_by_rarity[rarity_id] = group
+            theme_groups.append(group)
+        groups_by_rarity[rarity_id]["themes"].append(
+            {"id": row["id"], "name": row["name"]}
+        )
     return {
         "DISCIPLINES": disciplines,
         "LEVEL_NAMES": level_names,
         "LEVEL_NODES": level_nodes,
         "STAGE_NODE_COUNTS": stage_node_counts,
         "THEME_NAMES": themes,
+        "THEME_GROUPS": theme_groups,
         "FREE_THEME_IDS": free_theme_ids,
         "AVATAR_COLORS": {
             row["id"]: row["name"]

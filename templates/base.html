@@ -23,21 +23,14 @@
                 <a class="nav-item {% if page == 'avatar' %}active{% endif %}" href="/html/menu_html/avatar.html"><span class="nav-icon">◉</span>Meu avatar</a>
                 <a class="nav-item {% if page == 'settings' %}active{% endif %}" href="/html/menu_html/definicoes.html"><span class="nav-icon">⚙</span>Definições</a>
             </nav>
-            <div class="side-card">
-                {% if page == 'shop' %}
-                <div class="mini">Tokens disponíveis</div><strong>{{ "{:,.0f}".format(token_balance).replace(",", ".") }}</strong><span>Complete missões para ganhar mais</span>
-                {% else %}
-                <div class="mini">XP total</div><strong>{{ profile.xp }}</strong><span>Nível {{ level_number }}</span>
-                {% endif %}
-            </div>
             <form action="{{ url_for('logout') }}" method="post" class="logout-form">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button class="ghost-btn" type="submit">Terminar sessão</button>
             </form>
         </aside>
         <main class="content {% if page == 'tests' %}test-content{% endif %}">
-            {% if page != 'tests' %}
             <header class="topbar">
+                {% if page != 'tests' %}
                 <div class="title-block">
                     <h1>{% block heading %}Olá, {{ current_user.name }}{% endblock %}</h1>
                     {% if page == 'avatar' %}<p>Crie uma identidade que acompanhe sua jornada de estudos.</p>
@@ -45,13 +38,13 @@
                     {% elif page == 'shop' %}<p>Use seus Tokens para desbloquear cosméticos e personalizar sua jornada.</p>
                     {% elif page == 'dashboard' %}<p>Acompanhe sua jornada de estudos.</p>{% endif %}
                 </div>
+                {% endif %}
                 <div class="account-status">
                     <div class="account-metric"><span>Tokens</span><strong>{{ "{:,.0f}".format(token_balance).replace(",", ".") }}</strong></div>
-                    <div class="account-xp"><span>XP para próximo nível</span><div class="account-xp-bar"><span style="width: {{ level_xp / 5 }}%"></span></div></div>
+                    <div class="account-xp"><span>XP do nível · {{ level_xp }}/500</span><div class="account-xp-bar"><span style="width: {{ level_xp / 5 }}%"></span></div></div>
                     <div class="account-metric"><span>Nível</span><strong>{{ level_number }}</strong></div>
                 </div>
             </header>
-            {% endif %}
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                 <div class="flash-list" role="status">
