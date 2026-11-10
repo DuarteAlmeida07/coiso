@@ -11,6 +11,17 @@ python manage.py runserver
 
 The pages keep their existing `/html/` paths, and the home page links to login. Static assets are served from the app's `static/meu_site/` directory.
 
+To use the local MySQL server, install the dependencies and set the connection password in PowerShell before running migrations:
+
+```powershell
+python -m pip install -r ..\requirements.txt
+$env:MYSQL_PASSWORD = "your-MySQL-password"
+python manage.py migrate
+python manage.py runserver
+```
+
+By default, Django connects to database `study_quest` as user `root` at `127.0.0.1:3306`. Set `MYSQL_DATABASE`, `MYSQL_USER`, `MYSQL_HOST`, or `MYSQL_PORT` in the environment to override those values. The password is required and is read from `MYSQL_PASSWORD`; do not commit it to source control. Migrations create Django's tables but do not import or convert existing MySQL tables.
+
 ## Existing Flask application
 
 The repository also retains its server-rendered Flask application at the root. Authentication, settings, missions, rewards, campaign progress, and test grading run in Python; its pages use regular HTML forms and do not require JavaScript.
